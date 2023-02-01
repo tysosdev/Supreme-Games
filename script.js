@@ -1,0 +1,2 @@
+var gameIds = [];
+var gameNames = [];
