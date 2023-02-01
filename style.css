@@ -5,7 +5,7 @@ html, body {
     overflow: hidden;
     background-color: #24154c;
 }
-games{
+#games{
   display: flex;
     flex-flow: row wrap;
     justify-content: space-between;

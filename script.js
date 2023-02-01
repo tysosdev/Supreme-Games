@@ -1,2 +1,5 @@
-var gameIds = [];
-var gameNames = [];
+var gameIds = ["0hh1", "0hn0", "2048", "alienhominid", "amidstthesky", "amongus", "animatorvaanimation", "asteroids", "astray", "ballistic-chickens.png", "basketbros", "burnout-drift-3.jpg", "championisland", "chess", "chillradio", "chromedino", "circus", "classicminecraft", "cookieclicker", "cubefield", "costomtetris", "dbzdevolution", "doodlejump", "drifthunters", "eaglercraft", "edgesurf", "elasticman", "flappybird", "fluidsimulation", "fnaf", "fnaw", "fnf", "gba", "grindcraft", "gsnake", "hackertyper", "hardestgame", "hexgl", "hextris", "htmledit", "impossiblequiz", "infinetemario", "madalincars2", "madalincarsmulti", "mineblocks", "minekhan", "moonlander", "msflight", "n-gon", "pacman", "packman3d", "paperio2", "powdergame", "retrobowl", "riddleschool", "riddleschool2", "riddleschool3", "riddleschool4", "riddleschool5", "riddletransfer", "riddletransfer2", "ruffle", "slope", "sm64", "", "", "", "", "", ""];
+var gameNames = ["vex 5"];
+for(i = 0; i < gameIds.length+100; i++){
+    document.getElementById("games").innerHTML += '<div class="game"><img src="/images/' + gameIds[i] + '.jpg"><p>' + gameNames[i] + '</p></div>';
+}
