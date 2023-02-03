@@ -4,7 +4,7 @@ const ends = ['png', 'png', 'png', 'jpg', 'jpg', 'jpg', 'png', 'jpg', 'png', 'pn
 for(i = 0; i < gameIds.length; i++){
     document.getElementById("games").innerHTML += '<div class="game" onclick="aboutBlank("' + gameIds + '");"><p>' + gameNames[i] + '</p><img src="/images/' + gameIds[i] + "." + ends[i] + '"></div>';
 }
-fuction aboutBlank(gameid){
+function aboutBlank(gameid){
  var a = window.open("about:blank", "_blank");
     a.document.documentElement.innerHTML = '<!DOCTYPE html><html><title>Classes</title><link rel="icon" type="image/png" href="https://ssl.gstatic.com/classroom/favicon.png%22%3E<style>body {margin:0;}</style><body><script>window.onpopstate = function() {window.location.replace("https://www.studymath.ml/")}; history.pushState({}, "");</script><iframe height="100%" width="100%" src="' + window.location.href + "games/" + gameid + '/index.html"frameborder="0"></iframe></body></html>';
 window.location.replace("https://classroom.google.com")
