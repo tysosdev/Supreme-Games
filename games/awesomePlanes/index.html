@@ -13,6 +13,8 @@
           let ruffle = window.RufflePlayer.newest();
           let player = ruffle.createPlayer();
           let container = document.getElementById("container");
+          player.style.width = "100vh";
+          player.style.height = "100vh";
           container.appendChild(player);
           player.load("awesome-planes-132043467.swf");
       });
