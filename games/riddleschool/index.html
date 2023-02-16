@@ -14,7 +14,7 @@
         const player = ruffle.createPlayer();
         const container = document.getElementById("container");
         player.style.width = "100vw";
-        player.style.height = "100vh";
+        player.style.height = "calc(100vh - 20px)";
         container.appendChild(player);
         player.load("riddleschool.swf");
       });
