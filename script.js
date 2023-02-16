@@ -7,6 +7,6 @@ for(i = 0; i < gameIds.length; i++){
 }
 function aboutBlank(gameid){
  var a = window.open("about:blank", "_blank");
-    a.document.documentElement.innerHTML = '<!DOCTYPE html><html><title>Classes</title><link rel="icon" type="image/png" href="https://ssl.gstatic.com/classroom/favicon.png%22%3E"><style>body {margin: 0;}</style><body><script>function back(){window.location.replace("https://www.studymath.ml/");}</script><button position="fixed" style="border-radius:20px; backround-color:black; z-index:100;" onclick="window.location.replace(' + "'https://www.studymath.ml/'" + ');">Back to home</button> <iframe style="height:calc(100% - 20px); width:100%; top:20px; left:0; position:absolute;  z-index:1;" src="' + window.location.href + "games/" + gameid + '/index.html" frameborder="0"></iframe></body></html>';
+    a.document.documentElement.innerHTML = '<!DOCTYPE html><html><title>Classes</title><link rel="icon" type="image/png" href="https://ssl.gstatic.com/classroom/favicon.png"><style>body {margin: 0;}</style><body><script>function back(){window.location.replace("https://www.studymath.ml/");}</script><button position="fixed" style="border-radius:20px; backround-color:black; z-index:100;" onclick="window.location.replace(' + "'https://www.studymath.ml/'" + ');">Back to home</button> <iframe style="height:calc(100% - 20px); width:100%; top:20px; left:0; position:absolute;  z-index:1;" src="' + window.location.href + "games/" + gameid + '/index.html" frameborder="0"></iframe></body></html>';
 window.location.replace("https://classroom.google.com")
 }
