@@ -5,7 +5,7 @@
     <title>Awesome Planes</title>
   </head>
   <body style="margin:auto; padding: 0">
-    <div id="container" style="margin:auto; width:calc(100vh - 20px); height:calc(100vh - 20px);"></div>
+    <div id="container" style="margin:auto; width:calc(100vh - 10px); height:calc(100vh - 10px);"></div>
     <script>
       window.RufflePlayer = window.RufflePlayer || {};
   
@@ -13,8 +13,8 @@
           let ruffle = window.RufflePlayer.newest();
           let player = ruffle.createPlayer();
           let container = document.getElementById("container");
-          player.style.width = "calc(100vh - 20px)";
-          player.style.height = "calc(100vh - 20px)";
+          player.style.width = "calc(100vh - 10px)";
+          player.style.height = "calc(100vh - 10px)";
           container.appendChild(player);
           player.load("awesome-planes-132043467.swf");
       });
