@@ -25,7 +25,7 @@ html, body {
 p{
     font-family: Arial;
     position: absolute;
-    color: d4f5f5;
+    color: #d4f5f5;
     text-align: center;
     left: 0;
     right:0;
@@ -36,9 +36,9 @@ p{
     margin-top: 40px;
     width:220px;
     height:220px;
-    background-color: #092948;
+    background-color: #18414E;
     border-radius: 10px;
-    border-color: #18414E;
+    border-color: #7A0200;
     border-width: 2px;   
     border-style: solid;
 
