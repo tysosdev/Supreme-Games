@@ -3,7 +3,7 @@ html, body {
   width: 100%;
     margin:none;
     overflow: hidden;
-    background-color: #24154c;
+    background-color: #0D0907;
 }
 #games{
   display: flex;
@@ -17,14 +17,14 @@ html, body {
     right:0px;
     bottom: 0px;
     height:calc(100% - 60px);
-    background-color: #20224f;
+    background-color: #092948;
     overflow:auto;
     margin:none;
 }
 p{
     font-family: Arial;
     position: absolute;
-    color: #ffff;
+    color: d4f5f5;
     text-align: center;
     left: 0;
     right:0;
@@ -35,9 +35,9 @@ p{
     margin-top: 40px;
     width:220px;
     height:220px;
-    background-color: #0b367a;
+    background-color: #092948;
     border-radius: 10px;
-    border-color: black;
+    border-color: #18414E;
     border-width: 2px;   
       transition-duration: 0.3s;
   transform: translate(0px, 0px);
