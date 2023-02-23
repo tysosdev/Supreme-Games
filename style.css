@@ -20,6 +20,7 @@ html, body {
     background-color: #092948;
     overflow:auto;
     margin:none;
+
 }
 p{
     font-family: Arial;
@@ -39,6 +40,8 @@ p{
     border-radius: 10px;
     border-color: #18414E;
     border-width: 2px;   
+    border-style: solid;
+
       transition-duration: 0.3s;
   transform: translate(0px, 0px);
 
