@@ -1,26 +1,52 @@
 {
-    "git": {
-        "deploymentEnabled": {
-            "main": true
-        }
-    },
-    "builds": [
-      { "src": "**/*.+(unityweb|gz)", "use": "@vercel/static-build" }
-    ],
-    "routes": [
-      {
-        "src": "/.*\\.(unityweb)$",
-        "headers": {
-          "Content-Encoding": null
-        },
-        "continue": true
+  "version": 2,
+  "routes": [
+    {
+      "src": "/(.*)",
+      "headers": {
+        "Cache-Control": "public, max-age=86400, immutable"
       },
-      {
-        "src": "/(.*)",
-        "headers": {
-          "Cache-Control": "public, max-age=31536000, immutable"
-        },
-        "continue": true
-      }
-    ]
+      "continue": true
+    },
+    {
+      "src": "/games/:path*",
+      "headers": {
+        "Cache-Control": "public, max-age=31536000, immutable"
+      },
+      "continue": true
+    },
+    {
+      "src": "games/**/*.{unityweb,asm,mem}",
+      "headers": {
+        "Content-Encoding": null
+      },
+      "continue": true
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/games/:path*",
+      "destination": "/games/:path*",
+      "headers": [
+        {
+          "key": "Content-Encoding",
+          "value": "gzip"
+        }
+      ]
+    }
+  ],
+  "builds": [
+    {
+      "src": "games/**/*.{html,js,css,png,jpg,jpeg,gif,json}",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "games/**/*.{unityweb,asm,mem}",
+      "use": "@vercel/static-build"
+    },
+    {
+      "src": "*.gz",
+      "use": "@vercel/static"
+    }
+  ]
 }
