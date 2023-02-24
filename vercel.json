@@ -15,7 +15,7 @@
       "continue": true
     },
     {
-      "src": "games/**/*.{unityweb,asm,mem}",
+      "src": "*.{unityweb,asm,mem}",
       "headers": {
         "Content-Encoding": null
       },
