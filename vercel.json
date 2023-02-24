@@ -8,7 +8,7 @@
       "continue": true
     },
     {
-      "src": "/games/:path*",
+      "src": "/games*",
       "headers": {
         "Cache-Control": "public, max-age=31536000, immutable"
       },
@@ -24,8 +24,8 @@
   ],
   "rewrites": [
     {
-      "source": "/games/:path*",
-      "destination": "/games/:path*",
+      "source": "/games*",
+      "destination": "/games*",
       "headers": [
         {
           "key": "Content-Encoding",
@@ -33,19 +33,10 @@
         }
       ]
     }
-  ],
+  ],  
   "builds": [
-    {
-      "src": "games/**/*.{html,js,css,png,jpg,jpeg,gif,json}",
-      "use": "@vercel/static"
-    },
-    {
-      "src": "games/**/*.{unityweb,asm,mem}",
-      "use": "@vercel/static-build"
-    },
-    {
-      "src": "*.gz",
-      "use": "@vercel/static"
-    }
+    { "src": "*.{html,js,css,png,jpg,jpeg,gif,json}", "use": "@vercel/static" },
+    { "src": "*.{unityweb,asm,mem}", "use": "@vercel/static-build" },
+    { "src": "*.gz", "use": "@vercel/static" }
   ]
 }
