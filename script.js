@@ -25,6 +25,7 @@ for(i = 0; i < gameIds.length; i++){
 }
 function aboutBlank(gameid){
     socket.emit('game', gameid);
+    history.pushState({}, "");
     location.href = window.location.href + "games/" + gameid + "/index.html";
 
  //var a = window.open("about:blank", "_blank");
