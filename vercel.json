@@ -1,6 +1,15 @@
 {
   "headers": [
     {
+      "source": "*.unityweb",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/x-unityweb"
+        }
+      ]
+    },
+    {
       "source": "/(.*\\.unityweb)",
       "headers" : [
         {
