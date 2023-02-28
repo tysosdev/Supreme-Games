@@ -4,15 +4,6 @@
       "source": "/(.*\\.unityweb)",
       "headers" : [
         {
-          "key" : "Content-Encoding",
-          "value" : "gzip"
-        }
-      ]
-    },
-    {
-      "source": "/(*\\.unityweb)",
-      "headers" : [
-        {
           "key" : "Content-Type",
           "value" : "application/wasm"
         }
