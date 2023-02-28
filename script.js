@@ -16,6 +16,7 @@ socket.emit('get');
 // Listen for the 'games' event from the server
 socket.on('games', (games) => {
     popGames = games;
+    console.log(popGames);
 });
 for(i = 0; i < gameIds.length; i++){
     console.log(i + ", " + gameNames[i]);
@@ -24,5 +25,5 @@ for(i = 0; i < gameIds.length; i++){
 function aboutBlank(gameid){
     socket.emit('game', gameid);
  var a = window.open("about:blank", "_blank");
-    a.document.documentElement.innerHTML = '<!DOCTYPE html><html><title>Classes</title><link rel="icon" type="image/png" href="https://ssl.gstatic.com/classroom/favicon.png"><style>body {margin: 0;}</style><body><script>function back(){window.location.replace("https://www.studymath.ml/");}</script><button position="fixed" style="border-radius:20px; backround-color:black; z-index:100;" onclick="window.location.replace(' + "'https://www.studymath.ml/'" + ');">Back to home</button> <iframe style="height:calc(100% - 20px); width:100%; top:20px; left:0; position:absolute;  z-index:1;" src="https://studymath.ml/games/"' + gameid + '/index.html" frameborder="0"></iframe></body></html>';
+    a.document.documentElement.innerHTML = '<!DOCTYPE html><html><title>Classes</title><link rel="icon" type="image/png" href="https://ssl.gstatic.com/classroom/favicon.png"><style>body {margin: 0;}</style><body><script>function back(){window.location.replace("https://www.studymath.ml/");}</script><button position="fixed" style="border-radius:20px; backround-color:black; z-index:100;" onclick="window.location.replace(' + "'https://www.studymath.ml/'" + ');">Back to home</button> <iframe style="height:calc(100% - 20px); width:100%; top:20px; left:0; position:absolute;  z-index:1;" src="https://studymath.ml/games/' + gameid + '/index.html" frameborder="0"></iframe></body></html>';
 }
