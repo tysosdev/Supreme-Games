@@ -10,7 +10,7 @@
       ]
     },
     {
-      "source": "/(*.unityweb)",
+      "source": "/(*\\.unityweb)",
       "headers" : [
         {
           "key" : "Content-Type",
