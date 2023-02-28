@@ -1,10 +1,8 @@
 if(window.self == window.top){
     var a = window.open("about:blank", "_blank");
-    a.document.documentElement.innerHTML = '<!DOCTYPE html><html><title>Classes</title><link rel="icon" type="image/png" href="https://ssl.gstatic.com/classroom/favicon.png"><style>body {margin: 0;}</style><body><iframe id="frame" style="height:100%; width:100%; top:0px; left:0px; position:absolute;  z-index:1;" src="' + window.location.href + '" frameborder="0"></iframe><script>var e=document.getElementById("frame");e.addEventListener("load",function(){var t=e.contentWindow.location.href;window.history.pushState({url:t,origin:window.location.origin},"",t);console.log("Pushed state: " + t);});window.onpopstate = function() {window.location.replace("https://www.studymath.ml/")}; history.pushState({}, "");</script></body></html>';
-    if(a == null){
-        document.innerHTML = "allow pop ups"
-    }else{
-     window.close();
+    a.document.documentElement.innerHTML = '<!DOCTYPE html><html><title>Classes</title><link rel="icon" type="image/png" href="https://ssl.gstatic.com/classroom/favicon.png"><style>body {margin: 0;}</style><body><iframe id="frame" style="height:100%; width:100%; top:0px; left:0px; position:absolute;  z-index:1;" src="' + window.location.href + '" frameborder="0"></iframe></body></html>';
+    if(a != null){
+        window.close();
     }
 }
 const gameIds = ["0hh1", "0hn0", "2048", "alienhominid", "amidstthesky", "amongus", "animatorvsanimation", "asteroids", "astray", "awesomePlanes", "ballisticChickens", "basketbros", "blue", "burnoutDrift3", "championIsland", "chess", "chillRadio", "chromeDino", "circus", "classicMinecraft", "clickerHeroes", "cookieclicker", "cubefield", "customTetris", "dbzdevolution", "doodleJump", "driftHunters", "duckLifeAdventure", "eaglercraft", "edgesurf", "elasticMan", "flappybird", "fluidSimulation", "fnaf", "fnaw", "fnf", "gba", "grindcraft", "googleSnake", "hackerTyper", "hexgl", "hextris", "htmledit", "impossibleQuiz", "infinetemario", "jackSmith", "littleAlchemy", "madalinCars2", "madalinCars3", "mineBlocks", "minekhan", "moonlander", "msFlight", "n-gon", "pacman", "pacman3d", "paperio2", "powderGame", "retroBowl", "riddleSchool", "riddleSchool2", "riddleSchool3", "riddleSchool4", "riddleSchool5", "riddleTransfer", "riddleTransfer2", "ruffleDemo", "run3", "slope", "sm64", "spaceCadetPinball", "spelunky", "spinningRat", "ssf", "tabhider", "tankTrouble2", "templeRun2", "tetris", "tinyFishing", "typewriter", "vex3", "vex4", "vex-5", "vex6", "vmlinux", "wallSmash", "wbwwb", "weaveSilk", "webRetro", "wordle", "worldsHardestGame"];
@@ -25,9 +23,6 @@ for(i = 0; i < gameIds.length; i++){
 }
 function aboutBlank(gameid){
     socket.emit('game', gameid);
-    location.href = window.location.href + "games/" + gameid + "/index.html";
-
- //var a = window.open("about:blank", "_blank");
-    //a.document.documentElement.innerHTML = '<!DOCTYPE html><html><title>Classes</title><link rel="icon" type="image/png" href="https://ssl.gstatic.com/classroom/favicon.png"><style>body {margin: 0;}</style><body><script>function back(){window.location.replace("https://www.studymath.ml/");}</script><button position="fixed" style="border-radius:20px; backround-color:black; z-index:100;" onclick="window.location.replace(' + "'https://www.studymath.ml/'" + ');">Back to home</button> <iframe style="height:calc(100% - 20px); width:100%; top:20px; left:0; position:absolute;  z-index:1;" src="' + window.location.href + "games/" + gameid + '/index.html" frameborder="0"></iframe></body></html>';
-//window.location.replace("https://classroom.google.com")
+ var a = window.open("about:blank", "_blank");
+    a.document.documentElement.innerHTML = '<!DOCTYPE html><html><title>Classes</title><link rel="icon" type="image/png" href="https://ssl.gstatic.com/classroom/favicon.png"><style>body {margin: 0;}</style><body><script>function back(){window.location.replace("https://www.studymath.ml/");}</script><button position="fixed" style="border-radius:20px; backround-color:black; z-index:100;" onclick="window.location.replace(' + "'https://www.studymath.ml/'" + ');">Back to home</button> <iframe style="height:calc(100% - 20px); width:100%; top:20px; left:0; position:absolute;  z-index:1;" src="https://studymath.ml/games/"' + gameid + '/index.html" frameborder="0"></iframe></body></html>';
 }
