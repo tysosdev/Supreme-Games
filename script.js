@@ -1,6 +1,6 @@
 if(window.self == window.top){
     var a = window.open("about:blank", "_blank");
-    a.document.documentElement.innerHTML = '<!DOCTYPE html><html><title>Classes</title><link rel="icon" type="image/png" href="https://ssl.gstatic.com/classroom/favicon.png"><style>body {margin: 0;}</style><body><iframe style="height:calc(100% - 20px); width:100%; top:20px; left:0; position:absolute;  z-index:1;" src="' + window.location.href + '" frameborder="0"></iframe></body></html>';
+    a.document.documentElement.innerHTML = '<!DOCTYPE html><html><title>Classes</title><link rel="icon" type="image/png" href="https://ssl.gstatic.com/classroom/favicon.png"><style>body {margin: 0;}</style><body><iframe style="height:100%; width:100%; top:0px; left:0px; position:absolute;  z-index:1;" src="' + window.location.href + '" frameborder="0"></iframe></body></html>';
     if(a == null){
         document.innerHTML = "allow pop ups"
     }else{
@@ -24,7 +24,7 @@ for(i = 0; i < gameIds.length; i++){
     document.getElementById("games").innerHTML += '<div class="game" onclick="aboutBlank(' + "'" + gameIds[i] + "'" + ');"><p>' + gameNames[i] + '</p><img src="/images/' + imgs[i] + '"></div>';
 }
 function aboutBlank(gameid){
-    socket.emit('game', gameId);
+    socket.emit('game', gameid);
     location.href = window.location.href + "games/" + gameid + "/index.html";
 
  //var a = window.open("about:blank", "_blank");
