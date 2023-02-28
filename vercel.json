@@ -1,15 +1,6 @@
 {
   "headers": [
     {
-      "source": "*.unityweb",
-      "headers": [
-        {
-          "key": "Content-Type",
-          "value": "application/wasm"
-        }
-      ]
-    },
-    {
       "source": "/(.*\\.unityweb)",
       "headers" : [
         {
@@ -19,7 +10,7 @@
       ]
     },
     {
-      "source": "/(.*\\.wasm\\.unityweb)",
+      "source": "/(*.unityweb)",
       "headers" : [
         {
           "key" : "Content-Type",
