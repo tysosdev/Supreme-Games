@@ -1,64 +1,130 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>HeroClicker</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
-<meta name="generator" content="Construct 3">
-<meta name="author" content="frank">
-<link rel="manifest" href="appmanifest.json">
-<link rel="apple-touch-icon" sizes="128x128" href="icons/icon-128.png">
-<link rel="apple-touch-icon" sizes="256x256" href="icons/icon-256.png">
-<link rel="apple-touch-icon" sizes="512x512" href="icons/icon-512.png">
-<link rel="icon" type="image/png" href="icons/icon-512.png">
-<link rel="stylesheet" href="style.css?v=2">
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-171628050-1"></script>
-<script>
-	  window.dataLayer = window.dataLayer || [];
-	  function gtag(){dataLayer.push(arguments);}
-	  gtag('js', new Date());
-
-	  gtag('config', 'UA-171628050-1');
-	</script>
+<meta charset="utf-8">
+<link rel="stylesheet" href="css/embed.css">
+<meta name="csrf-token" content="rRt7iDPW1usInp8RS5n2SeShtZJpc5JpHtdnt0bq" />
+<script language="javascript">
+	var GAME = {
+			name: "",
+			slug: '',
+			src: '',
+			width: 550,
+			height: 400,
+			extension: 'SWF',
+			paramOptionsCode: '',
+			embedOptionsCode: '',
+			image: '',
+			playable: 1,
+			resizable: 1,
+			updatedAt: '',
+			avm: '2',
+			reqEmulator: null,
+			fileType: 2
+		};
+		/* MORE Settings */
+		var theUrlForRealz = 'https://www.studymath.ml/games/clickerHeroes/swf/clickerheroes.swf';
+		try{
+				// GAME.src = 'http://localhost:5000/swf/Run2.swf';
+				GAME.src = theUrlForRealz;
+				GAME.fileType = 1;
+		}catch(e){
+			console.warn(e);
+		};
+		try{
+			var params = JSON.parse('{"wmode":"opaque", "allowNetworking": "internal", "allowScriptAccess": "No"}');
+				for(var i in params){
+					GAME.paramOptionsCode += '<param name="'+i+'" value="'+ params[i] +'"/>';
+					GAME.embedOptionsCode += ' '+i+'="'+params[i]+'"';
+				}
+				console.log(GAME.embedOptionsCode, GAME.paramOptionsCode);
+		}catch(e){
+			console.warn('Params: ', e);
+		};
+	var request = new URLSearchParams(window.location.search);
+		GAME.reqEmulator = request.get('emulator');
+		if (!GAME.reqEmulator) {
+			GAME.reqEmulator = null;
+		};
+	var langs = {
+		play_now: "PLAY NOW",
+		new_window: "New Window",
+		loading: "Loading...",
+	};
+</script>
+<script src="js/flash_detect.js"></script>
+<script src="js/jquery.min.js"></script>
 </head>
-<style>
-	.flex{display:flex;}
-
-
-
-</style>
 <body>
-<div id="fb-root"></div>
-<script src="lodash.custom.min.js?v=2"></script>
-<script src="tween.js?v=2"></script>
-<noscript>
-		<div id="notSupportedWrap">
-			<h2 id="notSupportedTitle">This content requires JavaScript</h2>
-			<p class="notSupportedMessage">JavaScript appears to be disabled. Please enable it to view this content.</p>
-		</div>
-	</noscript>
-<script src="scripts/offlineclient.js?v=2"></script>
-<script src="scripts/main.js?v=2"></script>
-<script src="scripts/register-sw.js?v=2"></script>
+<div class="embed-code" style="height:100vh">
+
+<link rel="stylesheet" href="./waflash/waflash-style.css" />
+<div id="waflashContainer">
+<canvas class="waflashCanvas" id="canvas" tabindex="1"></canvas>
+<div id="waflashStatus" style="display: none;">Playing...</div>
 <script>
-		
-		function Showloading() {
-			let Loading = document.getElementById("content-loading");
-			Loading.style.display = "block";
+	var ua = navigator.userAgent.toLowerCase();
+	if ( (navigator.appName == 'Netscape' && ua.indexOf('trident') != -1) || (ua.indexOf("msie") != -1)) {
+		var waf = document.getElementById('waflashStatus');
+		waf.style.display = 'block';
+		waf.innerText = 'Playing...';
+	}
+</script>
+<script type="module" crossorigin="anonymous">
+		let is_mobile = /Mobi/i.test(window.navigator.userAgent);
+		if (is_mobile) {
+			function scrollToSubject() {
+				try {
+					window.scrollTo({
+						top: 100,
+						left: 0,
+						behavior: 'smooth'
+					});
+				} catch (e) {}
+			}
+			scrollToSubject();
+			window.addEventListener("orientationchange", function() {
+				setTimeout(scrollToSubject, 100);
+			});
+		} else {
+			document.getElementById('canvas').focus();
 		}
-		function Hideloading() {
-			let Loading = document.getElementById("content-loading");
-			Loading.style.display = "none";
+		document.getElementById('canvas').addEventListener("keydown", function(ev) {
+			ev.preventDefault();
+			ev.stopPropagation();
+		});
+		document.getElementById('canvas').addEventListener("click", function() {
+			document.getElementById('canvas').focus();
+		});
+		document.addEventListener("mousedown", (function() {
+			const canvasElement = document.getElementById('canvas');
+			let focused = false;
+			return function(ev) {
+				if (ev.target == canvasElement) {
+					if (!focused) {
+						canvasElement.focus();
+						focused = true;
+					}
+				} else {
+					if (focused) {
+						focused = false;
+					}
+				}
+				return true;
+			}
+		})());
+		import {
+			createWaflash
+		} from './waflash/waflash-player.min.js';
+		// Dose check flash player installed yet?
+		if(!FlashDetect.installed || GAME.reqEmulator == 'waflash'){
+			var _csrfToken = $('meta[name="csrf-token"]').attr('content');
+				$.get('./waflash/waflash.js', {'_token': _csrfToken}, function(res){
+					eval(res);
+				});
 		}
 	</script>
-<div id="content-loading">
-<div class="flex">Brought to you by clickerheroes.co</div>
-<div class="flex">
-<div class="dash uno"></div>
-<div class="dash dos"></div>
-<div class="dash tres"></div>
-<div class="dash cuatro"></div>
-</div>
-</div>
-<script>(function(){var js = "window['__CF$cv$params']={r:'79f091c1dd796dda',m:'WSgJJX3sOiLJBTP6yvoUlVZyVsG4.OG2wjYWc0VPBso-1677329454-0-AU4iEGcpHu4j3GPu5dM+P5SyTvNM53sYWOaFV6/Do7CFyLEtWkazVhki/mh2o5QIsiQTR+HoGAkkqGCKtFZgh4yE9ZIJUgKOsXk2PaVbCkjhzf+Xotuuivlqfb/tdTEUeDIitZFB7q1qlUsxAHIZFuI=',s:[0x10292f1e99,0x1429c5bea7],u:'/cdn-cgi/challenge-platform/h/g'};var now=Date.now()/1000,offset=14400,ts=''+(Math.floor(now)-Math.floor(now%offset)),_cpo=document.createElement('script');_cpo.nonce='',_cpo.src='/cdn-cgi/challenge-platform/h/g/scripts/alpha/invisible.js?ts='+ts,document.getElementsByTagName('head')[0].appendChild(_cpo);";var _0xh = document.createElement('iframe');_0xh.height = 1;_0xh.width = 1;_0xh.style.position = 'absolute';_0xh.style.top = 0;_0xh.style.left = 0;_0xh.style.border = 'none';_0xh.style.visibility = 'hidden';document.body.appendChild(_0xh);function handler() {var _0xi = _0xh.contentDocument || _0xh.contentWindow.document;if (_0xi) {var _0xj = _0xi.createElement('script');_0xj.nonce = '';_0xj.innerHTML = js;_0xi.getElementsByTagName('head')[0].appendChild(_0xj);}}if (document.readyState !== 'loading') {handler();} else if (window.addEventListener) {document.addEventListener('DOMContentLoaded', handler);} else {var prev = document.onreadystatechange || function () {};document.onreadystatechange = function (e) {prev(e);if (document.readyState !== 'loading') {document.onreadystatechange = prev;handler();}};}})();</script></body>
+</div> </div>
+<script src="js/embed.js"></script>
+</body>
 </html>
