@@ -4,7 +4,7 @@ body {
   width: 100%;
   margin: none;
   overflow: hidden;
-  background-color: #242d45;
+  background-color: #000000;
 }
 
 #games {
@@ -19,7 +19,7 @@ body {
   right: 0px;
   bottom: 0px;
   height: calc(100% - 60px);
-  background-color: #092948;
+  background-color: #000000;
   overflow: auto;
   margin: none;
 
@@ -40,9 +40,9 @@ p {
   margin-top: 40px;
   width: 220px;
   height: 220px;
-  background-color: #092948;
+  background-color: #000000;
   border-radius: 10px;
-  border-color: #7A0200;
+  border-color: #20C20E;
   border-width: 2px;
   border-style: solid;
 
