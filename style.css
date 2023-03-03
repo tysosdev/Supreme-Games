@@ -53,7 +53,7 @@ p {
 
 .game:hover {
   transition-duration: 0.3s;
-  box-shadow: 5px 5px 8px #303030;
+  box-shadow: 5px 5px 8px #000000;
   transform: translate(-10px, -10px);
 }
 
