@@ -18,20 +18,13 @@ body {
   right: 0px;
   bottom: 0px;
   height: calc(100% - 350px);
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-between;
-  position: absolute;
-  border-radius: 10px;
   background-color: #000000;
   overflow: auto;
-  margin: none;
 }
 .rowgames{
   display: flex;
   overflow-x: auto; 
-  overflow-y: hidden; 
-  white-space: nowrap; /* Prevent the inner divs from wrapping */
+  white-space: nowrap;
   width: 100%;
   position: absolute;
   left: 0;
@@ -49,9 +42,13 @@ p {
   text-align: center;
   left: 0;
   right: 0;
-  bottom: 15px;
+    height: 10px;
+  bottom: 12px;
 }
-
+.line{
+    margin-left: 20px;
+}
+    
 .game {
   display: inline-block;
   margin: auto;
@@ -96,6 +93,8 @@ top {
 img {
   position: absolute;
   width: 200px;
+    height:150px;
+object-fit:cover;
   border-radius: 10px;
   top: 10px;
   left: 10px;
