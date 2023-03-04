@@ -23,7 +23,7 @@ function start() {
         popGames = games;
         console.log(popGames);
         for (i = 0; i < popGames.length; i++) {
-            const current = gameIds.find(popGames[i])
+            const current = gameIds.indexOf(popGames[i])
             console.log(i + ", " + gameNames[current]);
             document.getElementById("popgames").innerHTML += '<div class="game" style="margin-left:30px;" onclick="aboutBlank(' + "'" + gameIds[current] + "'" + ');"><p>' + gameNames[current] + '</p><img src="/images/' + imgs[current] + '"></div>';
         }
