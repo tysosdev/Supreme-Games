@@ -6,25 +6,42 @@ body {
   overflow: hidden;
   background-color: #000000;
 }
-
-#games {
+.stackedgames {
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
   position: absolute;
   border-radius: 10px;
-  top: 60px;
+  top:350px;
   width: 100%;
   left: 0px;
   right: 0px;
   bottom: 0px;
-  height: calc(100% - 60px);
+  height: calc(100% - 350px);
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  position: absolute;
+  border-radius: 10px;
   background-color: #000000;
   overflow: auto;
   margin: none;
-
 }
-
+.rowgames{
+  display: flex;
+  overflow-x: auto; 
+  overflow-y: hidden; 
+  white-space: nowrap; /* Prevent the inner divs from wrapping */
+  width: 100%;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 70px;
+  height: 280px;
+}
+.rowgame{
+  margin-right: 20px;
+}
 p {
   font-family: Arial;
   position: absolute;
@@ -36,6 +53,7 @@ p {
 }
 
 .game {
+  display: inline-block;
   margin: auto;
   margin-top: 40px;
   width: 220px;
@@ -45,7 +63,8 @@ p {
   border-color: #20C20E;
   border-width: 2px;
   border-style: solid;
-
+  scroll-snap-align: center; /* Center each child element */
+  flex: none;
   transition-duration: 0.3s;
   transform: translate(0px, 0px);
 
@@ -68,7 +87,6 @@ top {
   border-radius: 10px;
   background-color: #000000;
   font-family: Arial;
-
   color: #d4f5f5;
   font-size: 45px;
   text-align: center;
