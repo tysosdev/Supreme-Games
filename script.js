@@ -18,7 +18,7 @@ function start() {
     // Send the 'get_games' event to the server
     socket.emit('get');
     // Listen for the 'games' event from the server
-    socket.on('games', (games) => {
+    socket.on('popgames', (games) => {
         popGames = games;
         console.log(popGames);
         for (i = 0; i < popGames.length; i++) {
