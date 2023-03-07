@@ -5,6 +5,7 @@ var popGames = [];
 var popwGames = [];
 var recGames = ["catNinja", "tableTanks", "awesomePlanes", "achievementUnlocked2", "raftWars", "impossibleQuiz2", "eaglercraft"];
 var newGames = ["bubbleTanks", "battlePanic", "fancyPantsAdventure", "bobTheRobber", "achievementUnlocked", "achievementUnlocked2", "achievementUnlocked3", "impossibleQuiz2", "1On1Soccer"];
+const socket = io('https://api.studymath.ml');
 if (window.self == window.top) {
     var a = window.open("about:blank", "_blank");
     if (a != null) {
@@ -17,7 +18,6 @@ if (window.self == window.top) {
     start();
 }
 function start() {
-    const socket = io('https://api.studymath.ml');
     if(window.location.pathname.includes("allgames")){
             for (i = 0; i < gameIds.length; i++) {
         addgame("allgames", gameIds[i], gameNames[i], imgs[i]);
