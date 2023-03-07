@@ -1,20 +1,45 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <title>Google</title>
+  <title>test</title>
   <link href="style.css" rel="stylesheet" type="text/css" />
-  <script src="https://api.studymath.ml/socket.io/socket.io.js"></script>
+      <script src="https://api.studymath.ml/socket.io/socket.io.js"></script>
 </head>
+
 <body>
-<top>Supreme Games</top>
-<p style="position:absolute;left:0;right:0; top:53px;height:20px;z-index:1;font-size:20px;">Popular Games</p>
-<div class="rowgames" id="popgames">
-</div>
-<p style="position:absolute;left:0;right:0; top:330px;height:30px;z-index:1;font-size:20px; background-color:black;">All Games</p>
-<div class="stackedgames "id="games">
-</div>
-<script src="script.js"></script>
+    <top><a class="ltext" style="text-decoration-line: none;font-size: 45px;" href="/">Supreme Games</a><a class="rtext" href="/allgames.html">All games</a><input id="searchbar" oninput="liveSearch()" type="text" placeholder="Search Supreme Games"></top>
+    <div id="blob"></div>
+    <div class="gamecont">
+            <p class="title" style="top:40px;"">Popular Games</p>
+    <div class="scroll" onclick="scroller(-639, 'popgames');" style="top:90px; left:0px;"><div class="larrow arrow"></div></div>
+        <div class="scroll" onclick="scroller(639, 'popgames');" style="top:90px; right:0px;"><div class="rarrow arrow"></div></div>
+        <div class="rowgames gameholder" id="popgames" style="top: 70px;">
+        </div>
+        <p class="title" style="top:255px;"">Recomended Games</p>
+            <div class="scroll" onclick="scroller(-639, 'recgames');" style="top:310px; left:0px;"><div class="larrow arrow"></div></div>
+        <div class="scroll" onclick="scroller(639, 'recgames');" style="top:310px; right:0px;"><div class="rarrow arrow"></div></div>
+        <div class="rowgames gameholder" id="recgames" style="top:290px;">
+        </div>
+        <p class="title" style="top:475px;"">New Games</p>
+         <div class="scroll" onclick="scroller(-639, 'newgames');" style="top:530px; left:0px;"><div class="larrow arrow"></div></div>
+        <div class="scroll" onclick="scroller(639, 'newgames');" style="top:530px; right:0px;"><div class="rarrow arrow"></div></div>
+        <div class="rowgames gameholder" id="newgames" style="top:510px;">
+        </div>
+                <p class="title" style="top:695px;"">Popular this week</p>
+               <div class="scroll" onclick="scroller(-639, 'popwgames');" style="top:750px; left:0px;"><div class="larrow arrow"></div></div>
+        <div class="scroll" onclick="scroller(639, 'popwgames');" style="top:750px; right:0px;"><div class="rarrow arrow"></div></div>
+        <div class="rowgames gameholder" id="popwgames" style="top:730px;">
+
+        </div>
+
+        </div>
 </body>
+<script src="/js/blob.js"></script>
+    <script src="/js/arrows.js"></script>
+        <script src="/js/main.js"></script>
+
+
 </html>
