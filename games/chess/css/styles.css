@@ -195,7 +195,7 @@ tbody span { line-height: 4.5em; padding-right: 0.3em; }
   float: left;
 }
 
-.jail .piece .face, .jail .piece .sphere, {
+.jail .piece .face, .jail .piece .sphere {
   box-shadow: inset 10em 10em 1em rgba(0, 0, 0, .3);
 }
 
