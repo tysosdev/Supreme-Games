@@ -9,6 +9,11 @@
  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 var games = {
+    "fire_emblem_the_binding_blade":"FireEmblem - The Binding Blade",
+    "castlevania":"Castlevania",
+    "castlevania_harmony_of_dissonance":"Castlevania - Harmony of Dissonance",
+    "castlevania_circle_of_the_moon":"Castlevania - Circle of the Moon",
+    "castlevania_aria_of_sorrow":"Castlevania - Aria of Sorrow",
     "advancewars":"Advance Wars",
     "advancewars2":"Advance Wars 2",
     "aladdin":"Aladdin",
