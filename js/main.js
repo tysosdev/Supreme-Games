@@ -9,7 +9,7 @@ const socket = io('https://api.studymath.ml');
 if (window.self == window.top) {
     var a = window.open("about:blank", "_blank");
     if (a != null) {
-        a.document.documentElement.innerHTML = '<!DOCTYPE html><html><title>My Drive - Google Drive</title><link rel="icon" type="image/png" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_K-eq3poOh9Sz1dQrghUuoWwOEdfAXjwSsbxW8A51&s"><style>body {margin: 0;}</style><body><iframe id="frame" style="height:100%; width:100%; top:0px; left:0px; position:absolute;  z-index:1;" src="' + window.location.href + '" frameborder="0"></iframe></body></html>';
+        a.document.documentElement.innerHTML = '<!DOCTYPE html><html><title>My Drive - Google Drive</title><link rel="icon" type="image/png" href="https://studymath.ml/icon.png"><style>body {margin: 0;}</style><body><iframe id="frame" style="height:100%; width:100%; top:0px; left:0px; position:absolute;  z-index:1;" src="' + window.location.href + '" frameborder="0"></iframe></body></html>';
         window.open('https://drive.google.com', '_self');
     } else {
         start();
