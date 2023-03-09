@@ -10,6 +10,11 @@
  */
 var games = {
     "mother3":"Mother 3",
+    "harvestmoon":"Harvest Moon: Friends of Mineral Town",
+    "mariotennis":"Mario Tennis: Power Tour",
+    "mariogolf":"Mario Golf: Advance Tour",
+    "zeromission":"Metroid: Zero Mission",
+    "MariovDonkey":"Mario vs Donkey Kong",
     "dkc1":"Donkey Kong Country 1",
     "fire_emblem_the_binding_blade":"FireEmblem - The Binding Blade",
     "castlevania":"Castlevania",
