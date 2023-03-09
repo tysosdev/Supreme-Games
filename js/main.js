@@ -4,7 +4,7 @@ const imgs = ["0hh1.png", "0hn0.png", "1On1Soccer.webp", "2048.png", "3dtanks.jp
 var popGames = [];
 var popwGames = [];
 var recGames = ["catNinja", "tableTanks", "awesomePlanes", "achievementUnlocked2", "raftWars", "impossibleQuiz2", "eaglercraft"];
-var newGames = ["bubbleTanks", "battlePanic", "fancyPantsAdventure", "bobTheRobber", "achievementUnlocked", "achievementUnlocked2", "achievementUnlocked3", "impossibleQuiz2", "1On1Soccer"];
+var newGames = ["superMetroid", "bubbleTanks", "battlePanic", "fancyPantsAdventure", "bobTheRobber", "achievementUnlocked", "achievementUnlocked2", "achievementUnlocked3", "impossibleQuiz2", "1On1Soccer"];
 const socket = io('https://api.studymath.ml');
 if (window.self == window.top) {
     var a = window.open("about:blank", "_blank");
