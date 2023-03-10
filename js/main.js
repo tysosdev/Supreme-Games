@@ -5,7 +5,6 @@ var popGames = [];
 var popwGames = [];
 var recGames = ["Diggy", "catNinja", "tableTanks", "awesomePlanes", "achievementUnlocked2", "motox3m", "raftWars", "impossibleQuiz2", "eaglercraft"];
 var newGames = ["banjok", "motox3m", "chronoTrigger", "alttp", "superMarioWorld", "earthboundZero", "earthbound", "theOcarinaOfTime", "superMetroid", "goldMiner", "burritoBison", "boxHead", "sonny", "sonny2", "bubbleTanks", "battlePanic", "fancyPantsAdventure", "bobTheRobber"];
-const socket = io('https://api.studymath.ml');
 if (window.self == window.top) {
     var a = window.open("about:blank", "_blank");
     if (a != null) {
@@ -18,6 +17,7 @@ if (window.self == window.top) {
     start();
 }
 function start() {
+    const socket = io('https://api.studymath.ml');
     if(window.location.pathname.includes("allgames")){
     for (i = 0; i < gameIds.length; i++) {
         if(gameIds[i].startsWith("/") == false){
@@ -58,6 +58,7 @@ function start() {
     }
 }
 function aboutBlank(gameid) {
+    const socket = io('https://api.studymath.ml');
     socket.emit('game', gameid);
     var a = window.open("about:blank", "_blank");
     a.document.documentElement.innerHTML = '<!DOCTYPE html><html><title>Classes</title><link rel="icon" type="image/png" href="https://ssl.gstatic.com/classroom/favicon.png"><style>body {margin: 0;}</style><body><iframe style="height:100%; width:100%; top:0px; left:0; position:absolute;  z-index:1;" src="https://studymath.ml/games/' + gameid + '/index.html" frameborder="0"></iframe></body></html>';
