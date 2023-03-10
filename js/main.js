@@ -38,6 +38,7 @@ function start() {
     }
     socket.on('popgames', (games) => {
         popGames = games;
+        console.log(games);
         console.log(popGames);
         for (i = 0; i < popGames.length; i++) {
             const current = gameIds.indexOf(popGames[i])
@@ -49,6 +50,7 @@ function start() {
     });
     socket.on('popwgames', (games) => {
         popwGames = games;
+        console.log(games);
         for (i = 0; i < popwGames.length; i++) {
             const current = gameIds.indexOf(popwGames[i])
             if(gameIds[current].startsWith("/") == false){
