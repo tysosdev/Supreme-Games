@@ -42,10 +42,8 @@ function start() {
         console.log(popGames);
         for (i = 0; i < popGames.length; i++) {
             const current = gameIds.indexOf(popGames[i])
-            if(gameIds[current].startsWith("/") == false){
             console.log(i + ", " + gameNames[current]);
             addgame("popgames", gameIds[current], gameNames[current], imgs[current]);
-            }
         }
     });
     socket.on('popwgames', (games) => {
@@ -53,10 +51,8 @@ function start() {
         console.log(games);
         for (i = 0; i < popwGames.length; i++) {
             const current = gameIds.indexOf(popwGames[i])
-            if(gameIds[current].startsWith("/") == false){
             console.log(i + ", " + gameNames[current]);
             addgame("popwgames", gameIds[current], gameNames[current], imgs[current]);
-            }
         }
     });
     }
