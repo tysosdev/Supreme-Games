@@ -4,7 +4,7 @@ const imgs = ["0hh1.png", "0hn0.png", "1On1Soccer.webp", "2048.png", "3dtanks.jp
 var popGames = [];
 var popwGames = [];
 var recGames = ["Diggy", "catNinja", "tableTanks", "awesomePlanes", "achievementUnlocked2", "motox3m", "raftWars", "impossibleQuiz2", "eaglercraft"];
-var newGames = ["Breaking The Bank", "Escaping The Prison", "Fleeing The Compex", "Infiltrating The Airship", "Stealing The Diamond","banjok", "motox3m", "chronoTrigger", "alttp", "superMarioWorld", "earthboundZero", "earthbound", "theOcarinaOfTime", "superMetroid", "goldMiner", "burritoBison", "boxHead"];
+var newGames = ["henryStickmanBreakingTheBank", "henryStickmanEscapingThePrison", "henryStickmanFleeingTheCompex", "henryStickmanInfiltratingTheAirship", "henryStickmanStealingTheDiamond", "banjok", "motox3m", "chronoTrigger", "alttp", "superMarioWorld", "earthboundZero", "earthbound", "theOcarinaOfTime", "superMetroid", "goldMiner", "burritoBison", "boxHead"];
 if (window.self == window.top) {
     var a = window.open("about:blank", "_blank");
     if (a != null) {
