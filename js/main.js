@@ -14,7 +14,7 @@ if (window.self == window.top) {
         start();
     }
 } else {
-    start();
+    start(); 
 }
 function start() {
     const socket = io('https://api.studymath.ml');
