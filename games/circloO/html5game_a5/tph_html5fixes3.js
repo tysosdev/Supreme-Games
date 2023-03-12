@@ -138,94 +138,40 @@ function isEdge()
     return window.navigator.userAgent.indexOf("Edge") > -1;
 }
 
-var failedOrientationLock = false;
-
-// Try to lock the device orientation to the right orientation
-function tryLockOrientation() {
-    if ("orientation" in screen) {
-        if ("lock" in screen.orientation)
-            screen.orientation.lock("landscape").catch(function() {
-                failedOrientationLock = true;
-            });
-        else if ("lockOrientation" in screen.orientation)
-            screen.orientation.lockOrientation("landscape");
-        else if ("mozLockOrientation" in screen.orientation)
-            screen.orientation.mozLockOrientation("landscape");
-    } else if ("mozOrientation" in screen) {
-        if ("mozLock" in screen.mozOrientation)
-            screen.orientation.mozLock("landscape").catch(function() {
-                failedOrientationLock = true;
-            });
-        else if ("mozLockOrientation" in screen.mozOrientation)
-            screen.orientation.mozLockOrientation("landscape");
-    } else if ("msOrientation" in screen) {
-        if ("msLock" in screen.msOrientation)
-            screen.orientation.msLock("landscape").catch(function() {
-                failedOrientationLock = true;
-            });
-        else if ("msLockOrientation" in screen.msOrientation)
-            screen.orientation.msLockOrientation("landscape");
-    } else if ("webkitOrientation" in screen) {
-        if ("webkitLock" in screen.webkitOrientation)
-            screen.orientation.webkitLock("landscape").catch(function() {
-                failedOrientationLock = true;
-            });
-        else if ("webkitLockOrientation" in screen.webkitOrientation)
-            screen.orientation.webkitLockOrientation("landscape");
-    }
-}
-
 function toggleHTML5Fullscreen()
 {
     if (! isHTML5FullScreen()) {
-        try {
-            var thePromiseHopefully;
-
-            if (document.documentElement.requestFullscreen) {  
-                thePromiseHopefully = document.documentElement.requestFullscreen();  
-            } else if (document.documentElement.mozRequestFullScreen) {
-                thePromiseHopefully = document.documentElement.mozRequestFullScreen();  
-            } else if (document.documentElement.webkitRequestFullScreen) {
-                thePromiseHopefully = document.documentElement.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);  
-            } else if (document.documentElement.msRequestFullscreen) {
-                thePromiseHopefully = document.documentElement.msRequestFullscreen();  
-            }   
-
-            //If the stars are right, .
-            if (thePromiseHopefully != undefined)
-                thePromiseHopefully.catch(function() {
-                    //No catch
-                }).then(function() {
-                    if (failedOrientationLock)
-                        tryLockOrientation();
-                });
-
-            tryLockOrientation();
-        } catch (err) {
-
-        }
+    if (document.documentElement.requestFullscreen) {  
+      document.documentElement.requestFullscreen();  
+    } else if (document.documentElement.mozRequestFullScreen) {  
+      document.documentElement.mozRequestFullScreen();  
+    } else if (document.documentElement.webkitRequestFullScreen) {  
+      document.documentElement.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);  
+    } else if (document.documentElement.msRequestFullscreen) {  
+      document.documentElement.msRequestFullscreen();  
+    }   
     } else {  
-        if (document.cancelFullscreen) {  
-            document.cancelFullscreen();  
-        } else if (document.mozCancelFullScreen) {  
-            document.mozCancelFullScreen();  
-        } else if (document.webkitCancelFullScreen) {  
-            document.webkitCancelFullScreen();  
-        } else if (document.msCancelFullscreen) {  
-            document.msCancelFullscreen();  
-        }
+    if (document.cancelFullscreen) {  
+      document.cancelFullscreen();  
+    } else if (document.mozCancelFullScreen) {  
+      document.mozCancelFullScreen();  
+    } else if (document.webkitCancelFullScreen) {  
+      document.webkitCancelFullScreen();  
+    } else if (document.msCancelFullscreen) {  
+      document.msCancelFullscreen();  
+    }
     } 
 
     //Firefox bug
     setTimeout(function()
     {
-        document.documentElement.style.backgroundColor = "#101010";
-        document.body.style.backgroundColor = "#101010";
+        document.documentElement.style.cssText = "background-color: #101010 !important";
+        document.body.style.cssText = "background-color: #101010 !important";
 
         setTimeout(function()
         {
-            document.documentElement.style.backgroundColor = "black";
-            document.body.style.backgroundColor = "black";
+            document.documentElement.style.cssText = "background-color: black !important";
+            document.body.style.cssText = "background-color: black !important";
         }, 100);
     }, 1000);
 }
@@ -250,43 +196,6 @@ function addTouchscreenHandlerCanvas() {
         if (! isHTML5FullScreen())
             toggleHTML5Fullscreen();
     });
-}
-
-if(typeof AudioContext != "undefined" || typeof webkitAudioContext != "undefined") {
-   var resumeAudio = function() {
-      if(typeof g_WebAudioContext == "undefined" || g_WebAudioContext == null) return;
-      if(g_WebAudioContext.state == "suspended") g_WebAudioContext.resume();
-   };
-   document.getElementById("canvas").addEventListener("click", resumeAudio);
-   document.getElementById("canvas").addEventListener("touchend", resumeAudio);
-   document.getElementById("canvas").style.display = "block";
-}
-
-var clickRegisteredSinceLastFrame = false, clickRegisteredOnThisFrame = false;
-
-function registerClick() {
-    clickRegisteredSinceLastFrame = true;
-}
-
-document.getElementById("canvas").addEventListener("mousedown", registerClick);
-
-//document.getElementById("canvas").addEventListener("keyup")
-
-function mouse_check_pressed_left_notbroken() {
-    return clickRegisteredOnThisFrame ? 1 : 0;
-}
-
-function mouse_handle_beginstep() {
-    clickRegisteredOnThisFrame = clickRegisteredSinceLastFrame;
-    clickRegisteredSinceLastFrame = false;
-}
-
-function browser_scroll_zero() {
-    window.scrollTo(0, 0);
-
-    window.setTimeout(function() {
-        window.scrollTo(0, 0);
-    }, 500);
 }
 
 htmlFixedLoaded = true;
