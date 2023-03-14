@@ -27,11 +27,11 @@ function start() {
         try {
             const socket = io('https://api.studymath.ml');
             socket.emit('get');
-            cleargames("popgames");
             socket.on('popgames', (games) => {
                 popGames = games;
                 console.log(games);
                 console.log(popGames);
+                cleargames("popgames");
                 for (i = 0; i < popGames.length; i++) {
                     const current = gameIds.indexOf(popGames[i])
                     console.log(i + ", " + gameNames[current]);
