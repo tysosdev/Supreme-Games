@@ -29,7 +29,11 @@ function start() {
             }
         }
     } else {
-        socket.emit('get');
+        try {
+            socket.emit('get');
+        } catch (err) {
+            console.log("unable to connect");
+        }
         for (i = 0; i < recGames.length; i++) {
             const current = gameIds.indexOf(recGames[i])
             console.log(i + ", " + gameNames[current]);
