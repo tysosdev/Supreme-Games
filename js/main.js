@@ -27,6 +27,7 @@ function start() {
         try {
             const socket = io('https://api.studymath.ml');
             socket.emit('get');
+            cleargames("popgames");
             socket.on('popgames', (games) => {
                 popGames = games;
                 console.log(games);
@@ -40,13 +41,13 @@ function start() {
             socket.on('popwgames', (games) => {
                 popwGames = games;
                 console.log(games);
+                cleargames("popwgames");
                 for (i = 0; i < popwGames.length; i++) {
                     const current = gameIds.indexOf(popwGames[i])
                     console.log(i + ", " + gameNames[current]);
                     addgame("popwgames", gameIds[current], gameNames[current], imgs[current]);
                 }
             });
-
         } catch (err) {
             console.log("unable to connect");
         }
@@ -84,6 +85,9 @@ function aboutBlank(gameid) {
 }
 function addgame(sectionid, gameid, gamename, img) {
     document.getElementById(sectionid).innerHTML += '<div class="game" onclick="aboutBlank(' + "'" + gameid + "'" + ')"><img class="gimg" src="/images/' + img + '"><div class="gradient"></div><h class="text">' + gamename + '</h></div>'
+}
+function cleargames(section){
+    document.getElementById(section).innerHTML = '';
 }
 let searchbar = document.getElementById('searchbar');
 searchbar.addEventListener("keypress", function (event) {
