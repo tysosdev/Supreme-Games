@@ -1,0 +1,46 @@
+<style>
+html,
+body {
+  margin: 0px;
+  height: 100%;
+  width:100%;
+}
+
+#fullscren, 
+iframe {
+    position:absolute;
+  top:0px;
+  right:0px;
+  bottom:0px;
+  left:0px;
+  height: 100%;
+  width:100%;
+  margin: 0px;
+  border: none;
+  }
+</style>
+<fullscren id="fullscren">
+
+    </fullscren>
+<script>
+    const URLtoProx = "https://diep.io";
+    var proxURL;
+    if(document.domain == 'supremegmes.github.io'){
+        proxURL = "https://uv.studymath.ml"
+    }else{
+        proxURL = "https://uv." + document.domain.split('.').reverse().splice(0,2).reverse().join('.') + "/?"
+    }
+    var up = false;
+    try {
+        fetch(proxURL, { mode: 'no-cors' })
+        .then(response => {
+            up = true;
+        })
+    } catch(err) {
+    }
+    if(up){
+    document.getElementById("fullscren").innerHTML = "<iframe src='" + proxURL + URLtoProx + "'></iframe>"
+    }else{
+        console.log("proxy is down");
+    }
+</script>

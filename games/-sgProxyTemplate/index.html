@@ -26,9 +26,9 @@ iframe {
     const URLtoProx = "https://example.com";
     var proxURL;
     if(document.domain == 'supremegmes.github.io'){
-        proxURL = "uv.studymath.ml"
+        proxURL = "https://uv.studymath.ml"
     }else{
-        proxURL = "uv." + document.domain.split('.').reverse().splice(0,2).reverse().join('.') + "/?"
+        proxURL = "https://uv." + document.domain.split('.').reverse().splice(0,2).reverse().join('.') + "/?"
     }
     var up = false;
     try {
