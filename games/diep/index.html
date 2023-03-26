@@ -23,25 +23,28 @@ iframe {
 
     </fullscren>
 <script>
-    const URLtoProx = "https://diep.io";
-    var proxURL;
-    if(document.domain == 'supremegmes.github.io'){
-        proxURL = "https://uv.studymath.ml"
-    }else{
-        proxURL = "https://uv." + document.domain.split('.').reverse().splice(0,2).reverse().join('.') + "/?"
+        async function stuff() {
+        const URLtoProx = "https://diep.io";
+        var proxURL;
+        if (document.domain == 'supremegmes.github.io') {
+            proxURL = "https://uv.studymath.ml"
+        } else {
+            proxURL = "https://uv." + document.domain.split('.').reverse().splice(0, 2).reverse().join('.') + "/?"
+        }
+        if (await checkOnline(proxURL)) {
+            document.getElementById("fullscren").innerHTML = "<iframe src='" + proxURL + URLtoProx + "'></iframe>"
+        } else {
+            window.alert("proxy is down");
+        }
     }
-    var up = false;
-    try {
-        fetch(proxURL, { mode: 'no-cors' })
-        .then(response => {
+    async function checkOnline(url) {
+        var up = false;
+        try {
+            await fetch(url, { mode: 'no-cors' });
             up = true;
-        })
-    } catch(err) {
-    }finally {
-    if(up){
-    document.getElementById("fullscren").innerHTML = "<iframe src='" + proxURL + URLtoProx + "'></iframe>"
-    }else{
-        window.alert("proxy is down, try again later(if it is after 10pm eastern time proxy shuts down)");
+        } catch (err) {
+        }
+        return up
     }
-}
+    stuff();
 </script>
