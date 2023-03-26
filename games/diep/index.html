@@ -32,15 +32,16 @@ iframe {
     }
     var up = false;
     try {
-        await fetch(proxURL, { mode: 'no-cors' })
+        fetch(proxURL, { mode: 'no-cors' })
         .then(response => {
             up = true;
         })
     } catch(err) {
-    }
+    }finally {
     if(up){
     document.getElementById("fullscren").innerHTML = "<iframe src='" + proxURL + URLtoProx + "'></iframe>"
     }else{
         window.alert("proxy is down, try again later(if it is after 10pm eastern time proxy shuts down)");
     }
+}
 </script>
