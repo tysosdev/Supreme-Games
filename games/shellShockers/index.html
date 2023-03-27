@@ -1,0 +1,50 @@
+<style>
+html,
+body {
+  margin: 0px;
+  height: 100%;
+  width:100%;
+}
+
+#fullscren, 
+iframe {
+    position:absolute;
+  top:0px;
+  right:0px;
+  bottom:0px;
+  left:0px;
+  height: 100%;
+  width:100%;
+  margin: 0px;
+  border: none;
+  }
+</style>
+<fullscren id="fullscren">
+
+    </fullscren>
+<script>
+        async function stuff() {
+        const URLtoProx = "https://shellshock.io/";
+        var proxURL;
+        if (document.domain == 'supremegmes.github.io') {
+            proxURL = "https://uv.studymath.ml"
+        } else {
+            proxURL = "https://uv." + document.domain.split('.').reverse().splice(0, 2).reverse().join('.') + "/?"
+        }
+        if (await checkOnline(proxURL)) {
+            document.getElementById("fullscren").innerHTML = "<iframe src='" + proxURL + URLtoProx + "'></iframe>"
+        } else {
+            window.alert("proxy is down");
+        }
+    }
+    async function checkOnline(url) {
+        var up = false;
+        try {
+            await fetch(url, { mode: 'no-cors' });
+            up = true;
+        } catch (err) {
+        }
+        return up
+    }
+    stuff();
+</script>
