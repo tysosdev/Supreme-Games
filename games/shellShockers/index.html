@@ -22,6 +22,7 @@ iframe {
         background-image: url(/images/loading.webp);
         background-repeat: no-repeat;
         background-position: center;
+        background-color: #e4f0f0;
     }
 </style>
 <fullscren id="fullscren">
@@ -36,20 +37,7 @@ iframe {
         } else {
             proxURL = "https://uv." + document.domain.split('.').reverse().splice(0, 2).reverse().join('.') + "/?"
         }
-        if (await checkOnline(proxURL)) {
             document.getElementById("fullscren").innerHTML = "<iframe src='" + proxURL + URLtoProx + "'></iframe>"
-        } else {
-            window.alert("proxy is down");
-        }
-    }
-    async function checkOnline(url) {
-        var up = false;
-        try {
-            await fetch(url, { mode: 'no-cors' });
-            up = true;
-        } catch (err) {
-        }
-        return up
     }
     stuff();
 </script>
