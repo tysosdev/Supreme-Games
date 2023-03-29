@@ -17,6 +17,15 @@ if (window.self == window.top) {
     start();
 }
 function start() {
+    if(localStorage.getItem("discord") != "stop"){
+        document.getElementById("discord").style.display = "block";
+    }
+    function closediscrod(save) {
+        document.getElementById("discord").style.display = "none";
+        if(save == "yes"){
+            localStorage.setItem("discord", "stop");
+        }
+    }
     if (window.location.pathname.includes("allgames")) {
         for (i = 0; i < gameIds.length; i++) {
             if (gameIds[i].startsWith("/") == false) {
