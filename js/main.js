@@ -82,6 +82,9 @@ function closediscrod(save) {
         localStorage.setItem("discord", "stop");
     }
 }
+function opendiscrod(){
+    window.location.replace("https://discord.gg/xYSgcdDXrJ")
+}
 function aboutBlank(gameid) {
     try {
         const socket = io('https://api.studymath.ml');
