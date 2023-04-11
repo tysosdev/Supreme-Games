@@ -30,7 +30,7 @@
 </fullscren>
 <script>
     async function stuff() {
-        const URLtoProx = "https://example.com";
+        const URLtoProx = prompt("what website do you want to view(include https://)");
         var proxURL = "https://uuvv." + document.domain.split('.').reverse().splice(0, 2).reverse().join('.') + "/?"
         document.getElementById("fullscren").innerHTML = "<iframe src='" + proxURL + URLtoProx + "'></iframe>"
     }
