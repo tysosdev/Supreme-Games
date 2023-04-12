@@ -477,8 +477,8 @@ function Ld(a, c, b) {
 		Md("Cracked by Kippykip");
         Od.width = h;
         Od.height = ba;
-        Od.width = 496;
-        Od.height = 422;
+        Od.width = document.getElementById("center").offsetWidth;
+        Od.height = document.getElementById("center").offsetHeight;
         for (c = 0; 256 > c; c++) Pd[c] = !1, Qd[c] = !1, Rd[c] = !1, Sd[c] = !1, Td[c] = !1, Ud[c] = !1, Vd[c] = 0, Wd[c] = 0;
         for (c = 0; 10 > c; c++) Vd[48 + c] = 48 + c;
         for (c = 0; 9 > c; c++) Wd[49 + c] = 33 + c;
