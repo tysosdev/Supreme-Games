@@ -1,0 +1,17 @@
+{
+"companyName": "New Eich Games",
+"productName": "Rooftop Snipers",
+"productVersion": "1.0",
+"dataUrl": "RooftopSnipersGD.data.unityweb",
+"asmCodeUrl": "RooftopSnipersGD.asm.code.unityweb",
+"asmMemoryUrl": "RooftopSnipersGD.asm.memory.unityweb",
+"asmFrameworkUrl": "RooftopSnipersGD.asm.framework.unityweb",
+"TOTAL_MEMORY": 268435456,
+"graphicsAPI": ["WebGL 2.0","WebGL 1.0"],
+"webglContextAttributes": {"preserveDrawingBuffer": false},
+"splashScreenStyle": "Dark",
+"backgroundColor": "#5F7489",
+"developmentBuild": false,
+"multithreading": false,
+"unityVersion": "2019.1.5f1"
+}
