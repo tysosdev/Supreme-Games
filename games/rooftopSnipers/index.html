@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-us">
 <head>
-	<meta http-equiv="Content-Security-Policy" content="script-src 'self' blob:; object-src 'self' blob:;">
+	<meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline' blob:; object-src 'self' 'unsafe-inline' blob:;">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<title>Rooftop Snipers</title>
     	<script src="Build/UnityLoader.js"></script>
@@ -34,7 +34,7 @@
 		}
 	</style>
 </head>
-<body onload="Build/resize.js">
+<body onload="window.onresize();">
 	<div id="gameContainer"></div>
 </body>
 </html>
