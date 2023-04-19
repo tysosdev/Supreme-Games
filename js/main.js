@@ -5,7 +5,7 @@ var popGames = ["eggyCar", "Diggy", "catNinja", "gba", "motox3m", "raftWars", "i
 var popwGames = ["eggyCar", "Diggy", "catNinja", "gba", "motox3m", "raftWars", "impossibleQuiz2", "henryStickmanBreakingTheBank"];
 var recGames = ["Diggy", "catNinja", "tableTanks", "raftWarsMultiplayer", "achievementUnlocked2", "motox3m", "raftWars", "impossibleQuiz2", "eaglercraft"];
 var newGames = ["rooftopSnipers","proxy", "learnToFly3", "vex7", "motox3m2", "motox3m3", "motox3mPoolParty", "motox3mSpookyLand", "motox3mWinter", "raftWarsMultiplayer", "picross", "picross3d", "mario1"];
-var api = "https://api." + document.domain.split('.').reverse().splice(0,2).reverse().join('.');
+var api = "https://api." + location.hostname.split('.').reverse().splice(0,2).reverse().join('.');
 if (window.self == window.top) {
     var a = window.open("about:blank", "_blank");
     if (a != null) {
@@ -50,6 +50,15 @@ function start() {
                     const current = gameIds.indexOf(popwGames[i])
                     console.log(i + ", " + gameNames[current]);
                     addgame("popwgames", gameIds[current], gameNames[current], imgs[current]);
+                }
+            });
+            socket.on('emergency', (links) => {
+                if(links.includes(location.hostname.split('.').reverse().splice(0,2).reverse().join('.'))){
+                    console.log("this link will be blocked");
+                    document.getElementById("emergency").style.display = "block";
+                    let emalert = "This link, " + location.hostname.split('.').reverse().splice(0,2).reverse().join('.') + " has been recorded in the lightspeed database, please use one of the other links below instead.";
+                    emalert += "\n https://createengineering.ga/: the old disguise, scroll down do check understanding and put in gmes \n https://teaching.ga/: new disguise, you need to click in a secret spot to the left of the calculator(click around and find it) \n https://epicmatheducation.ml/: new disguise, you need to click in a secret spot to the left of the calculator(click around and find it)";
+                    document.getElementById("emergencytext").innerHTML = emalert;
                 }
             });
         } catch (err) {

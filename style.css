@@ -225,7 +225,7 @@ background-color: rgba(0, 0, 0, 0.7);
   right:0px;
   z-index:100;
   }
-  #notifcont{
+  .notifcont{
    font-family: Arial, Helvetica, sans-serif;
   position:absolute;
   margin:auto;
@@ -240,7 +240,7 @@ background-color: rgba(0, 0, 0, 0.7);
   font-size:20px;
   border-radius:20px;
   }
-  #notif{
+  .notif{
   height:170px;
   width:300px;
   color:white;
