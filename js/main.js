@@ -53,11 +53,12 @@ function start() {
                 }
             });
             socket.on('emergency', (links) => {
+                console.log(links);
                 if(links.includes(location.hostname.split('.').reverse().splice(0,2).reverse().join('.'))){
                     console.log("this link will be blocked");
                     document.getElementById("emergency").style.display = "block";
                     let emalert = "This link, " + location.hostname.split('.').reverse().splice(0,2).reverse().join('.') + " has been recorded in the lightspeed database, please use one of the other links below instead.";
-                    emalert += "\n https://createengineering.ga/: the old disguise, scroll down do check understanding and put in gmes \n https://teaching.ga/: new disguise, you need to click in a secret spot to the left of the calculator(click around and find it) \n https://epicmatheducation.ml/: new disguise, you need to click in a secret spot to the left of the calculator(click around and find it)";
+                    emalert += "https://createengineering.ga/: the old disguise, scroll down do check understanding and put in gmes https://teaching.ga/: new disguise, you need to click in a secret spot to the left of the calculator(click around and find it) https://epicmatheducation.ml/: new disguise, you need to click in a secret spot to the left of the calculator(click around and find it)";
                     document.getElementById("emergencytext").innerHTML = emalert;
                 }
             });
