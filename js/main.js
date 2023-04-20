@@ -58,7 +58,7 @@ function start() {
                     console.log("this link will be blocked");
                     document.getElementById("emergency").style.display = "block";
                     let emalert = "This link, " + location.hostname.split('.').reverse().splice(0,2).reverse().join('.') + " has been recorded in the lightspeed database, please use one of the other links below instead.";
-                    emalert += "<br>https://createengineering.ga/: the old disguise, scroll down do check understanding and put in gmes <br> https://teaching.ga/: new disguise, you need to click in a secret spot to the left of the calculator(click around and find it) <br> https://epicmatheducation.ml/: new disguise, you need to click in a secret spot to the left of the calculator(click around and find it)";
+                    emalert += "<br>https://createengineering.ga/: the old disguise, scroll down do check understanding and put in gmes <br> https://teaching.ga/: new disguise, you need to click in a secret spot to the right of the calculator(click around and find it) <br> https://epicmatheducation.ml/: new disguise, you need to click in a secret spot to the right of the calculator(click around and find it)";
                     document.getElementById("emergencytext").innerHTML = emalert;
                 }
             });
