@@ -30,19 +30,20 @@
   <script>
     window.addEventListener("load", () => {
 
-      const config = JSON.parse({
-        width: "100%",
-        height: "100%",
-        splash: './splash.png',
-        baseUrl: '/games/awayfl/dist',
-        runtime: ['/games/awayfl/dist/runtime.js'],
-        binary: [{
-          path: '1on1soccer.swf',
-          resourceType: 'GAME',
-          name: 'Game', // not used atm
-          meta: {} // not used atm
+      const config = {
+        "width": "100%",
+        "height": "100%",
+        "splash": "/splash.png",
+        "baseUrl": "/games/awayfl/dist",
+        "runtime": ["/games/awayfl/dist/runtime.js"],
+        "binary": [{
+          "path": "1on1soccer.swf",
+          "resourceType": "GAME",
+          "name": "Game", // not used atm
+          "meta": {} // not used atm
         }]
-      });
+
+      };
 
       AWAYFL.LegacyLoader.init(config);
       AWAYFL.LegacyLoader.runGame((fill) => {
