@@ -4,7 +4,7 @@ const imgs = ["0hh1.png", "0hn0.png", "1On1Soccer.webp", "2048.png", "3dtanks.jp
 var popGames = ["eggyCar", "Diggy", "catNinja", "gba", "motox3m", "raftWars", "impossibleQuiz2", "henryStickmanBreakingTheBank"];
 var popwGames = ["eggyCar", "Diggy", "catNinja", "gba", "motox3m", "raftWars", "impossibleQuiz2", "henryStickmanBreakingTheBank"];
 var recGames = ["Diggy", "catNinja", "tableTanks", "raftWarsMultiplayer", "achievementUnlocked2", "motox3m", "raftWars", "impossibleQuiz2", "eaglercraft"];
-var newGames = ["jackSmith", "LinksAwakening", "rooftopSnipers","proxy", "learnToFly3", "vex7", "motox3m2", "motox3m3", "motox3mPoolParty", "motox3mSpookyLand", "motox3mWinter", "raftWarsMultiplayer", "picross", "picross3d", "mario1"];
+var newGames = ["eaglercraft", "jackSmith", "LinksAwakening", "rooftopSnipers","proxy", "learnToFly3", "vex7", "motox3m2", "motox3m3", "motox3mPoolParty", "motox3mSpookyLand", "motox3mWinter", "raftWarsMultiplayer", "picross", "picross3d", "mario1"];
 var api = "https://api." + location.hostname.split('.').reverse().splice(0,2).reverse().join('.');
 if (window.self == window.top) {
     var a = window.open("about:blank", "_blank");
