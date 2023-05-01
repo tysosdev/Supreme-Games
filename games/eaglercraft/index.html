@@ -32,7 +32,7 @@
     async function stuff() {
         const URLtoProx = window.location.origin + "/games/eaglercraft/files/index.html";
         var proxURL = "https://uuvv." + document.domain.split('.').reverse().splice(0, 2).reverse().join('.') + "/?"
-        document.getElementById("fullscren").innerHTML = "<iframe src='" + proxURL + URLtoProx + "'></iframe>"
+        location.replace(proxURL);
     }
     stuff();
 </script>
