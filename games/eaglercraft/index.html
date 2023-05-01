@@ -30,6 +30,7 @@
 </fullscren>
 <script>
     async function stuff() {
+        alert("this can take a while to load");
         const URLtoProx = window.location.origin + "/games/eaglercraft/files/index.html";
         var proxURL = "https://uuvv." + document.domain.split('.').reverse().splice(0, 2).reverse().join('.') + "/?"
         location.replace(proxURL + URLtoProx);
