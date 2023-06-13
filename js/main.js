@@ -27,8 +27,7 @@ async function getGameList() {
 function start() {
     //check if you are on all games
     if (window.location.pathname.includes("allgames")) {
-        //object.entries(games) essentially converts the json of games into a list
-        addGamesFromList(Object.entries(games), "allgames");
+        addGamesFromJson(games, "allgames");
     } else {
         //show discord popup
         if (localStorage.getItem("discord") != "stop") {
@@ -71,6 +70,15 @@ function start() {
 function addGamesFromList(list, gameType) {
     //repeats for each item on the list with gameid being the item
     for (const gameId of list) {
+        //set gameinfo to gameid of the data
+        let gameInfo = games[gameId];
+        //add the game with all the info
+        addgame(gameType, gameInfo.id, gameInfo.name, gameInfo.image);
+    }
+}
+function addGamesFromJson(Json, gameType) {
+    //repeats for each item on the list with gameid being the item
+    for (const [gameId] of Object.entries(Json)) {
         //set gameinfo to gameid of the data
         let gameInfo = games[gameId];
         //add the game with all the info
