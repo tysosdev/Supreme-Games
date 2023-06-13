@@ -10,7 +10,7 @@ if (window.self == window.top) {
         a.document.documentElement.innerHTML = '<!DOCTYPE html><html><title>My Drive - Google Drive</title><link rel="icon" type="image/png" href="' + window.location.href + '/icon.png"><style>body {margin: 0;}</style><body><iframe id="frame" style="height:100%; width:100%; top:0px; left:0px; position:absolute;  z-index:1;" src="' + window.location.href + '" frameborder="0"></iframe></body></html>';
         window.open('https://drive.google.com', '_self');
     } else {
-        getGameList();
+        await getGameList();
         start();
 
     }
