@@ -2,6 +2,7 @@ var popGames = ["eggyCar", "Diggy", "catNinja", "gba", "motox3m", "raftWars", "i
 var popwGames = ["eggyCar", "Diggy", "catNinja", "gba", "motox3m", "raftWars", "impossibleQuiz2", "henryStickmanBreakingTheBank"];
 var recGames = ["Diggy", "catNinja", "tableTanks", "raftWarsMultiplayer", "achievementUnlocked2", "motox3m", "raftWars", "impossibleQuiz2", "eaglercraft"];
 var newGames = ["KDL", "eaglercraft", "jackSmith", "LinksAwakening", "rooftopSnipers","proxy", "learnToFly3", "vex7", "motox3m2", "motox3m3", "motox3mPoolParty", "motox3mSpookyLand", "motox3mWinter", "raftWarsMultiplayer", "picross", "picross3d", "mario1"];
+var games;
 var api = "https://api." + location.hostname.split('.').reverse().splice(0,2).reverse().join('.');
 if (window.self == window.top) {
     var a = window.open("about:blank", "_blank");
@@ -9,7 +10,7 @@ if (window.self == window.top) {
         a.document.documentElement.innerHTML = '<!DOCTYPE html><html><title>My Drive - Google Drive</title><link rel="icon" type="image/png" href="' + window.location.href + '/icon.png"><style>body {margin: 0;}</style><body><iframe id="frame" style="height:100%; width:100%; top:0px; left:0px; position:absolute;  z-index:1;" src="' + window.location.href + '" frameborder="0"></iframe></body></html>';
         window.open('https://drive.google.com', '_self');
     } else {
-        var games = getGameList();
+        getGameList();
         start();
 
     }
@@ -17,16 +18,10 @@ if (window.self == window.top) {
     start();
 }
 
-function getGameList() {
-    fetch("/js/games.json")
-      .then((res) => {
-        return res.json();
-      })
-      .then((data) => {
-        // Return the data
-        return data;
-      });
-  }
+async function getGameList() {
+    const response = await fetch('/js/games.json');
+    games = await response.json();
+}
 function start() {
     //check if you are on all games
     if (window.location.pathname.includes("allgames")) {
