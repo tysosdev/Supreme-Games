@@ -18,7 +18,7 @@ if (window.self == window.top) {
 }
 
 function getGameList() {
-    fetch("/games.json")
+    fetch("/js/games.json")
       .then((res) => {
         return res.json();
       })
