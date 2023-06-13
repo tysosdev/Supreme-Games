@@ -33,9 +33,9 @@ function start() {
             document.getElementById("discord").style.display = "block";
         }
         //add all the games from the stored lists
-        addGamesFromList(recGames, "recGames");
-        addGamesFromList(newGames, "newGames");
-        addGamesFromList(popwGames, "popwGames");
+        addGamesFromList(recGames, "recgames");
+        addGamesFromList(newGames, "newgames");
+        addGamesFromList(popwGames, "popwgames");
         addGamesFromList(popGames, "popgames");
         //attempt to connect to the server
         try {
