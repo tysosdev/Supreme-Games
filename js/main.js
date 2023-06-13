@@ -17,6 +17,7 @@ async function checks() {
 
         }
     } else {
+        await getGameList();
         start();
     }
 }
