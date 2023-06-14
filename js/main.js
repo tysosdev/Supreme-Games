@@ -112,6 +112,7 @@ function cleargames(section) {
     document.getElementById(section).innerHTML = '';
 }
 let searchbar = document.getElementById('searchbar');
+let searchSuggestions = document.getElementById('searchSuggestions');
 searchbar.addEventListener("keypress", function (event) {
     let input = searchbar.value.toLowerCase();
     if (event.key === "Enter") {
@@ -125,9 +126,13 @@ searchbar.addEventListener("keypress", function (event) {
         }
     }
 });
+searchbar.addEventListener("blur", function (event) {
+    if(searchSuggestions.hasFocus() == false){
+    searchSuggestions.style.display = "none";
+    }
+});
 function liveSearch() {
     const input = document.getElementById('searchbar').value.toLowerCase();
-    let searchSuggestions = document.getElementById('searchSuggestions');
     if (input != "") {
         //clear sugjustions
         searchSuggestions.innerHTML = "";
@@ -151,3 +156,15 @@ function liveSearch() {
     }
 
 }
+searchbar.addEventListener("blur", function (event) {
+    setTimeout(() => {
+        if(searchSuggestions.contains(this) != true){
+            searchSuggestions.style.display = "none";
+        }
+    }, 150)
+});
+searchbar.addEventListener("focus", function (event) {
+    if(document.getElementById('searchbar').value != ""){
+    searchSuggestions.style.display = "block";
+    }
+});
