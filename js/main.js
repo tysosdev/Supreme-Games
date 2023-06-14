@@ -54,7 +54,7 @@ function start() {
             popwGames = games;
             console.log(games);
             cleargames("popwgames");
-            addGamesFromList(popwGames, "popwGames");
+            addGamesFromList(popwGames, "popwgames");
         });
         socket.on('emergency', (links) => {
             console.log(links);
