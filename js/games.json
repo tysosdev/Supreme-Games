@@ -779,6 +779,12 @@
         "name": "Temple Run 2",
         "image": "templerun2.jpeg"
     },
+    "TerritorialIo":{
+        "id":"territorialIo",
+        "name":"Territorial io",
+        "image": "territorialIo.jpg"
+
+    },
     "tetris": {
         "id": "tetris",
         "name": "Tetris",
