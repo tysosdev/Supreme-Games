@@ -83,7 +83,9 @@ function addGamesFromJson(Json, gameType) {
         //set gameinfo to gameid of the data
         let gameInfo = games[gameId];
         //add the game with all the info
+        if(gameInfo.id.startsWith("/") == false){
         addgame(gameType, gameInfo.id, gameInfo.name, gameInfo.image);
+        }
     }
 }
 function closediscrod(save) {
@@ -119,7 +121,7 @@ searchbar.addEventListener("keypress", function (event) {
         event.preventDefault();
         let done = 0;
         for (const [useless, game] of Object.entries(games)) {
-            if (game.name.toLowerCase().includes(input) && done == 0) {
+            if (game.name.toLowerCase().includes(input) && done == 0 && game.id.startsWith("/") == false) {
                 aboutBlank(game.id);
                 done = 1;
             }
@@ -137,7 +139,7 @@ function liveSearch() {
         //clear sugjustions
         searchSuggestions.innerHTML = "";
         for (const [useless, game] of Object.entries(games)) {
-            if (game.name.toLowerCase().includes(input)) {
+            if (game.name.toLowerCase().includes(input) && game.id.startsWith("/") == false) {
                 //add sugjestions
                 if (searchSuggestions.innerHTML == "") {
                     searchSuggestions.innerHTML += '<div onclick="aboutBlank(' + "'" + game.id + "'" + ')" style="    background-color: rgba(255, 255, 255, 0.05);background-image:url(' + "'/images/" + game.image + "'" + ');" id="searchSuggestion">' + game.name + '</div>'
