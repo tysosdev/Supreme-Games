@@ -114,25 +114,26 @@ function cleargames(section) {
 let searchbar = document.getElementById('searchbar');
 searchbar.addEventListener("keypress", function (event) {
     let input = searchbar.value
+    input = input.toLowerCase();
     if (event.key === "Enter") {
         event.preventDefault();
+        let done = 0;
         for (const [game] of Object.entries(games)) {
-            if (game.name.toLowerCase().includes(input)) {
+            if (game.name.toLowerCase().includes(input) && done == 0) {
                 aboutBlank(game.id);
+                done = 1;
             }
         }
     }
 });
 function liveSearch() {
-    /*
+    
     let input = searchbar.value
     input = input.toLowerCase();
-    var games = []
     //clear sugjustions
-    for (i = 0; i < games.length; i++) {
-        if (games[i].toLowerCase().includes(input)) {
-            //add sugjustion
+    for (const [game] of Object.entries(games)) {
+        if (game.name.toLowerCase().includes(input)) {
+            //add sugjestions
         }
     }
-    */
 }
