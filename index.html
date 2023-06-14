@@ -2,66 +2,91 @@
 <html>
 
 <head>
-    <!-- Google tag (gtag.js) -->
+  <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-F3JMM93NSK"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
 
-  gtag('config', 'G-F3JMM93NSK');
-</script>
+    gtag('config', 'G-F3JMM93NSK');
+  </script>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
   <title>My Drive - Google Drive</title>
   <link rel="icon" type="image/png" href="/icon.png">
   <link href="style.css" rel="stylesheet" type="text/css" />
-      <script src="/socket.io.js"></script>
+  <script src="/socket.io.js"></script>
 </head>
 
 <body>
   <popup id="emergency">
     <div class="notifcont" style="width:100%; height:100%;">
-    <div class="notif" id="emergencytext" style="font-size:2.5vw; width:100%; height:100%;">
+      <div class="notif" id="emergencytext" style="font-size:2.5vw; width:100%; height:100%;">
+      </div>
     </div>
-    </div></popup>
+  </popup>
   <popup id="discord">
-    <div class="notifcont" >
-    <div class="notif">
-    Please join our discord for other links and updates.
-    <a onclick="opendiscrod()">https://discord.gg/xYSgcdDXrJ</a>
-    <button class="left" onclick="closediscrod('no')">Close</button>
-    <button class="right" onclick="closediscrod('yes')">Dont show again</button>
+    <div class="notifcont">
+      <div class="notif">
+        Please join our discord for other links and updates.
+        <a onclick="opendiscrod()">https://discord.gg/xYSgcdDXrJ</a>
+        <button class="left" onclick="closediscrod('no')">Close</button>
+        <button class="right" onclick="closediscrod('yes')">Dont show again</button>
+      </div>
     </div>
-    </div></popup>
-    <top><a class="ltext" style="text-decoration-line: none;font-size: 45px;" href="/">Supreme Games</a><a class="rtext" href="/allgames.html">All games</a><input id="searchbar" oninput="liveSearch()" type="text" placeholder="Search Supreme Games"></top>
-    <div id="blob"></div>
-    <div class="gamecont">
-            <p class="title" style="top:40px;">Popular Games</p>
-    <div class="scroll" onclick="scroller(-639, 'popgames');" style="top:90px; left:0px;"><div class="larrow arrow"></div></div>
-        <div class="scroll" onclick="scroller(639, 'popgames');" style="top:90px; right:0px;"><div class="rarrow arrow"></div></div>
-        <div class="rowgames gameholder" id="popgames" style="top: 70px;">
-        </div>
-        <p class="title" style="top:255px;">Recomended Games</p>
-            <div class="scroll" onclick="scroller(-639, 'recgames');" style="top:310px; left:0px;"><div class="larrow arrow"></div></div>
-        <div class="scroll" onclick="scroller(639, 'recgames');" style="top:310px; right:0px;"><div class="rarrow arrow"></div></div>
-        <div class="rowgames gameholder" id="recgames" style="top:290px;">
-        </div>
-        <p class="title" style="top:475px;">New Games</p>
-         <div class="scroll" onclick="scroller(-639, 'newgames');" style="top:530px; left:0px;"><div class="larrow arrow"></div></div>
-        <div class="scroll" onclick="scroller(639, 'newgames');" style="top:530px; right:0px;"><div class="rarrow arrow"></div></div>
-        <div class="rowgames gameholder" id="newgames" style="top:510px;">
-        </div>
-                <p class="title" style="top:695px;"></p>Popular this week</p>
-               <div class="scroll" onclick="scroller(-639, 'popwgames');" style="top:750px; left:0px;"><div class="larrow arrow"></div></div>
-        <div class="scroll" onclick="scroller(639, 'popwgames');" style="top:750px; right:0px;"><div class="rarrow arrow"></div></div>
-        <div class="rowgames gameholder" id="popwgames" style="top:730px;">
+  </popup>
+  <top>
+    <a class="ltext" style="text-decoration-line: none;font-size: 45px;" href="/">Supreme Games</a>
+    <a class="rtext" href="/allgames.html">All games</a>
+    <input id="searchbar" oninput="liveSearch()" type="text" placeholder="Search Supreme Games">
+  </top>
+  <div id="searchSuggestions"></div>
 
-        </div>
+  <div id="blob"></div>
+  <div class="gamecont">
+    <p class="title" style="top:40px;">Popular Games</p>
+    <div class="scroll" onclick="scroller(-639, 'popgames');" style="top:90px; left:0px;">
+      <div class="larrow arrow"></div>
+    </div>
+    <div class="scroll" onclick="scroller(639, 'popgames');" style="top:90px; right:0px;">
+      <div class="rarrow arrow"></div>
+    </div>
+    <div class="rowgames gameholder" id="popgames" style="top: 70px;">
+    </div>
+    <p class="title" style="top:255px;">Recomended Games</p>
+    <div class="scroll" onclick="scroller(-639, 'recgames');" style="top:310px; left:0px;">
+      <div class="larrow arrow"></div>
+    </div>
+    <div class="scroll" onclick="scroller(639, 'recgames');" style="top:310px; right:0px;">
+      <div class="rarrow arrow"></div>
+    </div>
+    <div class="rowgames gameholder" id="recgames" style="top:290px;">
+    </div>
+    <p class="title" style="top:475px;">New Games</p>
+    <div class="scroll" onclick="scroller(-639, 'newgames');" style="top:530px; left:0px;">
+      <div class="larrow arrow"></div>
+    </div>
+    <div class="scroll" onclick="scroller(639, 'newgames');" style="top:530px; right:0px;">
+      <div class="rarrow arrow"></div>
+    </div>
+    <div class="rowgames gameholder" id="newgames" style="top:510px;">
+    </div>
+    <p class="title" style="top:695px;">Popular this week</p>
+    <div class="scroll" onclick="scroller(-639, 'popwgames');" style="top:750px; left:0px;">
+      <div class="larrow arrow"></div>
+    </div>
+    <div class="scroll" onclick="scroller(639, 'popwgames');" style="top:750px; right:0px;">
+      <div class="rarrow arrow"></div>
+    </div>
+    <div class="rowgames gameholder" id="popwgames" style="top:730px;">
 
-        </div>
+    </div>
+
+  </div>
+  <script src="/js/blob.js"></script>
+  <script src="/js/arrows.js"></script>
+  <script src="/js/main.js"></script>
 </body>
-<script src="/js/blob.js"></script>
-    <script src="/js/arrows.js"></script>
-        <script src="/js/main.js"></script>
+
 </html>

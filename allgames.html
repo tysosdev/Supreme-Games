@@ -2,39 +2,42 @@
 <html>
 
 <head>
-      <!-- Google tag (gtag.js) -->
-      <script async src="https://www.googletagmanager.com/gtag/js?id=G-F3JMM93NSK"></script>
-      <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-      
-        gtag('config', 'G-F3JMM93NSK');
-      </script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-F3JMM93NSK"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-F3JMM93NSK');
+  </script>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
   <title>My Drive - Google Drive</title>
   <link rel="icon" type="image/png" href="/icon.png">
-    <link href="style.css" rel="stylesheet" type="text/css" />
-          <script src="/socket.io.js"></script>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <script src="/socket.io.js"></script>
 
 </head>
 
 <body>
-    <top><a class="ltext" style="text-decoration-line: none;font-size: 45px;" href="/">Supreme Games</a><a class="rtext" href="/allgames.html">All games</a><input id="searchbar" onkeyup="search()" type="text" placeholder="Search Supreme Games"></top>
-       <div id="blob"></div>
+  <top><a class="ltext" style="text-decoration-line: none;font-size: 45px;" href="/">Supreme Games</a><a class="rtext"
+      href="/allgames.html">All games</a><input id="searchbar" onkeyup="search()" type="text"
+      placeholder="Search Supreme Games"></top>
+  <div id="searchSuggestions"></div>
+  <div id="blob"></div>
 
-    <div class="gamecont">
-            <p class="title" style="top:40px;">All Games</p>
+  <div class="gamecont">
+    <p class="title" style="top:40px;">All Games</p>
 
-    <div class="stackedgames gameholder" id="allgames"style="top:65px;">
+    <div class="stackedgames gameholder" id="allgames" style="top:65px;">
 
     </div>
-    </div>
+  </div>
 </body>
 <script src="/js/blob.js"></script>
-    <script src="/js/arrows.js"></script>
-            <script src="/js/main.js"></script>
+<script src="/js/arrows.js"></script>
+<script src="/js/main.js"></script>
 
 
 </html>

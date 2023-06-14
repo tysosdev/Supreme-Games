@@ -113,12 +113,11 @@ function cleargames(section) {
 }
 let searchbar = document.getElementById('searchbar');
 searchbar.addEventListener("keypress", function (event) {
-    let input = searchbar.value
-    input = input.toLowerCase();
+    let input = searchbar.value.toLowerCase();
     if (event.key === "Enter") {
         event.preventDefault();
         let done = 0;
-        for (const [game] of Object.entries(games)) {
+        for (const [useless, game] of Object.entries(games)) {
             if (game.name.toLowerCase().includes(input) && done == 0) {
                 aboutBlank(game.id);
                 done = 1;
@@ -127,14 +126,28 @@ searchbar.addEventListener("keypress", function (event) {
     }
 });
 function liveSearch() {
-    /*
-    let input = searchbar.value
-    input = input.toLowerCase();
-    //clear sugjustions
-    for (const [game] of Object.entries(games)) {
-        if (game.name.toLowerCase().includes(input)) {
-            //add sugjestions
+    const input = document.getElementById('searchbar').value.toLowerCase();
+    let searchSuggestions = document.getElementById('searchSuggestions');
+    if (input != "") {
+        //clear sugjustions
+        searchSuggestions.innerHTML = "";
+        for (const [useless, game] of Object.entries(games)) {
+            if (game.name.toLowerCase().includes(input)) {
+                //add sugjestions
+                if (searchSuggestions.innerHTML == "") {
+                    searchSuggestions.innerHTML += '<div onclick="aboutBlank(' + "'" + game.id + "'" + ')" style="    background-color: rgba(255, 255, 255, 0.05);background-image:url(/images/' + "'" + game.image + "'" + ');" id="searchSuggestion">' + game.name + '</div>'
+                } else {
+                    searchSuggestions.innerHTML += '<div onclick="aboutBlank(' + "'" + game.id + "'" + ')" style="background-image:url(/images/' + "'" + game.image + "'" + ');" id="searchSuggestion">' + game.name + '</div>'
+                }
+            }
         }
+        if (searchSuggestions.innerHTML == "") {
+            searchSuggestions.style.display = "none";
+        } else {
+            searchSuggestions.style.display = "block";
+        }
+    } else {
+        searchSuggestions.style.display = "none";
     }
-    */
+
 }

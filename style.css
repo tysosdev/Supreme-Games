@@ -1,99 +1,113 @@
 html {
   height: 100%;
-    background-color:black;
+  background-color: black;
   width: 100%;
-    overflow: hidden hidden;
+  overflow: hidden hidden;
 }
-#blob{
-    background:linear-gradient(to right, #48937b, #5e4889);
-    height: 300px;
-    aspect-ratio:1;
-    position: absolute;
-    left:50%;
-    top:50%;
-    translate:-50% -50%;
-    border-radius:50%;
-    filter: blur(70px);
+
+#blob {
+  background: linear-gradient(to right, #48937b, #5e4889);
+  height: 300px;
+  aspect-ratio: 1;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  translate: -50% -50%;
+  border-radius: 50%;
+  filter: blur(70px);
 }
-.game{
-    display: inline-block;
-      position: relative;
-    border-radius:10px;
-    margin:auto;
-    margin-top: 20px;
-    height:175px;
-    width:275px;
-    outline-width:0px;
-    scroll-snap-align: center; /* Center each child element */
+
+.game {
+  display: inline-block;
+  position: relative;
+  border-radius: 10px;
+  margin: auto;
+  margin-top: 20px;
+  height: 175px;
+  width: 275px;
+  outline-width: 0px;
+  scroll-snap-align: center;
+  /* Center each child element */
   flex: none;
-    background-color: transparent;
-    transition:transform 0.3s, outline-width 0.2s;
-    cursor:pointer;
+  background-color: transparent;
+  transition: transform 0.3s, outline-width 0.2s;
+  cursor: pointer;
 
 }
-.game:hover{
-    transform: scale(1.1); 
-    outline:2px solid white;
-    transition:transform 0.3s, outline-width 0.2s;
+
+.game:hover {
+  transform: scale(1.1);
+  outline: 2px solid white;
+  transition: transform 0.3s, outline-width 0.2s;
 }
-.game:hover .gradient{ 
-    opacity:1; 
-    transition:opacity 0.3s;
+
+.game:hover .gradient {
+  opacity: 1;
+  transition: opacity 0.3s;
 }
-.game:hover .text{ 
-    opacity:1; 
-    transition:opacity 0.3s;
+
+.game:hover .text {
+  opacity: 1;
+  transition: opacity 0.3s;
 }
-.text{
-    color:white;
-    position:absolute;
-    font-family: arial;
-    transition:opacity 0.3s;
-    top:85%;
-    left:5%;
-    z-index:10;
-    opacity:0;
-}
-.gradient{
-    position:absolute;
-    border-radius:10px;
-    transition:opacity 0.3s;
-    top:0%;
-    height:175px;
-    width:275px;
-    background: linear-gradient(0deg, rgba(2,0,36,0.8) 0%, rgba(255,255,255,0) 50%, rgba(255,255,255,0) 100%);
-    opacity:0;
-}
-.gimg{
-    height:100%;
-    width:100%;
-    object-fit:cover;
-    border-radius:10px;
-}
-.gameholder{
-      display: flex;
+
+.text {
+  color: white;
   position: absolute;
-      width: 100%;
-      left: 0px;
-  right: 0px;
-      background-color: transparent;
+  font-family: arial;
+  transition: opacity 0.3s;
+  top: 85%;
+  left: 5%;
+  z-index: 10;
+  opacity: 0;
 }
+
+.gradient {
+  position: absolute;
+  border-radius: 10px;
+  transition: opacity 0.3s;
+  top: 0%;
+  height: 175px;
+  width: 275px;
+  background: linear-gradient(0deg, rgba(2, 0, 36, 0.8) 0%, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0) 100%);
+  opacity: 0;
+}
+
+.gimg {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.gameholder {
+  display: flex;
+  position: absolute;
+  width: 100%;
+  left: 0px;
+  right: 0px;
+  background-color: transparent;
+}
+
 .stackedgames {
   flex-flow: row wrap;
   justify-content: space-between;
-  top:290px;
-min-height:calc(100% -60px);
+  top: 290px;
+  min-height: calc(100% -60px);
   overflow: hidden;
 }
-.rowgames{
-  overflow-x: auto; 
+
+.rowgames {
+  overflow-x: auto;
   white-space: nowrap;
   height: 225px;
 }
-.rowgames .game{
-    margin-right:20px;
-    margin-left:20px;
+
+.rowgames .game {
+  margin-right: 20px;
+  margin-left: 20px;
 }
+
 top {
   position: absolute;
   width: 100%;
@@ -101,64 +115,118 @@ top {
   top: 0;
   left: 0;
   right: 0;
-    z-index: 11;
+  z-index: 11;
   bottom: calc(100% - 60px);
-    border-radius: 0px 0px 20px 20px;
+  border-radius: 0px 0px 20px 20px;
 
-    background: rgba(33, 34, 51, 0.8);
-    -webkit-backdrop-filter: blur(8px);
-    backdrop-filter: blur(8px);
-    font-family: Arial;
+  background: rgba(33, 34, 51, 0.7);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  font-family: Arial;
   color: #d4f5f5;
   font-size: 45px;
   text-align: center;
 }
-.ltext{  
-    color: #d4f5f5;
-      font-size: 20px;
-      position: relative;
-    float:left;
-      top: 49%;
-          bottom: 49%;
-            line-height: 2%;
+
+#searchSuggestions {
+  display: none;
+  outline: 2px solid #d4f5f5;
+  position: absolute;
+  max-height: 50%;
+  top: 60px;
+  left: 0px;
+  right: 0px;
+  margin: auto;
+  border-radius: 15px;
+  border: none;
+  background: rgba(33, 34, 51, 0.6);
+  backdrop-filter: blur(8px);
+  width: 40%;
+  z-index: 12;
+  overflow: hidden;
+}
+
+#searchSuggestions::-webkit-scrollbar {
+  display: block;
+}
+
+#searchSuggestion {
+  position: relative;
+  height: 50px;
+  width: 100%;
+  border-radius: 15px;
+  border: none;
+  font-family: Arial;
+  color: #d4f5f5;
+  font-size: 20px;
+  text-align: left;
+  vertical-align: middle;
+  line-height: 50px;
+  padding-left: 70px;
+  box-sizing: border-box;
+  background: center left 10px no-repeat;
+  background-size: 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  cursor: pointer;
+
+}
+
+#searchSuggestion:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.ltext {
+  color: #d4f5f5;
+  font-size: 20px;
+  position: relative;
+  float: left;
+  top: 49%;
+  bottom: 49%;
+  line-height: 2%;
   margin-left: 30px;
 }
-.rtext{  
-    color: #d4f5f5;
-      font-size: 20px;
-      position: relative;
-    float:right;
-      top: 49%;
-          bottom: 49%;
-            line-height: 2%;
+
+.rtext {
+  color: #d4f5f5;
+  font-size: 20px;
+  position: relative;
+  float: right;
+  top: 49%;
+  bottom: 49%;
+  line-height: 2%;
   margin-right: 30px;
 }
-.title{
-    position:absolute;
-    text-align: left;
-    margin-left: 30px;
-height:30px;
-    font-size:20px; 
-    background-color:transparent;
+
+.title {
+  position: absolute;
+  text-align: left;
+  margin-left: 30px;
+  height: 30px;
+  font-size: 20px;
+  background-color: transparent;
 }
-#searchbar{
-    outline:2px solid #d4f5f5;
-    position:absolute;
-    height:80%;
-    top: 5%;
-    left:30%;
-    right:30%;
-    bottom: 5%;
-    border-radius: 15px;
-    background: url("search.png") center right 10px no-repeat;
-    padding-left: 20px;
-    padding-right: 40px;
-    background-size: 20px, 20px;
-    border:none;
-    color:#d4f5f5;
-    background-color:transparent;
-    width:40%;
+
+#searchbar {
+  outline: 2px solid #d4f5f5;
+  color: #d4f5f5;
+  position: absolute;
+  height: 80%;
+  top: 5%;
+  left: 30%;
+  right: 30%;
+  bottom: 5%;
+  border-radius: 15px;
+  background: url("search.png") center right 10px no-repeat;
+  padding-left: 20px;
+  padding-right: 40px;
+  box-sizing: border-box;
+  background-size: 20px, 20px;
+  border: none;
+  background-color: transparent;
+  width: 40%;
 }
+
 p {
   font-family: Arial;
   position: absolute;
@@ -166,120 +234,134 @@ p {
   text-align: center;
   left: 0;
   right: 0;
-    height: 10px;
+  height: 10px;
 }
-.arrow{
-    width:10px;
-    height:10px;
-    border: solid white;
+
+.arrow {
+  width: 10px;
+  height: 10px;
+  border: solid white;
   border-width: 0 4px 4px 0;
   display: inline-block;
   padding: 3px;
-    margin:auto;
-    
+  margin: auto;
+
 }
+
 .larrow {
-        left:10px;
- transform: rotate(135deg);
+  left: 10px;
+  transform: rotate(135deg);
   -webkit-transform: rotate(135deg);
 }
+
 .rarrow {
-        right:10px;
-      transform: rotate(-45deg);
+  right: 10px;
+  transform: rotate(-45deg);
   -webkit-transform: rotate(-45deg);
 }
-.scroll{
-     position:absolute;
-    height:175px;
-width:30px;
-background-color: rgba(0, 0, 0, 0.7);        
-        z-index: 10;
-    cursor:pointer;
-        display: flex;
-    align-items: center;
+
+.scroll {
+  position: absolute;
+  height: 175px;
+  width: 30px;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 10;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
 }
-.scroll:hover{
-    background-color: rgba(0, 0, 0, 0.8);        
+
+.scroll:hover {
+  background-color: rgba(0, 0, 0, 0.8);
 }
-.scroll:hover .arrow{
-    border-color: grey;
+
+.scroll:hover .arrow {
+  border-color: grey;
 }
-.gamecont{
-    position: absolute;
-    top:0px;
-    left:0px;
-    right:0px;
-    bottom:0px;
-    height:100%;
-    width:100%;
-    overflow-y: scroll;
-    overflow-x: auto;
+
+.gamecont {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  height: 100%;
+  width: 100%;
+  overflow-y: scroll;
+  overflow-x: auto;
 }
-  popup{
-  display:none;
-  position:absolute;
-  background-color:rgba(0, 0, 0, 0.5);
-  top:0px;
-  bottom:0px;
-  left:0px;
-  right:0px;
-  z-index:100;
-  }
-  .notifcont{
-   font-family: Arial, Helvetica, sans-serif;
-  position:absolute;
-  margin:auto;
-  top:0px;
-  bottom:0px;
-  left:0px;
-  right:0px;
-  width:300px;
-  height:200px;
-  background-color:rgba(33, 34, 51, 0.8);
+
+popup {
+  display: none;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.5);
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  z-index: 100;
+}
+
+.notifcont {
+  font-family: Arial, Helvetica, sans-serif;
+  position: absolute;
+  margin: auto;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  width: 300px;
+  height: 200px;
+  background-color: rgba(33, 34, 51, 0.8);
   backdrop-filter: blur(8px);
-  font-size:20px;
-  border-radius:20px;
-  }
-  .notif{
-  height:170px;
-  width:300px;
-  color:white;
-  text-align:center;
-  padding-top:30px;
-  font-size:20px;
-  }
-  a{
-    position: relative;
-  top:10px;
-  color:rgba(144, 144, 144, 1);
+  font-size: 20px;
+  border-radius: 20px;
+}
+
+.notif {
+  height: 170px;
+  width: 300px;
+  color: white;
+  text-align: center;
+  padding-top: 30px;
+  font-size: 20px;
+}
+
+a {
+  position: relative;
+  top: 10px;
+  color: rgba(144, 144, 144, 1);
   text-underline-position: auto;
-  }
-  button {
-    position: relative;
-  top:35px;
-    background-color: #4CAF50; /* Green */
-    border: none;
-    color: white;
-    padding: 15px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    border-radius:20px;
-  outline:2px solid white;
-  outline-color:white;
-  }
-  .left{
-  float:left;
-    left:20px;
-  }
-  .right{
-  float:right;
-    right:20px;
-  }
+}
+
+button {
+  position: relative;
+  top: 35px;
+  background-color: #4CAF50;
+  /* Green */
+  border: none;
+  color: white;
+  padding: 15px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 20px;
+  outline: 2px solid white;
+  outline-color: white;
+}
+
+.left {
+  float: left;
+  left: 20px;
+}
+
+.right {
+  float: right;
+  right: 20px;
+}
 
 /*scrollbars dissapear*/
-    ::-webkit-scrollbar {
-        width: 0px;
-        height: 0px;
-    }
+::-webkit-scrollbar {
+  display: none;
+}
