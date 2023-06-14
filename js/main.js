@@ -116,7 +116,7 @@ searchbar.addEventListener("keypress", function (event) {
     let input = searchbar.value
     if (event.key === "Enter") {
         event.preventDefault();
-        for (const game of games) {
+        for (const [game] of Object.entries(games)) {
             if (game.name.toLowerCase().includes(input)) {
                 aboutBlank(game.id);
             }
