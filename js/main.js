@@ -135,9 +135,9 @@ function liveSearch() {
             if (game.name.toLowerCase().includes(input)) {
                 //add sugjestions
                 if (searchSuggestions.innerHTML == "") {
-                    searchSuggestions.innerHTML += '<div onclick="aboutBlank(' + "'" + game.id + "'" + ')" style="    background-color: rgba(255, 255, 255, 0.05);background-image:url(/images/' + "'" + game.image + "'" + ');" id="searchSuggestion">' + game.name + '</div>'
+                    searchSuggestions.innerHTML += '<div onclick="aboutBlank(' + "'" + game.id + "'" + ')" style="    background-color: rgba(255, 255, 255, 0.05);background-image:url(' + "'/images/" + game.image + "'" + ');" id="searchSuggestion">' + game.name + '</div>'
                 } else {
-                    searchSuggestions.innerHTML += '<div onclick="aboutBlank(' + "'" + game.id + "'" + ')" style="background-image:url(/images/' + "'" + game.image + "'" + ');" id="searchSuggestion">' + game.name + '</div>'
+                    searchSuggestions.innerHTML += '<div onclick="aboutBlank(' + "'" + game.id + "'" + ')" style="background-image:url(' + "'/images/" + game.image + "'" + ');" id="searchSuggestion">' + game.name + '</div>'
                 }
             }
         }
