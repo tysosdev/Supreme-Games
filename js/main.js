@@ -127,7 +127,7 @@ searchbar.addEventListener("keypress", function (event) {
     }
 });
 function liveSearch() {
-    
+    /*
     let input = searchbar.value
     input = input.toLowerCase();
     //clear sugjustions
@@ -136,4 +136,5 @@ function liveSearch() {
             //add sugjestions
         }
     }
+    */
 }
