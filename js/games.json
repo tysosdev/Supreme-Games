@@ -609,6 +609,21 @@
         "name": "Raft Wars Multiplayer",
         "image": "raftWarsMultiplayer.png"
     },
+    "redBall4": {
+        "id": "redBall4",
+        "name": "Red Ball 4",
+        "image": "redBall4.png"
+    },
+    "redBall4Vol2": {
+        "id": "redBall4Vol2",
+        "name": "Red Ball 4 Volume 2",
+        "image": "redBall4Vol2.jpg"
+    },
+    "redBall4Vol3": {
+        "id": "redBall4Vol3",
+        "name": "Red Ball 4 Volume 3",
+        "image": "redBall4Vol3.png"
+    },
     "retroBowl": {
         "id": "retroBowl",
         "name": "Retro Bowl",
