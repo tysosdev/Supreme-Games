@@ -649,6 +649,11 @@
         "name": "Rooftop Snipers",
         "image": "rooftopSnipers.jpg"
     },
+    "rooftopSnipers2": {
+        "id": "rooftopSnipers2",
+        "name": "Rooftop Snipers 2",
+        "image": "rooftopSnipers2.jpg"
+    },
     "ruffleDemo": {
         "id": "ruffleDemo",
         "name": "Ruffle (Flash Emulator)",
