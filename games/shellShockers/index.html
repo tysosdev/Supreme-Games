@@ -31,7 +31,7 @@ iframe {
 <script>
         async function stuff() {
         const URLtoProx = "https://shellshock.io/";
-        var proxURL = "https://uuvv." + document.domain.split('.').reverse().splice(0, 2).reverse().join('.') + "/?"
+        var proxURL = "https://uuvv." + document.domain + "/?"
             document.getElementById("fullscren").innerHTML = "<iframe src='" + proxURL + URLtoProx + "'></iframe>"
     }
     stuff();

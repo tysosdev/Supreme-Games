@@ -32,7 +32,7 @@
 <script>
     async function stuff() {
         const URLtoProx = window.location.origin + "/games/raftWarsMultiplayer/RWMFiles/index.html";
-        var proxURL = "https://uuvv." + document.domain.split('.').reverse().splice(0, 2).reverse().join('.') + "/?"
+        var proxURL = "https://uuvv." + document.domain + "/?"
             document.getElementById("fullscren").innerHTML = "<iframe src='" + proxURL + URLtoProx + "'></iframe>"
     }
     stuff();

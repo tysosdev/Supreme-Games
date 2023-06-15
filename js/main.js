@@ -3,7 +3,7 @@ var popwGames = ["eggyCar", "Diggy", "catNinja", "gba", "motox3m", "raftWars", "
 var recGames = ["Diggy", "catNinja", "tableTanks", "raftWarsMultiplayer", "achievementUnlocked2", "motox3m", "raftWars", "impossibleQuiz2", "eaglercraft"];
 var newGames = ["oneChance", "run3", "rooftopSnipers2", "territorialIo", "KDL", "eaglercraft", "jackSmith", "LinksAwakening", "rooftopSnipers", "proxy", "learnToFly3", "vex7", "motox3m2", "motox3m3", "motox3mPoolParty", "motox3mSpookyLand", "motox3mWinter", "raftWarsMultiplayer", "picross", "picross3d", "mario1"];
 var games;
-var api = "https://api." + location.hostname.split('.').reverse().splice(0, 2).reverse().join('.');
+var api = "https://api." + location.hostname;
 checks();
 async function checks() {
     if (window.self == window.top) {
