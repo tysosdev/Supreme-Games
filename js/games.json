@@ -534,6 +534,11 @@
         "name": "n-gon",
         "image": "n-gon.png"
     },
+    "oneChance": {
+        "id": "oneChance",
+        "name": "One Chance",
+        "image": "oneChance.png"
+    },
     "pacman": {
         "id": "pacman",
         "name": "Pac-Man",
