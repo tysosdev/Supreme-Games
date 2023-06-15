@@ -684,6 +684,11 @@
         "name": "Sandspiel",
         "image": "sandspiel.jpg"
     },
+    "shapez": {
+        "id": "shapez",
+        "name": "Shapez",
+        "image": "shapez.jpg"
+    },
     "shellShockers": {
         "id": "shellShockers",
         "name": "Shell Shockers",
