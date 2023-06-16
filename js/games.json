@@ -119,8 +119,8 @@
         "name": "Battle Panic",
         "image": "battlePanic.jpg"
     },
-    "/bigTowerTinySquare": {
-        "id": "/bigTowerTinySquare",
+    "bigTowerTinySquare": {
+        "id": "bigTowerTinySquare",
         "name": "Big Tower Tiny Square",
         "image": "bigTowerTinySquare.png"
     },
