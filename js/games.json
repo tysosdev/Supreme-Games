@@ -124,6 +124,11 @@
         "name": "Big Tower Tiny Square",
         "image": "bigTowerTinySquare.png"
     },
+    "bigIceTowerTinySquare": {
+        "id": "bigIceTowerTinySquare",
+        "name": "Big Ice Tower Tiny Square",
+        "image": "bigIceTowerTinySquare.jpeg"
+    },
     "bloonsTowerDefense": {
         "id": "bloonsTowerDefense",
         "name": "Bloons Tower Defense",
