@@ -494,6 +494,11 @@
         "name": "Mine Blocks",
         "image": "mineblocks.png"
     },
+    "miniMetro": {
+        "id": "miniMetro",
+        "name": "Mini Metro",
+        "image": "miniMetro.png"
+    },
     "/minekhan": {
         "id": "/minekhan",
         "name": "Minekhan",
