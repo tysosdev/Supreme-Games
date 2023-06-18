@@ -92,7 +92,7 @@ function closediscrod(save) {
 function opendiscrod() {
     window.location.replace("https://discord.gg/xYSgcdDXrJ")
 }
-function aboutBlank(gameid) {
+async function aboutBlank(gameid) {
     var a = window.open("about:blank", "_blank");
     a.document.documentElement.innerHTML = '<!DOCTYPE html><html><title>Classes</title><link rel="icon" type="image/png" href="https://ssl.gstatic.com/classroom/favicon.png"><style>body {margin: 0;}</style><body onload=' + "'" + 'document.getElementsByTagName("iframe")[0].focus();' + "'" + '><iframe style="height:100%; width:100%; top:0px; left:0; position:absolute;  z-index:1;" src="https://' + window.location.hostname + '/games/' + gameid + '/index.html" frameborder="0"></iframe></body></html>';
     socket.emit('game', gameid);
@@ -116,11 +116,6 @@ searchbar.addEventListener("keypress", function (event) {
                 done = 1;
             }
         }
-    }
-});
-searchbar.addEventListener("blur", function (event) {
-    if(searchSuggestions.hasFocus() == false){
-    searchSuggestions.style.display = "none";
     }
 });
 function liveSearch() {
