@@ -1,46 +1,40 @@
 var popGames = ["eggyCar", "Diggy", "catNinja", "gba", "motox3m", "raftWars", "impossibleQuiz2", "henryStickmanBreakingTheBank"];
 var popwGames = ["eggyCar", "Diggy", "catNinja", "gba", "motox3m", "raftWars", "impossibleQuiz2", "henryStickmanBreakingTheBank"];
-var recGames = ["Diggy", "catNinja", "tableTanks", "raftWarsMultiplayer", "shapez", "run3", "raftWars", "impossibleQuiz2", "eaglercraft"];
-var newGames = ["miniMetro", "bigIceTowerTinySquare", "bigTowerTinySquare", "redBall4", "redBall4Vol2", "redBall4Vol3", "shapez", "deflyIo", "oneChance", "run3", "rooftopSnipers2", "territorialIo", "KDL", "eaglercraft", "jackSmith", "LinksAwakening", "rooftopSnipers", "proxy", "learnToFly3", "vex7", "motox3m2", "motox3m3", "motox3mPoolParty", "motox3mSpookyLand", "motox3mWinter", "raftWarsMultiplayer", "picross", "picross3d", "mario1"];
+var recGames = ["Diggy", "catNinja", "tableTanks", "raftWarsMultiplayer", "achievementUnlocked2", "motox3m", "raftWars", "impossibleQuiz2", "eaglercraft"];
+var newGames = ["territorialIo", "KDL", "eaglercraft", "jackSmith", "LinksAwakening", "rooftopSnipers", "proxy", "learnToFly3", "vex7", "motox3m2", "motox3m3", "motox3mPoolParty", "motox3mSpookyLand", "motox3mWinter", "raftWarsMultiplayer", "picross", "picross3d", "mario1"];
 var games;
-var api = "https://api." + location.hostname;
-checks();
-async function checks() {
-    if (window.self == window.top) {
-        var a = window.open("about:blank", "_blank");
-        if (a != null) {
-            a.document.documentElement.innerHTML = '<!DOCTYPE html><html><title>My Drive - Google Drive</title><link rel="icon" type="image/png" href="' + window.location.href + '/icon.png"><style>body {margin: 0;}</style><body><iframe id="frame" style="height:100%; width:100%; top:0px; left:0px; position:absolute;  z-index:1;" src="' + window.location.href + '" frameborder="0"></iframe></body></html>';
-            window.open('https://drive.google.com', '_self');
-        } else {
-            await getGameList();
-            start();
-
-        }
-    } else {
+var api = "https://api." + location.hostname.split('.').reverse().splice(0, 2).reverse().join('.');
+var socket;
+run();
+async function run() {
         await getGameList();
+        loadPopGames();
         start();
-    }
 }
 async function getGameList() {
     const response = await fetch('/js/games.json');
     games = await response.json();
 }
 function start() {
+            //show discord popup
+        if (localStorage.getItem("discord") != "stop") {
+            document.getElementById("discord").style.display = "block";
+        }
     //check if you are on all games
     if (window.location.pathname.includes("allgames")) {
         addGamesFromJson(games, "allgames");
     } else {
-        //show discord popup
-        if (localStorage.getItem("discord") != "stop") {
-            document.getElementById("discord").style.display = "block";
-        }
-        //add all the games from the stored lists
+        //add all the games from the stored lists(these wil be overwrited when the data from the server is reseved)
         addGamesFromList(recGames, "recgames");
         addGamesFromList(newGames, "newgames");
         addGamesFromList(popwGames, "popwgames");
         addGamesFromList(popGames, "popgames");
-        //attempt to connect to the server
-        const socket = io(api);
+    }
+}
+async function loadPopGames(){
+        if (window.location.pathname.includes("allgames") != true) {
+            //attempt to connect to the server
+        socket = io(api);
         socket.emit('get');
         //when we hear back write the new data
         socket.on('popgames', (games) => {
@@ -66,7 +60,8 @@ function start() {
                 document.getElementById("emergencytext").innerHTML = emalert;
             }
         });
-    }
+        }
+
 }
 function addGamesFromList(list, gameType) {
     //repeats for each item on the list with gameid being the item
@@ -98,17 +93,12 @@ function opendiscrod() {
     window.location.replace("https://discord.gg/xYSgcdDXrJ")
 }
 function aboutBlank(gameid) {
-    try {
-        const socket = io(api);
-        socket.emit('game', gameid);
-    } catch (err) {
-        console.log("unable to connect");
-    }
     var a = window.open("about:blank", "_blank");
     a.document.documentElement.innerHTML = '<!DOCTYPE html><html><title>Classes</title><link rel="icon" type="image/png" href="https://ssl.gstatic.com/classroom/favicon.png"><style>body {margin: 0;}</style><body onload=' + "'" + 'document.getElementsByTagName("iframe")[0].focus();' + "'" + '><iframe style="height:100%; width:100%; top:0px; left:0; position:absolute;  z-index:1;" src="https://' + window.location.hostname + '/games/' + gameid + '/index.html" frameborder="0"></iframe></body></html>';
+    socket.emit('game', gameid);
 }
 function addgame(sectionid, gameid, gamename, img) {
-    document.getElementById(sectionid).innerHTML += '<div class="game" onclick="aboutBlank(' + "'" + gameid + "'" + ')"><img class="gimg" src="/images/' + img + '"><div class="gradient"></div><h class="text">' + gamename + '</h></div>'
+    document.getElementById(sectionid).innerHTML += '<div class="game" onclick="aboutBlank(' + "'" + gameid + "'" + ')"><img class="gimg" loading="lazy" src="/images/' + img + '"><div class="gradient"></div><h class="text">' + gamename + '</h></div>'
 }
 function cleargames(section) {
     document.getElementById(section).innerHTML = '';
@@ -163,7 +153,7 @@ searchbar.addEventListener("blur", function (event) {
         if(searchSuggestions.contains(this) != true){
             searchSuggestions.style.display = "none";
         }
-    }, 150)
+    }, 1)
 });
 searchbar.addEventListener("focus", function (event) {
     if(document.getElementById('searchbar').value != ""){

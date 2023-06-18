@@ -19,9 +19,7 @@ html {
 
 .game {
   display: inline-block;
-  position: relative;
   border-radius: 10px;
-  margin: auto;
   margin-top: 20px;
   height: 175px;
   width: 275px;
@@ -29,7 +27,6 @@ html {
   scroll-snap-align: center;
   /* Center each child element */
   flex: none;
-  background-color: transparent;
   transition: transform 0.3s, outline-width 0.2s;
   cursor: pointer;
 
@@ -72,14 +69,12 @@ html {
   background: linear-gradient(0deg, rgba(2, 0, 36, 0.8) 0%, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0) 100%);
   opacity: 0;
 }
-
 .gimg {
   height: 100%;
   width: 100%;
   object-fit: cover;
   border-radius: 10px;
 }
-
 .gameholder {
   display: flex;
   position: absolute;
@@ -116,11 +111,8 @@ top {
   left: 0;
   right: 0;
   z-index: 11;
-  bottom: calc(100% - 60px);
   border-radius: 0px 0px 20px 20px;
-
   background: rgba(33, 34, 51, 0.7);
-  -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
   font-family: Arial;
   color: #d4f5f5;
@@ -138,29 +130,21 @@ top {
   right: 0px;
   margin: auto;
   border-radius: 15px;
-  border: none;
   background: rgba(33, 34, 51, 0.6);
   backdrop-filter: blur(8px);
   width: 40%;
   z-index: 12;
-  overflow: hidden;
-}
-
-#searchSuggestions::-webkit-scrollbar {
-  display: block;
+  overflow: auto;
 }
 
 #searchSuggestion {
-  position: relative;
   height: 50px;
   width: 100%;
   border-radius: 15px;
-  border: none;
   font-family: Arial;
   color: #d4f5f5;
   font-size: 20px;
   text-align: left;
-  vertical-align: middle;
   line-height: 50px;
   padding-left: 70px;
   box-sizing: border-box;
@@ -179,7 +163,6 @@ top {
 .ltext {
   color: #d4f5f5;
   font-size: 20px;
-  position: relative;
   float: left;
   top: 49%;
   bottom: 49%;
@@ -190,7 +173,6 @@ top {
 .rtext {
   color: #d4f5f5;
   font-size: 20px;
-  position: relative;
   float: right;
   top: 49%;
   bottom: 49%;
@@ -212,19 +194,18 @@ top {
   color: #d4f5f5;
   position: absolute;
   height: 80%;
-  top: 5%;
+  top: 10%;
   left: 30%;
   right: 30%;
-  bottom: 5%;
+  bottom: 10%;
+width: 40%;
   border-radius: 15px;
   background: url("search.png") center right 10px no-repeat;
   padding-left: 20px;
   padding-right: 40px;
   box-sizing: border-box;
   background-size: 20px, 20px;
-  border: none;
   background-color: transparent;
-  width: 40%;
 }
 
 p {
@@ -245,19 +226,16 @@ p {
   display: inline-block;
   padding: 3px;
   margin: auto;
-
 }
 
 .larrow {
   left: 10px;
   transform: rotate(135deg);
-  -webkit-transform: rotate(135deg);
 }
 
 .rarrow {
   right: 10px;
   transform: rotate(-45deg);
-  -webkit-transform: rotate(-45deg);
 }
 
 .scroll {
@@ -287,8 +265,7 @@ p {
   bottom: 0px;
   height: 100%;
   width: 100%;
-  overflow-y: scroll;
-  overflow-x: auto;
+    overflow: auto;
 }
 
 popup {
