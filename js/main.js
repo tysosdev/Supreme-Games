@@ -7,19 +7,19 @@ var api = "https://api." + location.hostname;
 var socket;
 run();
 async function run() {
-        await getGameList();
-        loadPopGames();
-        start();
+    await getGameList();
+    loadPopGames();
+    start();
 }
 async function getGameList() {
     const response = await fetch('/js/games.json');
     games = await response.json();
 }
 function start() {
-            //show discord popup
-        if (localStorage.getItem("discord") != "stop") {
-            document.getElementById("discord").style.display = "block";
-        }
+    //show discord popup
+    if (localStorage.getItem("discord") != "stop") {
+        document.getElementById("discord").style.display = "block";
+    }
     //check if you are on all games
     if (window.location.pathname.includes("allgames")) {
         addGamesFromJson(games, "allgames");
@@ -31,9 +31,9 @@ function start() {
         addGamesFromList(popGames, "popgames");
     }
 }
-async function loadPopGames(){
-        if (window.location.pathname.includes("allgames") != true) {
-            //attempt to connect to the server
+async function loadPopGames() {
+    if (window.location.pathname.includes("allgames") != true) {
+        //attempt to connect to the server
         socket = io(api);
         socket.emit('get');
         //when we hear back write the new data
@@ -60,10 +60,24 @@ async function loadPopGames(){
                 document.getElementById("emergencytext").innerHTML = emalert;
             }
         });
-        }
+    }
 
 }
 function addGamesFromList(list, gameType) {
+    //repeats for each item on the list with gameid being the item
+    array.forEach(function (gameId, index) {
+        //set gameinfo to gameid of the data
+        let gameInfo = games[gameId];
+        //if it is on sccreen
+        if (index < 6) {
+            //add the game with all the info and no extra properties
+            addgame(gameType, gameInfo.id, gameInfo.name, gameInfo.image, "");
+        } else {
+            //add the game with all the info and lazy loading
+            addgame(gameType, gameInfo.id, gameInfo.name, gameInfo.image, 'loading="lazy"');
+        }
+    });
+    /* old method(no index)
     //repeats for each item on the list with gameid being the item
     for (const gameId of list) {
         //set gameinfo to gameid of the data
@@ -71,6 +85,7 @@ function addGamesFromList(list, gameType) {
         //add the game with all the info
         addgame(gameType, gameInfo.id, gameInfo.name, gameInfo.image);
     }
+    */
 }
 function addGamesFromJson(Json, gameType) {
     //repeats for each item on the list with gameid being the item
@@ -78,8 +93,8 @@ function addGamesFromJson(Json, gameType) {
         //set gameinfo to gameid of the data
         let gameInfo = games[gameId];
         //add the game with all the info
-        if(gameInfo.id.startsWith("/") == false){
-        addgame(gameType, gameInfo.id, gameInfo.name, gameInfo.image);
+        if (gameInfo.id.startsWith("/") == false) {
+            addgame(gameType, gameInfo.id, gameInfo.name, gameInfo.image);
         }
     }
 }
@@ -97,8 +112,8 @@ async function aboutBlank(gameid) {
     a.document.documentElement.innerHTML = '<!DOCTYPE html><html><title>Classes</title><link rel="icon" type="image/png" href="https://ssl.gstatic.com/classroom/favicon.png"><style>body {margin: 0;}</style><body onload=' + "'" + 'document.getElementsByTagName("iframe")[0].focus();' + "'" + '><iframe style="height:100%; width:100%; top:0px; left:0; position:absolute;  z-index:1;" src="https://' + window.location.hostname + '/games/' + gameid + '/index.html" frameborder="0"></iframe></body></html>';
     socket.emit('game', gameid);
 }
-function addgame(sectionid, gameid, gamename, img) {
-    document.getElementById(sectionid).innerHTML += '<div class="game" onclick="aboutBlank(' + "'" + gameid + "'" + ')"><img class="gimg" loading="lazy" src="/images/' + img + '"><div class="gradient"></div><h class="text">' + gamename + '</h></div>'
+function addgame(sectionid, gameid, gamename, img, properties) {
+    document.getElementById(sectionid).innerHTML += '<div class="game" onclick="aboutBlank(' + "'" + gameid + "'" + ')"><img class="gimg"' + properties + 'src="/images/' + img + '"><div class="gradient"></div><h class="text">' + gamename + '</h></div>'
 }
 function cleargames(section) {
     document.getElementById(section).innerHTML = '';
@@ -145,13 +160,13 @@ function liveSearch() {
 }
 searchbar.addEventListener("blur", function (event) {
     setTimeout(() => {
-        if(searchSuggestions.contains(this) != true){
+        if (searchSuggestions.contains(this) != true) {
             searchSuggestions.style.display = "none";
         }
     }, 1)
 });
 searchbar.addEventListener("focus", function (event) {
-    if(document.getElementById('searchbar').value != ""){
-    searchSuggestions.style.display = "block";
+    if (document.getElementById('searchbar').value != "") {
+        searchSuggestions.style.display = "block";
     }
 });
