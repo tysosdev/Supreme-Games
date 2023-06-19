@@ -65,7 +65,7 @@ async function loadPopGames() {
 }
 function addGamesFromList(list, gameType) {
     //repeats for each item on the list with gameid being the item
-    array.forEach(function (gameId, index) {
+    list.forEach(function (gameId, index) {
         //set gameinfo to gameid of the data
         let gameInfo = games[gameId];
         //if it is on sccreen
