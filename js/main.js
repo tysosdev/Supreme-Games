@@ -94,7 +94,7 @@ function addGamesFromJson(Json, gameType) {
         let gameInfo = games[gameId];
         //add the game with all the info
         if (gameInfo.id.startsWith("/") == false) {
-            addgame(gameType, gameInfo.id, gameInfo.name, gameInfo.image);
+            addgame(gameType, gameInfo.id, gameInfo.name, gameInfo.image, "");
         }
     }
 }
