@@ -5,6 +5,7 @@ var newGames = ["miniMetro", "bigIceTowerTinySquare", "bigTowerTinySquare", "red
 var games;
 var api = "https://api." + location.hostname;
 var socket;
+var searchSuggestionFocus = false;
 run();
 async function run() {
     await getGameList();
@@ -160,13 +161,14 @@ function liveSearch() {
 }
 searchbar.addEventListener("blur", function (event) {
     setTimeout(() => {
-        if (searchSuggestions.contains(this) != true) {
+        if (searchSuggestionFocus != true) {
             searchSuggestions.style.display = "none";
         }
-    }, 150)
+    }, 100)
 });
-searchbar.addEventListener("focus", function (event) {
-    if (document.getElementById('searchbar').value != "") {
-        searchSuggestions.style.display = "block";
-    }
+searchSuggestions.addEventListener("focus", function (event) {
+    searchSuggestionFocus = true;
+});
+searchSuggestions.addEventListener("blur", function (event) {
+    searchSuggestionFocus = false;
 });
