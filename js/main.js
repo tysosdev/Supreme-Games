@@ -165,7 +165,7 @@ searchbar.addEventListener("blur", function (event) {
         if (searchSuggestions.contains(this) != true) {
             searchSuggestions.style.display = "none";
         }
-    }, 1)
+    }, 100)
 });
 searchbar.addEventListener("focus", function (event) {
     if (document.getElementById('searchbar').value != "") {
