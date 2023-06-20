@@ -107,16 +107,15 @@ function closediscrod(save) {
 function opendiscrod() {
     window.location.replace("https://discord.gg/xYSgcdDXrJ")
 }
-function openGame(gameid){
-    aboutBlank(gameid)
-}
 async function aboutBlank(gameid) {
-    var a = window.open("about:blank", "_blank");
-    a.document.documentElement.innerHTML = '<!DOCTYPE html><html><title>Classes</title><link rel="icon" type="image/png" href="https://ssl.gstatic.com/classroom/favicon.png"><style>body {margin: 0;}</style><body onload=' + "'" + 'document.getElementsByTagName("iframe")[0].focus();' + "'" + '><iframe style="height:100%; width:100%; top:0px; left:0; position:absolute;  z-index:1;" src="https://' + window.location.hostname + '/games/' + gameid + '/index.html" frameborder="0"></iframe></body></html>';
-    socket.emit('game', gameid);
+    setTimeout(function() {
+        var a = window.open("about:blank", "_blank");
+        a.document.documentElement.innerHTML = '<!DOCTYPE html><html><title>Classes</title><link rel="icon" type="image/png" href="https://ssl.gstatic.com/classroom/favicon.png"><style>body {margin: 0;}</style><body onload=' + "'" + 'document.getElementsByTagName("iframe")[0].focus();' + "'" + '><iframe style="height:100%; width:100%; top:0px; left:0; position:absolute;  z-index:1;" src="https://' + window.location.hostname + '/games/' + gameid + '/index.html" frameborder="0"></iframe></body></html>';
+        socket.emit('game', gameid);
+    }, 1);
 }
 function addgame(sectionid, gameid, gamename, img, properties) {
-    document.getElementById(sectionid).innerHTML += '<div class="game" onclick="openGame(' + "'" + gameid + "'" + ')"><img class="gimg"' + properties + 'src="/images/' + img + '"><div class="gradient"></div><h class="text">' + gamename + '</h></div>'
+    document.getElementById(sectionid).innerHTML += '<div class="game" onclick="aboutBlank(' + "'" + gameid + "'" + ')"><img class="gimg"' + properties + 'src="/images/' + img + '"><div class="gradient"></div><h class="text">' + gamename + '</h></div>'
 }
 function cleargames(section) {
     document.getElementById(section).innerHTML = '';
@@ -130,7 +129,7 @@ searchbar.addEventListener("keypress", function (event) {
         let done = 0;
         for (const [useless, game] of Object.entries(games)) {
             if (game.name.toLowerCase().includes(input) && done == 0 && game.id.startsWith("/") == false) {
-                openGame(game.id);
+                aboutBlank(game.id);
                 done = 1;
             }
         }
@@ -145,9 +144,9 @@ function liveSearch() {
             if (game.name.toLowerCase().includes(input) && game.id.startsWith("/") == false) {
                 //add sugjestions
                 if (searchSuggestions.innerHTML == "") {
-                    searchSuggestions.innerHTML += '<div onclick="openGame(' + "'" + game.id + "'" + ')" style="    background-color: rgba(255, 255, 255, 0.05);background-image:url(' + "'/images/" + game.image + "'" + ');" id="searchSuggestion">' + game.name + '</div>'
+                    searchSuggestions.innerHTML += '<div onclick="aboutBlank(' + "'" + game.id + "'" + ')" style="    background-color: rgba(255, 255, 255, 0.05);background-image:url(' + "'/images/" + game.image + "'" + ');" id="searchSuggestion">' + game.name + '</div>'
                 } else {
-                    searchSuggestions.innerHTML += '<div onclick="openGame(' + "'" + game.id + "'" + ')" style="background-image:url(' + "'/images/" + game.image + "'" + ');" id="searchSuggestion">' + game.name + '</div>'
+                    searchSuggestions.innerHTML += '<div onclick="aboutBlank(' + "'" + game.id + "'" + ')" style="background-image:url(' + "'/images/" + game.image + "'" + ');" id="searchSuggestion">' + game.name + '</div>'
                 }
             }
         }
