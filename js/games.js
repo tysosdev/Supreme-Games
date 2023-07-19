@@ -1,4 +1,4 @@
-{
+var games = {
     "0hh1": {
         "id": "0hh1",
         "name": "0hh1",
@@ -964,4 +964,5 @@
         "name": "Oracle of Seasons",
         "image": "OoS.webp"
     }
-}
+};
+run(games)

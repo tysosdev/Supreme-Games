@@ -6,15 +6,10 @@ var games;
 var api = "https://api." + location.hostname;
 var socket;
 var searchSuggestionFocus = false;
-run();
-async function run() {
-    await getGameList();
+async function run(loadedgames) {
+    games = loadedgames;
     loadPopGames();
     start();
-}
-async function getGameList() {
-    const response = await fetch('/js/games.json');
-    games = await response.json();
 }
 function start() {
     //show discord popup
