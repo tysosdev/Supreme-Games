@@ -97,9 +97,10 @@ top:0px;
 
 .rowgames {
     padding-top: 10.75px;/*half of the difference in size from normal to hovered (plus 2 for border)*/
-        padding-bottom: 10.75px;/*half of the difference in size from normal to hovered (plus 2 for border)*/
-  overflow-x: auto;
+    padding-bottom: 10.75px;/*half of the difference in size from normal to hovered (plus 2 for border)*/
+    overflow-x: auto;
     height: 175px;/*the normla size*/
+    overflow-y: hidden;
 } 
 
 .rowgames .game {
