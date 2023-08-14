@@ -3,7 +3,7 @@ var popwGames = ["eggyCar", "Diggy", "catNinja", "gba", "motox3m", "raftWars", "
 var recGames = ["Diggy", "catNinja", "tableTanks", "raftWarsMultiplayer", "achievementUnlocked2", "motox3m", "raftWars", "impossibleQuiz2", "eaglercraft"];
 var newGames = ["miniMetro", "bigIceTowerTinySquare", "bigTowerTinySquare", "redBall4", "redBall4Vol2", "redBall4Vol3", "shapez", "deflyIo", "oneChance", "run3", "rooftopSnipers2", "territorialIo", "KDL", "eaglercraft", "jackSmith", "LinksAwakening", "rooftopSnipers", "proxy", "learnToFly3", "vex7", "motox3m2", "motox3m3", "motox3mPoolParty", "motox3mSpookyLand", "motox3mWinter", "raftWarsMultiplayer", "picross", "picross3d", "mario1"];
 var games;
-var api = "https://api." + location.hostname;
+var api = "https://api." + location.hostname + ":3000";
 var socket;
 var searchSuggestionFocus = false;
 async function run(loadedgames) {
