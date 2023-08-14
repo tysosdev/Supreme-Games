@@ -231,7 +231,7 @@
         companyName: "Dinosaur Polo Club",
         productName: "Mini Metro",
         productVersion: "2.51.0",
-        matchWebGLToCanvasSize: false, // Uncomment this to separately control WebGL canvas render size and DOM element size.
+        matchWebGLToCanvasSize: true, // Uncomment this to separately control WebGL canvas render size and DOM element size.
         // devicePixelRatio: 1, // Uncomment this to override low DPI rendering on high DPI displays.
       });
     </script>
@@ -256,7 +256,6 @@
         });
         </script>
         <script>
-                    alert("if the game dosnt work right click next to the game(in the white area) and chose reload frame");
           var canvas = document.getElementById('unity-canvas'); //selects the canvas
           canvas.width = (window.innerHeight*4)/3; //makes it use up all available width pixels
           canvas.height = window.innerHeight; //makes it use up all available hight pixels
