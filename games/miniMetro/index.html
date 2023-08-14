@@ -221,16 +221,6 @@
         </head>
   <body style="text-align: center; margin:0px; padding:0px; overflow:hidden; height: 100vh;">
     <canvas id="unity-canvas" style="aspect-ratio:4/3; height: 100%; margin:auto; background-image: url(/images/loading.webp);background-repeat: no-repeat;background-position: center;background-color: #e4f0f0;"></canvas>
-    <script>
-      var canvas = document.getElementById('unity-canvas'); //selects the canvas
-      canvas.width = (window.innerHeight*4)/3; //makes it use up all available width pixels
-      canvas.height = window.innerHeight; //makes it use up all available hight pixels
-      addEventListener('resize', () => { //when you change window size
-          canvas.height = window.innerHeight; //set hight for new window size
-        canvas.width = (window.innerHeight*4)/3; //set width for new window size
-      });
-      alert("if the game dosnt work right click next to the game(in the white area) and chose reload frame");
-        </script>
     <script src="coolmath-promo.loader.js"></script>
     <script>
       createUnityInstance(document.querySelector("#unity-canvas"), {
@@ -265,5 +255,15 @@
         	  fnSendMsg(event);
         });
         </script>
+        <script>
+                    alert("if the game dosnt work right click next to the game(in the white area) and chose reload frame");
+          var canvas = document.getElementById('unity-canvas'); //selects the canvas
+          canvas.width = (window.innerHeight*4)/3; //makes it use up all available width pixels
+          canvas.height = window.innerHeight; //makes it use up all available hight pixels
+          addEventListener('resize', () => { //when you change window size
+              canvas.height = window.innerHeight; //set hight for new window size
+            canvas.width = (window.innerHeight*4)/3; //set width for new window size
+          });
+            </script>
   </body>
 </html>
