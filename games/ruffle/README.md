@@ -46,6 +46,7 @@ If you want to control the Ruffle player, you may use our Javascript API.
         let player = ruffle.createPlayer();
         let container = document.getElementById("container");
         container.appendChild(player);
+   window.RufflePlayer.config = {autoplay: "on"};
         player.load("movie.swf");
     });
 </script>
