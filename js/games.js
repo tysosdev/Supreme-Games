@@ -94,6 +94,11 @@ var games = {
         "name": "Awesome Tanks2",
         "image": "awesomeTanks2.webp"
     },
+    "baconMayDie":{
+        "id": "baconMayDie",
+        "name": "Bacon May Die",
+        "image": "baconMayDie.jpg"
+    },
     "ballisticChickens": {
         "id": "ballisticChickens",
         "name": "Ballistic Chickens",
@@ -108,6 +113,11 @@ var games = {
         "id": "basketAndBall",
         "name": "Basket and Ball",
         "image": "basketAndBall.webp"
+    },
+    "basketBallStars":{
+        "id": "basketBallStars",
+        "name": "Basket Ball Stars",
+        "image": "basketBallStars.avif"
     },
     "/basketbros": {
         "id": "/basketbros",
@@ -359,6 +369,11 @@ var games = {
         "name": "Friday Night Funkin",
         "image": "fnf.webp"
     },
+    "funnyShooter2": {
+        "id": "funnyShooter2",
+        "name": "Funny Shooter 2",
+        "image": "funnyShooter2.jpg"
+    },
     "fzero": {
         "id": "fzero",
         "name": "F-Zero",
@@ -584,6 +599,16 @@ var games = {
         "name": "Picross 3d",
         "image": "picross3d.webp"
     },
+    "pixelCombat2": {
+        "id": "pixelCombat2",
+        "name": "Pixel Combat 2",
+        "image": "pixelCombat2.jpg"
+    },
+    "polywar2": {
+        "id": "polywar2",
+        "name": "Polywar 2",
+        "image": "polywar2.jpg"
+    },
     "poom": {
         "id": "poom",
         "name": "Poom",
@@ -609,10 +634,20 @@ var games = {
         "name": "Raft Wars",
         "image": "raftWars.webp"
     },
+    "raftWarsHtml5": {
+        "id": "raftWarsHtml5",
+        "name": "Raft Wars html5",
+        "image": "raftWarsHtml5.jpg"
+    },
     "raftWars2": {
         "id": "raftWars2",
         "name": "Raft Wars 2",
         "image": "raftWars2.webp"
+    },
+    "raftWars2Html5": {
+        "id": "raftWars2Html5",
+        "name": "Raft Wars 2 html5",
+        "image": "raftWars2Html5.jpg"
     },
     "raftWarsMultiplayer": {
         "id": "raftWarsMultiplayer",
