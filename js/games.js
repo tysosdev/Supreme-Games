@@ -524,6 +524,11 @@ var games = {
         "name": "Moon Lander",
         "image": "moonlander.webp"
     },
+    "motherLoad": {
+        "id": "motherLoad",
+        "name": "Lother Load",
+        "image": "motherLoad.webp"
+    },
     "motox3m": {
         "id": "motox3m",
         "name": "Motox3m",
