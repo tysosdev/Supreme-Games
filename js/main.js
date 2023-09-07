@@ -13,16 +13,16 @@ if(window.self == window.top){
         window.location.replace("https://classroom.google.com/");
     }
 }
+ //show discord popup
+ if (localStorage.getItem("discord") != "stop") {
+    document.getElementById("discord").style.display = "block";
+}
 async function run(loadedgames) {
     games = loadedgames;
     //loadPopGames();
     start();
 }
 function start() {
-    //show discord popup
-    if (localStorage.getItem("discord") != "stop") {
-        document.getElementById("discord").style.display = "block";
-    }
     //check if you are on all games
     if (window.location.pathname.includes("allgames")) {
         addGamesFromJson(games, "allgames");

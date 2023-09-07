@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-  <meta name="robots" content="noindex, nofollow, noimageindex">
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-F3JMM93NSK"></script>
   <script>
@@ -12,17 +11,23 @@
 
     gtag('config', 'G-F3JMM93NSK');
   </script>
-    <link rel="icon" type="image/png" href="/icon.webp">
+  <link rel="icon" type="image/png" href="/icon.webp">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
+  <meta name="description" content="The Supreme unblocked gmes site">
+<meta name="keywords" content="unblocked, supreme, gmes, gxmes, flash, vex">
   <title>My Drive - Google Drive</title>
-  <link rel="icon" type="image/png" href="/icon.webp">
+  <link rel="icon" type="image/png" href="/icon.png">
   <link href="style.css" rel="stylesheet" type="text/css" />
-  <script src="https://api.supremegmes.medscience.cl/socket.io/socket.io.js"></script>
-
 </head>
 
 <body>
+  <popup id="emergency">
+    <div class="notifcont" style="width:100%; height:100%;">
+      <div class="notif" id="emergencytext" style="font-size:2.5vw; width:100%; height:100%;">
+      </div>
+    </div>
+  </popup>
   <popup id="discord">
     <div class="notifcont">
       <div class="notif">
@@ -33,27 +38,20 @@
       </div>
     </div>
   </popup>
-  <top><a class="ltext" style="text-decoration-line: none;font-size: 45px;" href="/">Supreme Games</a><a class="rtext"
-      href="/allgames.html">All games</a>
-      <input id="searchbar" autocomplete="off" oninput="liveSearch()" type="text" placeholder="Search Supreme Games">
-
-    </top>
+  <top>
+    <a class="ltext" style="text-decoration-line: none;font-size: 45px;" href="/">Supreme Games</a>
+    <a class="rtext" href="/allgames.html">All games</a>
+    <input id="searchbar" autocomplete="off" oninput="liveSearch()" type="text" placeholder="Search Supreme Games">
+  </top>
   <div id="searchSuggestions"></div>
+
   <div id="blob"></div>
 
-  <div class="gamecont">
-    <p class="title" style="top:40px;">All Games</p>
+  <script async src="/js/blob.js"></script>
+  <script async src="/js/arrows.js"></script>
+  <script src="/js/main.js"></script>
+  <script async src="/js/games.js"></script>
 
-    <div class="stackedgames gameholder" id="allgames" style="top:65px;">
-
-    </div>
-  </div>
 </body>
-<script src="/js/blob.js"></script>
-<script src="/js/arrows.js"></script>
-<script src="/js/main.js"></script>
-<script async src="/js/games.js"></script>
-
-
 
 </html>
