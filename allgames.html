@@ -35,6 +35,12 @@
   </popup>
   <top><a class="ltext" style="text-decoration-line: none;font-size: 45px;" href="/">Supreme Games</a><a class="rtext"
       href="/allgames.html">All games</a>
+      <button class="topbutton" onclick="downloadMainSave()">Download Saves</button>
+      <label class="topbutton">
+         <input id="uploader" type="file" accept=".save" style="display: none;"/>
+         Upload Saves
+         <div class="uploadResult"></div>
+     </label> 
       <input id="searchbar" autocomplete="off" oninput="liveSearch()" type="text" placeholder="Search Supreme Games">
 
     </top>
