@@ -244,8 +244,8 @@ var games = {
         "name": "Classic Minecraft",
         "image": "classicminecraft.webp"
     },
-    "/clickerHeroes": {
-        "id": "/clickerHeroes",
+    "clickerHeroes": {
+        "id": "clickerHeroes",
         "name": "Clicker Heroes",
         "image": "clickerHeroes.webp"
     },
