@@ -526,7 +526,7 @@ var games = {
     },
     "motherLoad": {
         "id": "motherLoad",
-        "name": "Lother Load",
+        "name": "Mother Load",
         "image": "motherLoad.webp"
     },
     "motox3m": {
