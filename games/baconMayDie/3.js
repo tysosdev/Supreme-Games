@@ -1,4 +1,4 @@
-
+/*
 ! function(t) {
     var n = {};
 
@@ -4331,7 +4331,7 @@
             }, t.GetIsPokiPlatform = function() {
                 return t.isPokiPlatform
             }, t.GetIsPokiIFrame = function() {
-                return true
+                return (parseInt(T("site_id"), 10) || 0) > 0
             }, t.childDirected = !1, t.isPokiPlatform = !1, t.nonPersonalized = !1, t.consentString = "", t
         }();
 
