@@ -1,3 +1,4 @@
+/*
 /// Poki Bacon May Die
 
 var adStarted = false;
