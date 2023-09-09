@@ -1,4 +1,4 @@
-Game.addToManifest({
+﻿Game.addToManifest({
 	
 	logo: "sprites/postcredits/logo.png",
 	
@@ -29,7 +29,7 @@ function Scene_Post_Post_Credits(){
 
 		var button = new PIXI.Container();
 		button.x = x;
-		button.y = 280;
+		button.y = 325;
 		cont.addChild(button);
 
 		var bg = MakeMovieClip("end_button");
@@ -43,7 +43,7 @@ function Scene_Post_Post_Credits(){
 
 		// INTERACTIVITY!
 		button.interactive = true;
-		button.mouseover = function(){
+		button.mouseover = button.touchstart = function(){
 			isHovering = true;
 			bg.gotoAndStop(1);
 			Tween_get(button.scale).to({x:1.05, y:1.05}, _s(0.2));
@@ -53,7 +53,7 @@ function Scene_Post_Post_Credits(){
 			bg.gotoAndStop(0);
 			Tween_get(button.scale).to({x:1, y:1}, _s(0.2));
 		};
-		button.mousedown = function(){
+		button.mousedown = button.touchend = function(){
 			isHovering = false;
 			Game.sounds.squeak.play();
 			callback();
@@ -61,10 +61,10 @@ function Scene_Post_Post_Credits(){
 
 	};
 	_addButton(250, 2, function(){
-		window.open("http://ncase.me");
+		window.open("http://afzl95.github.io/");
 	});
 	_addButton(480, 3, function(){
-		window.open("https://www.patreon.com/ncase");
+		window.open("https://twitter.com/ali_fzl95");
 	});
 	_addButton(710, 4, function(){
 		Game.sceneManager.gotoScene("Quote");
@@ -75,13 +75,13 @@ function Scene_Post_Post_Credits(){
 
 		var button = MakeSprite(icon);
 		button.x = x;
-		button.y = 342;
+		button.y = 419;
 		button.anchor.x = button.anchor.y = 0.5;
 		cont.addChild(button);
 
 		// INTERACTIVITY!
 		button.interactive = true;
-		button.mouseover = function(){
+		button.mouseover = button.touchstart = function(){
 			isHovering = true;
 			Tween_get(button.scale).to({x:1.2, y:1.2}, _s(0.2));
 		};
@@ -89,7 +89,7 @@ function Scene_Post_Post_Credits(){
 			isHovering = false;
 			Tween_get(button.scale).to({x:1, y:1}, _s(0.2));
 		};
-		button.mousedown = function(){
+		button.mousedown = button.touchend = function(){
 			isHovering = false;
 			Game.sounds.squeak.play();
 			callback();
@@ -98,12 +98,13 @@ function Scene_Post_Post_Credits(){
 	};
 	var text = encodeURIComponent(window.SHARE_TEXT);
 	var url = encodeURIComponent(window.SHARE_URL);
-	_addSocialButton(575, "facebook", function(){
+	_addSocialButton(Game.width/2 - 38, "facebook", function(){
 		var href = "https://www.facebook.com/sharer/sharer.php?u="+url+"&t="+text;
 		window.open(href);
 	});
-	_addSocialButton(610, "twitter", function(){
-		var href = "https://twitter.com/intent/tweet?text="+text+"%20"+url+"&via=ncasenmare";
+	_addSocialButton(Game.width/2 + 13, "twitter", function(){
+		var href = "https://twitter.com/intent/tweet?text="+text+"%0a"+url;
+		//var href = "https://twitter.com/intent/tweet?text="+text+"%20"+url+"&via=ncasenmare";
 		window.open(href);
 	});
 
