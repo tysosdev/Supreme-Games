@@ -1,4 +1,4 @@
-/*function configureAvailableCustomDimensions01(json)
+function configureAvailableCustomDimensions01(json)
 {
     gameanalytics.GameAnalytics.configureAvailableCustomDimensions01(JSON.parse(json));
 }
