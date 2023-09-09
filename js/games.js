@@ -839,6 +839,11 @@ var games = {
         "name": "Star Fox 2",
         "image": "starfox2.webp"
     },
+    "stickRPG": {
+        "id": "stickRPG",
+        "name": "Stick RPG",
+        "image": "stickRPG.png"
+    },
     "subwaySurfers": {
         "id": "subwaySurfers",
         "name": "Subway Surfers",
