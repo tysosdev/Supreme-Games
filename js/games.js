@@ -334,6 +334,11 @@ var games = {
         "name": "Elastic Man",
         "image": "elasticman.webp"
     },
+    "emuJS": {
+        "id": "emuJS",
+        "name": "Emulator JS Demo (see readme)",
+        "image": "emuJS.png"
+    },
     "fancyPantsAdventure": {
         "id": "fancyPantsAdventure",
         "name": "Fancy Pants Adventure",
