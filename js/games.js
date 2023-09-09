@@ -284,8 +284,8 @@ var games = {
         "name": "Dragon Ball Devolution",
         "image": "dbzdevolution.webp"
     },
-    "deflyIo": {
-        "id": "deflyIo",
+    "/deflyIo": {
+        "id": "/deflyIo",
         "name": "Defly io",
         "image": "deflyIo.webp"
     },
@@ -624,8 +624,8 @@ var games = {
         "name": "Powder Game2 ",
         "image": "powdergame.webp"
     },
-    "proxy": {
-        "id": "proxy",
+    "/proxy": {
+        "id": "/proxy",
         "name": "proxy",
         "image": "proxy.webp"
     },
@@ -654,8 +654,8 @@ var games = {
         "name": "Raft Wars 2 html5",
         "image": "raftWars2Html5.jpg"
     },
-    "raftWarsMultiplayer": {
-        "id": "raftWarsMultiplayer",
+    "/raftWarsMultiplayer": {
+        "id": "/raftWarsMultiplayer",
         "name": "Raft Wars Multiplayer",
         "image": "raftWarsMultiplayer.webp"
     },
@@ -754,8 +754,8 @@ var games = {
         "name": "Shapez",
         "image": "shapez.webp"
     },
-    "shellShockers": {
-        "id": "shellShockers",
+    "/shellShockers": {
+        "id": "/shellShockers",
         "name": "Shell Shockers",
         "image": "shellShockers.webp"
     },
@@ -864,8 +864,8 @@ var games = {
         "name": "Temple Run 2",
         "image": "templerun2.webp"
     },
-    "territorialIo": {
-        "id": "territorialIo",
+    "/territorialIo": {
+        "id": "/territorialIo",
         "name": "Territorial io",
         "image": "territorialIo.webp"
     },
@@ -969,8 +969,8 @@ var games = {
         "name": "Wordle",
         "image": "wordle.webp"
     },
-    "zombsRoyale": {
-        "id": "zombsRoyale",
+    "/zombsRoyale": {
+        "id": "/zombsRoyale",
         "name": "Zombs Royale",
         "image": "zombsRoyale.webp"
     },
