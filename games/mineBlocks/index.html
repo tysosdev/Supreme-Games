@@ -1,21 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline' blob:; object-src 'self' 'unsafe-inline' blob:;">
 	<meta charset="utf-8">
-	
-    <!--
-        
-        Mine Blocks
-        Game by Zanzlanz
-        
-        If you would like to embed Mine Blocks on your own site,
-        copy the embed code on https://mineblocks.com/1
-        or send me an email (found at https://zanzlanz.com/about).
-        
-        Thanks!
-        
-    -->
 
 	<title>Mine Blocks</title>
 	
@@ -46,18 +32,7 @@
         
         var errorNum = 0;
         window.onerror = function(message, source, lineno, colno, error) {
-            if(errorNum++>10) return;
-            var stack = "";
-            if(error && error.stack) stack = error.stack;
-            else if(colno) stack = lineno+":"+colno;
-            else stack = lineno;
-            
-            var xmlHttp = new XMLHttpRequest();
-            xmlHttp.onreadystatechange = function() { 
-                if(xmlHttp.readyState == 4 && xmlHttp.status == 200) console.log("Crash report generated.");
-            }
-            xmlHttp.open("GET", "https://zanzlanz.com/assets/script/reportError"+"?id=07M3i0&message="+encodeURIComponent(message)+"&stack="+encodeURIComponent(stack)+"&browser="+encodeURIComponent(navigator.userAgent),true);
-            xmlHttp.send(null);
+           
         };
 	</script>
 
@@ -68,7 +43,6 @@
 		#warningPopupWrapper.open {pointer-events:auto;bottom:50px;opacity:1.0}
 		#warningPopup {background:#FFCC00;border-radius:10px;width:75%;max-width:400px;padding:10px;font-size:16px;font-family:Verdana;color:#000000;margin-left:auto;margin-right:auto;}
 	</style>
-    
 </head>
 <body>
 	<div id="content"></div>
