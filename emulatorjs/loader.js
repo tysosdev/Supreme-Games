@@ -1,6 +1,6 @@
 (async function() {
     const folderPath = (path) => path.substring(0, path.length - path.split('/').pop().length);
-    const scriptPath = (typeof window.EJS_pathtodata === "string") ? window.EJS_pathtodata : folderPath((new URL(document.currentScript.src)).pathname);
+    let scriptPath = (typeof window.EJS_pathtodata === "string") ? window.EJS_pathtodata : folderPath((new URL(document.currentScript.src)).pathname);
     if (!scriptPath.endsWith('/')) scriptPath+='/';
     //console.log(scriptPath);
     function loadScript(file) {
@@ -55,12 +55,16 @@
     config.gameName = window.EJS_gameName;
     config.color = window.EJS_color;
     config.adUrl = window.EJS_AdUrl;
+    config.adMode = window.EJS_AdMode;
     config.adTimer = window.EJS_AdTimer;
+    config.adSize = window.EJS_AdSize;
+    config.alignStartButton = window.EJS_alignStartButton;
     config.VirtualGamepadSettings = window.EJS_VirtualGamepadSettings;
     config.buttonOpts = window.EJS_Buttons;
     config.volume = window.EJS_volume;
     config.defaultControllers = window.EJS_defaultControls;
     config.startOnLoad = window.EJS_startOnLoaded;
+    config.fullscreenOnLoad = window.EJS_fullscreenOnLoaded;
     config.filePaths = window.EJS_paths;
     config.loadState = window.EJS_loadStateURL;
     config.cacheLimit = window.EJS_CacheLimit;
@@ -71,6 +75,11 @@
     config.netplayUrl = window.EJS_netplayServer;
     config.gameId = window.EJS_gameID;
     config.backgroundImg = window.EJS_backgroundImage;
+    config.backgroundBlur = window.EJS_backgroundBlur;
+    config.backgroundColor = window.EJS_backgroundColor;
+    config.controlScheme = window.EJS_controlScheme;
+    config.threads = window.EJS_threads;
+    config.disableCue = window.EJS_disableCue;
     
     if (typeof window.EJS_language === "string" && window.EJS_language !== "en-US") {
         try {
@@ -88,6 +97,10 @@
     }
     
     window.EJS_emulator = new EmulatorJS(EJS_player, config);
+    window.EJS_adBlocked = (url, del) => window.EJS_emulator.adBlocked(url, del);
+    if (typeof window.EJS_ready === "function") {
+        window.EJS_emulator.on("ready", window.EJS_ready);
+    }
     if (typeof window.EJS_onGameStart === "function") {
         window.EJS_emulator.on("start", window.EJS_onGameStart);
     }
@@ -97,5 +110,4 @@
     if (typeof window.EJS_onSaveState === "function") {
         window.EJS_emulator.on("save", window.EJS_onSaveState);
     }
-    
 })();

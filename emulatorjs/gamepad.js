@@ -3,6 +3,24 @@ class GamepadHandler {
     timeout;
     listeners;
     constructor() {
+        this.buttonLabels = {
+            0: 'BUTTON_1',
+            1: 'BUTTON_2',
+            2: 'BUTTON_3',
+            3: 'BUTTON_4',
+            4: 'LEFT_TOP_SHOULDER',
+            5: 'RIGHT_TOP_SHOULDER',
+            6: 'LEFT_BOTTOM_SHOULDER',
+            7: 'RIGHT_BOTTOM_SHOULDER',
+            8: 'SELECT',
+            9: 'START',
+            10: 'LEFT_STICK',
+            11: 'RIGHT_STICK',
+            12: 'DPAD_UP',
+            13: 'DPAD_DOWN',
+            14: 'DPAD_LEFT',
+            15: 'DPAD_RIGHT',
+        };
         this.gamepads = [];
         this.listeners = {};
         this.timeout = null;
@@ -19,7 +37,16 @@ class GamepadHandler {
         this.timeout = setTimeout(this.loop.bind(this), 10);
     }
     updateGamepadState() {
-        const gamepads = this.getGamepads();
+        let gamepads = this.getGamepads();
+        if (!gamepads) return;
+        if (!Array.isArray(gamepads) && gamepads.length) {
+            let gp = [];
+            for (let i=0; i<gamepads.length; i++) {
+                gp.push(gamepads[i]);
+            }
+            gamepads = gp;
+        } else if (!Array.isArray(gamepads)) return;
+        
         gamepads.forEach((gamepad, index) => {
             if (!gamepad) return;
             let hasGamepad = false;
@@ -28,18 +55,28 @@ class GamepadHandler {
                 const gamepadToSave = {
                     axes: [],
                     buttons: {},
-                    index: oldGamepad.index
+                    index: oldGamepad.index,
+                    id: oldGamepad.id
                 }
                 hasGamepad = true;
                 
                 oldGamepad.axes.forEach((axis, axisIndex) => {
-                    if (gamepad.axes[axisIndex] !== axis) {
+                    const val = (axis < 0.01 && axis > -0.01) ? 0 : axis;
+                    const newVal = (gamepad.axes[axisIndex] < 0.01 && gamepad.axes[axisIndex] > -0.01) ? 0 : gamepad.axes[axisIndex];
+                    if (newVal !== val) {
                         const axis = ['LEFT_STICK_X', 'LEFT_STICK_Y', 'RIGHT_STICK_X', 'RIGHT_STICK_Y'][axisIndex];
                         if (!axis) return;
-                        this.dispatchEvent('axischanged', {axis: axis, value: gamepad.axes[axisIndex], index: gamepad.index, gamepadIndex: gamepad.index});
+                        this.dispatchEvent('axischanged', {
+                            axis: axis,
+                            value: newVal,
+                            index: gamepad.index,
+                            label: this.getAxisLabel(axis, newVal),
+                            gamepadIndex: gamepad.index,
+                        });
                     }
-                    gamepadToSave.axes[axisIndex] = axis;
+                    gamepadToSave.axes[axisIndex] = newVal;
                 })
+                
                 gamepad.buttons.forEach((button, buttonIndex) => {
                     let pressed = oldGamepad.buttons[buttonIndex] === 1.0;
                     if (typeof oldGamepad.buttons[buttonIndex] === "object") {
@@ -52,9 +89,9 @@ class GamepadHandler {
                     gamepadToSave.buttons[buttonIndex] = {pressed:pressed2};
                     if (pressed !== pressed2) {
                         if (pressed2) {
-                            this.dispatchEvent('buttondown', {index: buttonIndex, gamepadIndex: gamepad.index});
+                            this.dispatchEvent('buttondown', {index: buttonIndex, label: this.getButtonLabel(buttonIndex), gamepadIndex: gamepad.index});
                         } else {
-                            this.dispatchEvent('buttonup', {index: buttonIndex, gamepadIndex: gamepad.index});
+                            this.dispatchEvent('buttonup', {index: buttonIndex, label:this.getButtonLabel(buttonIndex), gamepadIndex: gamepad.index});
                         }
                     }
                     
@@ -92,6 +129,30 @@ class GamepadHandler {
     }
     on(name, cb) {
         this.listeners[name.toLowerCase()] = cb;
+    }
+
+    getButtonLabel(index) {
+        if (index === null || index === undefined) {
+            return null;
+        }
+        if (this.buttonLabels[index] === undefined) {
+            return `GAMEPAD_${index}`;
+        }
+        return this.buttonLabels[index];
+    }
+    getAxisLabel(axis, value) {
+        let valueLabel = null;
+        if (value > 0.5 || value < -0.5) {
+            if (value > 0) {
+                valueLabel = '+1';
+            } else {
+                valueLabel = '-1';
+            }
+        }
+        if (!axis || !valueLabel) {
+            return null;
+        }
+        return `${axis}:${valueLabel}`;
     }
 }
 

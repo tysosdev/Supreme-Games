@@ -23,7 +23,13 @@ class EJS_GameManager {
             saveSaveFiles: this.Module.cwrap('cmd_savefiles', '', []),
             supportsStates: this.Module.cwrap('supports_states', 'number', []),
             loadSaveFiles: this.Module.cwrap('refresh_save_files', 'null', []),
-            setVolume: this.Module.cwrap('set_volume', 'null', ['number'])
+            setVolume: this.Module.cwrap('set_volume', 'null', ['number']),
+            toggleFastForward: this.Module.cwrap('toggle_fastforward', 'null', ['number']),
+            setFastForwardRatio: this.Module.cwrap('set_ff_ratio', 'null', ['number']),
+            toggleRewind: this.Module.cwrap('toggle_rewind', 'null', ['number']),
+            setRewindGranularity: this.Module.cwrap('set_rewind_granularity', 'null', ['number']),
+            toggleSlowMotion: this.Module.cwrap('toggle_slow_motion', 'null', ['number']),
+            setSlowMotionRatio: this.Module.cwrap('set_sm_ratio', 'null', ['number'])
         }
         this.mkdir("/home");
         this.mkdir("/home/web_user");
@@ -55,11 +61,17 @@ class EJS_GameManager {
     }
     getRetroArchCfg() {
         return "autosave_interval = 60\n" +
-               "screenshot_directory = /\n" +
+               "screenshot_directory = \"/\"\n" +
                "block_sram_overwrite = false\n" +
                "video_gpu_screenshot = false\n" +
-               "audio_latency = 96\n" +
+               "audio_latency = 64\n" +
+               "video_top_portrait_viewport = true\n" +
                "video_vsync = true\n" +
+               "video_smooth = false\n" +
+               "fastforward_ratio = 3.0\n" +
+               "slowmotion_ratio = 3.0\n" +
+                (this.EJS.rewindEnabled ? "rewind_enable = true\n" : "") +
+                (this.EJS.rewindEnabled ? "rewind_granularity = 6\n" : "") +
                "savefile_directory = \"/data/saves\"\n";
     }
     initShaders() {
@@ -137,7 +149,7 @@ class EJS_GameManager {
             this.EJS.netplay.simulateInput(player, index, value);
             return;
         }
-        if ([24, 25, 26].includes(index)) {
+        if ([24, 25, 26, 27, 28, 29].includes(index)) {
             if (index === 24 && value === 1) {
                 const slot = this.EJS.settings['save-state-slot'] ? this.EJS.settings['save-state-slot'] : "1";
                 this.quickSave(slot);
@@ -159,15 +171,33 @@ class EJS_GameManager {
                 this.EJS.displayMessage(this.EJS.localization("SET SAVE STATE SLOT TO")+" "+newSlot);
                 this.EJS.changeSettingOption('save-state-slot', newSlot.toString());
             }
+            if (index === 27) {
+                this.functions.toggleFastForward(this.EJS.isFastForward ? !value : value);
+            }
+            if (index === 29) {
+                this.functions.toggleSlowMotion(this.EJS.isSlowMotion ? !value : value);
+            }
+            if (index === 28) {
+                if (this.EJS.rewindEnabled) {
+                    this.functions.toggleRewind(value);
+                }
+            }
             return;
         }
         this.functions.simulateInput(player, index, value);
+    }
+    getFileNames() {
+        if (this.EJS.getCore() === "picodrive") {
+            return ["bin", "gen", "smd", "md", "32x", "cue", "iso", "sms", "68k", "chd"];
+        } else {
+            return ["toc", "ccd", "exe", "pbp", "chd", "img", "bin", "iso"];
+        }
     }
     createCueFile(fileNames) {
         try {
             if (fileNames.length > 1) {
                 fileNames = fileNames.filter((item) => {
-                    return ["toc", "ccd", "exe", "pbp", "chd", "img", "bin"].includes(item.split(".").pop().toLowerCase());
+                    return this.getFileNames().includes(item.split(".").pop().toLowerCase());
                 })
                 fileNames = fileNames.sort((a, b) => {
                     if (isNaN(a.charAt()) || isNaN(b.charAt())) throw new Error("Incorrect file name format");
@@ -175,7 +205,6 @@ class EJS_GameManager {
                 })
             }
         } catch(e) {
-            console.log(e, fileNames);
             if (fileNames.length > 1) {
                 console.warn("Could not auto-create cue file(s).");
                 return null;
@@ -191,11 +220,9 @@ class EJS_GameManager {
             console.warn("Could not auto-create cue file(s).");
             return null;
         }
-        console.log(fileNames);
         let baseFileName = fileNames[0].split("/").pop();
         if (baseFileName.includes(".")) {
             baseFileName = baseFileName.substring(0, baseFileName.length - baseFileName.split(".").pop().length - 1);
-            console.log(baseFileName);
         }
         for (let i=0; i<fileNames.length; i++) {
             const contents = " FILE \""+fileNames[i]+"\" BINARY\n  TRACK 01 MODE1/2352\n   INDEX 01 00:00:00";
@@ -209,6 +236,36 @@ class EJS_GameManager {
             FS.writeFile("/"+baseFileName+".m3u", contents);
         }
         return (fileNames.length === 1) ? baseFileName+"-0.cue" : baseFileName+".m3u";
+    }
+    loadPpssppAssets() {
+        return new Promise(resolve => {
+            this.EJS.downloadFile('cores/ppsspp-assets.zip', (res) => {
+                this.EJS.checkCompression(new Uint8Array(res.data), this.EJS.localization("Decompress Game Data")).then((pspassets) => {
+                    if (pspassets === -1) {
+                        this.EJS.textElem.innerText = this.localization('Network Error');
+                        this.EJS.textElem.style.color = "red";
+                        return;
+                    }
+                    this.mkdir("/PPSSPP");
+                    
+                    for (const file in pspassets) {
+                        const data = pspassets[file];
+                        const path = "/PPSSPP/"+file;
+                        const paths = path.split("/");
+                        let cp = "";
+                        for (let i=0; i<paths.length-1; i++) {
+                            if (paths[i] === "") continue;
+                            cp += "/"+paths[i];
+                            if (!FS.analyzePath(cp).exists) {
+                                FS.mkdir(cp);
+                            }
+                        }
+                        this.FS.writeFile(path, data);
+                    }
+                    resolve();
+                })
+            }, null, false, {responseType: "arraybuffer", method: "GET"});
+        })
     }
     toggleMainLoop(playing) {
         this.functions.toggleMainLoop(playing);
@@ -254,6 +311,21 @@ class EJS_GameManager {
     }
     loadSaveFiles() {
         this.functions.loadSaveFiles();
+    }
+    setFastForwardRatio(ratio) {
+        this.functions.setFastForwardRatio(ratio);
+    }
+    toggleFastForward(active) {
+        this.functions.toggleFastForward(active);
+    }
+    setSlowMotionRatio(ratio) {
+        this.functions.setSlowMotionRatio(ratio);
+    }
+    toggleSlowMotion(active) {
+        this.functions.toggleSlowMotion(active);
+    }
+    setRewindGranularity(value) {
+        this.functions.setRewindGranularity(value);
     }
 }
 
