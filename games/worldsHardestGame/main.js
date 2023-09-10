@@ -95,16 +95,9 @@ function draw() {
 }
 
 function measure() {
-	if (mobile) {
-        canvasWidth = (window.innerWidth > 0) ? window.innerWidth : screen.width;
-        canvasHeight = (window.innerHeight > 0) ? window.innerHeight : screen.height;
-
-        canvasElement.width = canvasWidth;
-        canvasElement.height = canvasHeight;
-
-        calcOffset();
-    }
-}
+	canvasElement.width = (window.innerHeight*4)/3;
+			 canvasElement.height = window.innerHeight;
+   } 
 
 function goFullScreen() {
     if(canvasElement.requestFullScreen)
