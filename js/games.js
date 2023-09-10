@@ -36,22 +36,22 @@ var games = {
         "openfunc": "abFlash"
     },
     "achievementUnlocked2": {
-        "id": "achievementUnlocked2",
+        "id": "4bc9b4b4-869c-41ba-a652-8be1de334919",
         "name": "Achievement Unlocked 2",
         "image": "achievementUnlocked2.webp",
-        "openfunc": "abGame"
+        "openfunc": "abFlash"
     },
-    "achievementUnlocked3": {
-        "id": "achievementUnlocked3",
+    "/achievementUnlocked3": {
+        "id": "/173942a8-b339-420f-8f38-02ef2f86f396",
         "name": "Achievement Unlocked 3",
         "image": "achievementUnlocked3.webp",
-        "openfunc": "abGame"
+        "openfunc": "abFlash"
     },
     "alienhominid": {
-        "id": "alienhominid",
+        "id": "168b280f-625d-4b61-b4e3-e1c78589792b",
         "name": "Alien hominid",
         "image": "alienhominid.webp",
-        "openfunc": "abGame"
+        "openfunc": "abFlash"
     },
     "amidstthesky": {
         "id": "amidstthesky",
@@ -96,10 +96,10 @@ var games = {
         "openfunc": "abGame"
     },
     "awesomePlanes": {
-        "id": "awesomePlanes",
+        "id": "f34d528a-b100-425f-a52e-3cccca84b3e8",
         "name": "Awesome Planes",
         "image": "awesomePlanes.webp",
-        "openfunc": "abGame"
+        "openfunc": "abFlash"
     },
     "awesomeTanks": {
         "id": "awesomeTanks",
@@ -168,28 +168,28 @@ var games = {
         "openfunc": "abGame"
     },
     "bloonsTowerDefense": {
-        "id": "bloonsTowerDefense",
+        "id": "2166157b-4d3f-44c6-b129-07146b633d7e",
         "name": "Bloons Tower Defense",
         "image": "bloonsTowerDefense.webp",
-        "openfunc": "abGame"
+        "openfunc": "abFlash"
     },
     "bloonsTowerDefense2": {
-        "id": "bloonsTowerDefense2",
+        "id": "082855ae-be62-4b7c-9f93-af7afb52358b",
         "name": "Bloons Tower Defense 2",
         "image": "bloonsTowerDefense2.webp",
-        "openfunc": "abGame"
+        "openfunc": "abFlash"
     },
     "bloonsTowerDefense3": {
-        "id": "bloonsTowerDefense3",
+        "id": "d5c40a9c-f37e-4b18-853b-49aadb3a314f",
         "name": "Bloons Tower Defense 3",
         "image": "bloonsTowerDefense3.webp",
-        "openfunc": "abGame"
+        "openfunc": "abFlash"
     },
     "bloonsTowerDefense4": {
-        "id": "bloonsTowerDefense4",
+        "id": "7b016d7e-7590-4f58-9a7f-8882d68a7a70",
         "name": "Bloons Tower Defense 4",
         "image": "bloonsTowerDefense4.webp",
-        "openfunc": "abGame"
+        "openfunc": "abFlash"
     },
     "blue": {
         "id": "blue",
@@ -210,10 +210,10 @@ var games = {
         "openfunc": "abGame"
     },
     "bubbleTanks": {
-        "id": "bubbleTanks",
+        "id": "bubbld3eede09-0eb8-42ee-bece-a5a6bd7c5118eTanks",
         "name": "Bubble Tanks",
         "image": "bubbleTanks.webp",
-        "openfunc": "abGame"
+        "openfunc": "abFlash"
     },
     "/burnoutDrift3": {
         "id": "/burnoutDrift3",
@@ -228,10 +228,10 @@ var games = {
         "openfunc": "abGame"
     },
     "catNinja": {
-        "id": "catNinja",
+        "id": "ab071dec-33ec-4f58-81de-2b81836ed4df",
         "name": "Cat Ninja",
         "image": "catNinja.webp",
-        "openfunc": "abGame"
+        "openfunc": "abFlash"
     },
     "championIsland": {
         "id": "championIsland",
@@ -294,10 +294,10 @@ var games = {
         "openfunc": "abGame"
     },
     "clickerHeroes": {
-        "id": "clickerHeroes",
+        "id": "7a22cc5a-de2d-43ce-a2e3-476a9768e198",
         "name": "Clicker Heroes",
         "image": "clickerHeroes.webp",
-        "openfunc": "abGame"
+        "openfunc": "abFlash"
     },
     "cookieclicker": {
         "id": "cookieclicker",
@@ -388,6 +388,12 @@ var games = {
         "name": "Microsoft Edge Surf",
         "image": "edgesurf.webp",
         "openfunc": "abGame"
+    },
+    "effingWormsXmas": {
+        "id": "392ef3ef-3350-4117-b9a4-d44875b492d5",
+        "name": "Effing Worms Xmas",
+        "image": "effingWormsXmas.jpg",
+        "openfunc": "abFlash"
     },
     "eggyCar": {
         "id": "eggyCar",
@@ -485,6 +491,18 @@ var games = {
         "image": "gsnake.webp",
         "openfunc": "abGame"
     },
+    "gunMayhem": {
+        "id": "9bc1f3c4-2b03-4f03-85be-f76904a6c747",
+        "name": "Gun Mayhem",
+        "image": "gunMayhem.avif",
+        "openfunc": "abFlash"
+    },
+    "gunMayhem2": {
+        "id": "2aa787ae-db5c-43ee-83c7-1c58ef8ee876",
+        "name": "Gun Mayhem 2",
+        "image": "gunMayhem2.webp",
+        "openfunc": "abFlash"
+    },
     "hackerTyper": {
         "id": "hackerTyper",
         "name": "Hacker Typer",
@@ -546,16 +564,16 @@ var games = {
         "openfunc": "abGame"
     },
     "impossibleQuiz": {
-        "id": "impossibleQuiz",
+        "id": "c11da9f0-dcf6-4959-b494-69a7252d0983",
         "name": "Impossible Quiz",
         "image": "impossiblequiz.webp",
-        "openfunc": "abGame"
+        "openfunc": "abFlash"
     },
     "impossibleQuiz2": {
-        "id": "impossibleQuiz2",
+        "id": "76f50382-ceeb-47cb-8765-b24f2f88867b",
         "name": "Impossible Quiz 2",
         "image": "impossibleQuiz2.webp",
-        "openfunc": "abGame"
+        "openfunc": "abFlash"
     },
     "/infinetemario": {
         "id": "/infinetemario",
@@ -564,10 +582,10 @@ var games = {
         "openfunc": "abGame"
     },
     "jackSmith": {
-        "id": "jackSmith",
+        "id": "d0d0ea94-cb19-400a-9036-898fbd32c04a",
         "name": "Jacksmith",
         "image": "jackSmith.webp",
-        "openfunc": "abGame"
+        "openfunc": "abFlash"
     },
     "KDL": {
         "id": "KDL",
@@ -636,10 +654,10 @@ var games = {
         "openfunc": "abGame"
     },
     "motherLoad": {
-        "id": "motherLoad",
+        "id": "6f0f3d66-311b-4f1f-b3e8-32419bee0757",
         "name": "Mother Load",
         "image": "motherLoad.webp",
-        "openfunc": "abGame"
+        "openfunc": "abFlash"
     },
     "motox3m": {
         "id": "motox3m",
@@ -737,6 +755,12 @@ var games = {
         "image": "pixelCombat2.jpg",
         "openfunc": "abGame"
     },
+    "playingWithFire3": {
+        "id": "be73da89-d561-4853-87e3-3516e413efa9",
+        "name": "Playing With Fire 3",
+        "image": "playingWithFire3.jpg",
+        "openfunc": "abFlash"
+    },
     "polywar2": {
         "id": "polywar2",
         "name": "Polywar 2",
@@ -768,10 +792,10 @@ var games = {
         "openfunc": "abGame"
     },
     "raftWars": {
-        "id": "raftWars",
+        "id": "d7a186f6-e1e3-4638-a982-8de19213d7c8",
         "name": "Raft Wars",
         "image": "raftWars.webp",
-        "openfunc": "abGame"
+        "openfunc": "abFlash"
     },
     "raftWarsHtml5": {
         "id": "raftWarsHtml5",
@@ -780,10 +804,10 @@ var games = {
         "openfunc": "abGame"
     },
     "raftWars2": {
-        "id": "raftWars2",
+        "id": "2232555f-3c1f-4cd5-b464-8df450177357",
         "name": "Raft Wars 2",
         "image": "raftWars2.webp",
-        "openfunc": "abGame"
+        "openfunc": "abFlash"
     },
     "raftWars2Html5": {
         "id": "raftWars2Html5",
@@ -869,6 +893,12 @@ var games = {
         "image": "rocketSoccer.webp",
         "openfunc": "abGame"
     },
+    "rockGarden": {
+        "id": "b7f6e36d-2bc8-437a-85fb-fe622c1b622b",
+        "name": "Rock Garden",
+        "image": "rockGarden.jpg",
+        "openfunc": "abFlash"
+    },
     "rooftopSnipers": {
         "id": "rooftopSnipers",
         "name": "Rooftop Snipers",
@@ -888,10 +918,10 @@ var games = {
         "openfunc": "abGame"
     },
     "run2": {
-        "id": "run2",
+        "id": "18b79f06-a8b2-4b64-83c4-0d89937b083a",
         "name": "Run 2",
         "image": "run2.webp",
-        "openfunc": "abGame"
+        "openfunc": "abFlash"
     },
     "run3": {
         "id": "run3",
@@ -1185,7 +1215,19 @@ var games = {
         "id": "worldsHardestGame",
         "name": "World's Hardest Game",
         "image": "hardestgame.webp",
-        "openfunc": "abGame"
+        "openfunc": "abFlash"
+    },
+    "worldsHardestGame2": {
+        "id": "worldsHardestGame",
+        "name": "World's Hardest Game 2",
+        "image": "worldsHardestGame2.png",
+        "openfunc": "abFlash"
+    },
+    "worldsHardestGame3": {
+        "id": "worldsHardestGame",
+        "name": "World's Hardest Game 3",
+        "image": "worldsHardestGame3.webp",
+        "openfunc": "abFlash"
     },
     "zelda1": {
         "id": "zelda1",
