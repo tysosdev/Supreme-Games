@@ -5,8 +5,8 @@ var mobile = false;
 
 window.AudioContext = window.AudioContext || window.webkitAudioContext;
 
-const CANVAS_WIDTH = 800;
-const CANVAS_HEIGHT = 600;
+const CANVAS_WIDTH = (window.innerHeight*4)/3;
+const CANVAS_HEIGHT = window.innerHeight;
 const FPS = 40;
 const BAR_HEIGHT = 50;
 const BAR_TEXT_FIX = 10;
