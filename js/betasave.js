@@ -56,6 +56,25 @@ function getMainSave() {
     URL.revokeObjectURL(dataURL);
   }
   
+  function setDbdata(dbName, dbVersion, dbdata) {
+    const request = indexedDB.open(dbName, dbVersion);
+
+    request.onupgradeneeded = event => {
+      const database = event.target.result;
+
+      // Iterate over the data containing object store names and data
+      dbdata.forEach(({ objectStoreName, data }) => {
+        const objectStore = database.createObjectStore(objectStoreName, { keyPath: 'yourKeyPath' }); // Change 'yourKeyPath' to the actual key path for your data
+    
+        // Assuming 'data' is an array of objects you want to store
+        data.forEach(item => {
+          objectStore.add(item); // Add each item to the object store
+        });
+      });
+  }
+  }
+  
+
   function getDbdata(dbName, dbVersion) {
     const request = indexedDB.open(dbName, dbVersion);
   
@@ -112,7 +131,7 @@ function getMainSave() {
       // Parse the decrypted data as JSON
       var mainSave = JSON.parse(atob(data));
       var mainLocalStorageSave = JSON.parse(atob(mainSave.localStorage));
-      var indexedDBsave = JSON.parse(atob(mainSave.localStorage));
+      var indexedDBsave = JSON.parse(atob(mainSave.indexedDB));
       var cookiesSave = atob(mainSave.cookies);
   
       // Set the items in localStorage using the uploaded data
@@ -123,6 +142,11 @@ function getMainSave() {
       for (let item of indexedDBsave) {
         localStorage.setItem(item[0], item[1]);
       }
+
+      indexedDBsave.forEach(db => {
+        // Save the database name and version
+        setDbdata(db.name, db.version, db.data);
+      });
   
       // Set the cookies using the uploaded data
       document.cookie = cookiesSave;
