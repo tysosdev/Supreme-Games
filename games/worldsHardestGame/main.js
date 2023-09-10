@@ -95,8 +95,7 @@ function draw() {
 }
 
 function measure() {
-	canvasElement.width = (window.innerHeight*4)/3;
-			 canvasElement.height = window.innerHeight;
+	
    } 
 
 function goFullScreen() {
