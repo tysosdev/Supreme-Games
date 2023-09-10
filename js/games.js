@@ -30,10 +30,10 @@ var games = {
         "openfunc": "abGame"
     },
     "achievementUnlocked": {
-        "id": "achievementUnlocked",
+        "id": "52094fd7-fa43-49cc-8451-3d4e35d65217",
         "name": "Achievement Unlocked",
         "image": "achievementUnlocked.webp",
-        "openfunc": "abGame"
+        "openfunc": "abFlash"
     },
     "achievementUnlocked2": {
         "id": "achievementUnlocked2",
