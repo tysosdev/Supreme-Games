@@ -1211,6 +1211,12 @@ var games = {
         "image": "zombsRoyale.webp",
         "openfunc": "abGame"
     },
+    "worldsEasiestGame": {
+        "id": "76f50382-ceeb-47cb-8765-b24f2f88867b",
+        "name": "World's Easiest Game",
+        "image": "worldsEasiestGame.png",
+        "openfunc": "abFlash"
+    },
     "worldsHardestGame": {
         "id": "443392fb-5c8a-41a8-8187-428f32661917",
         "name": "World's Hardest Game",
@@ -1227,6 +1233,12 @@ var games = {
         "id": "2c74b6ed-1b55-4f38-a3aa-c14c4d7f6111",
         "name": "World's Hardest Game 3",
         "image": "worldsHardestGame3.webp",
+        "openfunc": "abFlash"
+    },
+    "worldsHardestGame4": {
+        "id": "d5b66d2f-5eab-43d4-98a3-01f368053b9c",
+        "name": "World's Hardest Game 4",
+        "image": "worldsHardestGame4.webp",
         "openfunc": "abFlash"
     },
     "zelda1": {
