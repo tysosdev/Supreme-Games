@@ -1,7 +1,7 @@
 var popGames = ["miniMetro", "Diggy", "catNinja", "gba", "motox3m", "raftWars2Html5", "impossibleQuiz2", "henryStickmanBreakingTheBank"];
 var popwGames = ["funnyShooter2", "bigTowerTinySquare", "bigIceTowerTinySquare", "gba", "motox3mSpookyLand", "raftWars", "impossibleQuiz", "henryStickmanBreakingTheBank"];
-var recGames = ["Diggy", "catNinja", "tableTanks", "learnToFly3", "achievementUnlocked2", "motox3m", "raftWarsHtml5", "impossibleQuiz2", "eaglercraft"];
-var newGames = ["emuJS", "stickRPG", "motherLoad", "clickerHeroes", "baconMayDie", "basketBallStars", "funnyShooter2", "polywar2", "raftWars2Html5", "raftWarsHtml5","pixelCombat2", "miniMetro", "bigIceTowerTinySquare", "bigTowerTinySquare", "redBall4", "redBall4Vol2", "redBall4Vol3", "shapez", "oneChance", "run3", "rooftopSnipers2", "KDL", "eaglercraft", "jackSmith", "LinksAwakening", "rooftopSnipers", "learnToFly3", "vex7", "motox3m2", "motox3m3", "motox3mPoolParty", "motox3mSpookyLand", "motox3mWinter", "picross", "picross3d", "mario1"];
+var recGames = ["superhot", "catNinja", "tableTanks", "learnToFly3", "achievementUnlocked2", "motox3m", "raftWarsHtml5", "impossibleQuiz2", "eaglercraft"];
+var newGames = ["superhot", "getawayShootout", "defendTheTank", "portalFlash", "battleForGondor", "bloxors", "worldsEasiestGame", "worldsHardestGame2", "worldsHardestGame3", "worldsHardestGame4", "gunMayhem", "gunMayhem2", "effingWormsXmas", "rockGarden", "emuJS", "stickRPG", "motherLoad", "clickerHeroes", "baconMayDie", "basketBallStars", "funnyShooter2", "polywar2", "raftWars2Html5", "raftWarsHtml5","pixelCombat2", "miniMetro", "bigIceTowerTinySquare", "bigTowerTinySquare", "redBall4", "redBall4Vol2", "redBall4Vol3", "shapez", "oneChance", "run3", "rooftopSnipers2", "KDL", "eaglercraft", "jackSmith", "LinksAwakening", "rooftopSnipers", "learnToFly3", "vex7", "motox3m2", "motox3m3", "motox3mPoolParty", "motox3mSpookyLand", "motox3mWinter", "picross", "picross3d", "mario1"];
 var games;
 var api = "https://api." + location.hostname + ":3000";
 var socket;
@@ -9,10 +9,8 @@ var searchSuggestionFocus = false;
 if(window.self == window.top){
     var a = window.open("about:blank", "_blank");
     if(a != null){
-        a.addEventListener("DOMContentLoaded", function () {
         a.document.documentElement.innerHTML = '<!DOCTYPE html><html><title>Classes</title><link rel="icon" type="image/png" href="https://ssl.gstatic.com/classroom/favicon.png"><style>body {margin: 0;}</style><body onload=' + "'" + 'document.getElementsByTagName("iframe")[0].focus();' + "'" + '><iframe style="height:100%; width:100%; top:0px; left:0; position:absolute;  z-index:1;" src="https://' + window.location.hostname + '" frameborder="0"></iframe></body></html>';
         window.location.replace("https://classroom.google.com/");
-        });
     }
 }
  //show discord popup
@@ -76,10 +74,10 @@ function addGamesFromList(list, gameType) {
         //if it is on sccreen
         if (index < 6) {
             //add the game with all the info and no extra properties
-            addgame(gameType, gameInfo.id, gameInfo.name, gameInfo.image, "");
+            addgame(gameType, gameInfo.id, gameInfo.name, gameInfo.image, "", gameInfo.openfunc);
         } else {
             //add the game with all the info and lazy loading
-            addgame(gameType, gameInfo.id, gameInfo.name, gameInfo.image, 'loading="lazy"');
+            addgame(gameType, gameInfo.id, gameInfo.name, gameInfo.image, 'loading="lazy"', gameInfo.openfunc);
         }
     });
     /* old method(no index)
@@ -114,18 +112,13 @@ function opendiscrod() {
 }
 async function abGame(gameid) {
         var a = window.open("about:blank", "_blank");
-        a.addEventListener("DOMContentLoaded", function () {
-
         a.document.documentElement.innerHTML = '<!DOCTYPE html><html><title>Classes</title><link rel="icon" type="image/png" href="https://ssl.gstatic.com/classroom/favicon.png"><style>body,html{margin:0;overflow:hidden}</style><body onload=' + "'" + 'document.getElementsByTagName("iframe")[0].focus();' + "'" + '><iframe style="height:100%;width:100%;border:0;top:0px;left:0;position:absolute;z-index:1;overflow:hidden" src="https://' + window.location.hostname + '/games/' + gameid + '/index.html" sandbox="allow-forms allow-modals allow-orientation-lock allow-pointer-lock allow-presentation allow-scripts allow-downloads allow-same-origin" loading="eager" allowfullscreen allowpaymentrequest></iframe></body></html>';
         socket.emit('game', gameid);    
-        });
 }
 async function abFlash(gameid) {
     var a = window.open("about:blank", "_blank");
-    a.addEventListener("DOMContentLoaded", function () {
-    a.document.documentElement.innerHTML = '<!DOCTYPE html><html><title>Classes</title><link rel="icon" type="image/png" href="https://ssl.gstatic.com/classroom/favicon.png"><style>body,html{margin:0;overflow:hidden}</style><body onload=' + "'" + 'document.getElementsByTagName("iframe")[0].focus();' + "'" + '><iframe style="height:100%;width:100%;border:0;top:0px;left:0;position:absolute;z-index:1;overflow:hidden" src="https://' + window.location.hostname + '/DFL/?n=' + gameid + '/index.html" sandbox="allow-forms allow-modals allow-orientation-lock allow-pointer-lock allow-presentation allow-scripts allow-downloads allow-same-origin" loading="eager" allowfullscreen allowpaymentrequest></iframe></body></html>';
+    a.document.documentElement.innerHTML = '<!DOCTYPE html><html><title>Classes</title><link rel="icon" type="image/png" href="https://ssl.gstatic.com/classroom/favicon.png"><style>body,html{margin:0;overflow:hidden}</style><body onload=' + "'" + 'document.getElementsByTagName("iframe")[0].focus();' + "'" + '><iframe style="height:100%;width:100%;border:0;top:0px;left:0;position:absolute;z-index:1;overflow:hidden" src="https://' + window.location.hostname + '/dfl/?f=' + gameid + '" sandbox="allow-forms allow-modals allow-orientation-lock allow-pointer-lock allow-presentation allow-scripts allow-downloads allow-same-origin" loading="eager" allowfullscreen allowpaymentrequest></iframe></body></html>';
     socket.emit('game', gameid);    
-    });
 }
 function addgame(sectionid, gameid, gamename, img, properties, func) {
     document.getElementById(sectionid).innerHTML += '<div class="game" onclick="' + func + '(' + "'" + gameid + "'" + ')"><img class="gimg" alt="' + gamename + '" ' + properties + 'src="/images/' + img + '"><div class="gradient"></div><h class="text">' + gamename + '</h></div>'
@@ -142,8 +135,13 @@ searchbar.addEventListener("keypress", function (event) {
         let done = 0;
         for (const [useless, game] of Object.entries(games)) {
             if (game.name.toLowerCase().includes(input) && done == 0 && game.id.startsWith("/") == false) {
-                aboutBlank(game.id);
+                if(game.openfunc == "abFlash"){
+                    abFlash(game.id);
+                    done = 1;
+                }else{
+                    abGame(game.id);
                 done = 1;
+                }
             }
         }
     }
@@ -157,9 +155,9 @@ function liveSearch() {
             if (game.name.toLowerCase().includes(input) && game.id.startsWith("/") == false) {
                 //add sugjestions
                 if (searchSuggestions.innerHTML == "") {
-                    searchSuggestions.innerHTML += '<div onclick="aboutBlank(' + "'" + game.id + "'" + ')" style="    background-color: rgba(255, 255, 255, 0.05);background-image:url(' + "'/images/" + game.image + "'" + ');" id="searchSuggestion">' + game.name + '</div>'
+                    searchSuggestions.innerHTML += '<div onclick="' + game.openfunc + '(' + "'" + game.id + "'" + ')" style="    background-color: rgba(255, 255, 255, 0.05);background-image:url(' + "'/images/" + game.image + "'" + ');" id="searchSuggestion">' + game.name + '</div>'
                 } else {
-                    searchSuggestions.innerHTML += '<div onclick="aboutBlank(' + "'" + game.id + "'" + ')" style="background-image:url(' + "'/images/" + game.image + "'" + ');" id="searchSuggestion">' + game.name + '</div>'
+                    searchSuggestions.innerHTML += '<div onclick="' + game.openfunc + '(' + "'" + game.id + "'" + ')" style="background-image:url(' + "'/images/" + game.image + "'" + ');" id="searchSuggestion">' + game.name + '</div>'
                 }
             }
         }
