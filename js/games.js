@@ -1,3 +1,11 @@
+/*
+    "getawayShootout": { //internal name, used with popgames and server for popular games(no server anymore)
+        "id": "getawayShootout", //id passed to the openfunc, for abflash it is the swf id, for abgame its the folder name in games
+        "name": "Getaway Shootout", //name shown to users
+        "image": "getawayShootout.jpg", //image shown to users in /images
+        "openfunc": "abGame" //open function, currently only abgame(for games in /games) and abflash(for dfl)
+    },
+*/
 var games = {
     "2048": {
         "id": "2048",
@@ -335,13 +343,19 @@ var games = {
         "image": "customtetris.webp",
         "openfunc": "abGame"
     },
+    "defendTheTank": {
+        "id": "defendTheTank",
+        "name": "Defend The Tank",
+        "image": "defendTheTank.jpg",
+        "openfunc": "abGame"
+    },
     "dkc1": {
         "id": "dkc1",
         "name": "Donkey Kong Country",
         "image": "dkc1.webp",
         "openfunc": "abGame"
     },
-    "dck2": {
+    "dkc2": {
         "id": "dck2",
         "name": "Donkey Kong Country 2",
         "image": "dkc2.webp",
@@ -489,6 +503,12 @@ var games = {
         "id": "gba",
         "name": "Gameboy Advance Emulator",
         "image": "gba.webp",
+        "openfunc": "abGame"
+    },
+    "getawayShootout": {
+        "id": "getawayShootout",
+        "name": "Getaway Shootout",
+        "image": "getawayShootout.jpg",
         "openfunc": "abGame"
     },
     "goldMiner": {
@@ -999,6 +1019,12 @@ var games = {
         "id": "mario1",
         "name": "Super Mario Bros. (NES)",
         "image": "mario1.webp",
+        "openfunc": "abGame"
+    },
+    "superhot": {
+        "id": "superhot",
+        "name": "Superhot",
+        "image": "superhot.avif",
         "openfunc": "abGame"
     },
     "superMarioRPG": {
