@@ -564,13 +564,13 @@ var games = {
         "openfunc": "abGame"
     },
     "impossibleQuiz": {
-        "id": "c11da9f0-dcf6-4959-b494-69a7252d0983",
+        "id": "18b79f06-a8b2-4b64-83c4-0d89937b083a",
         "name": "Impossible Quiz",
         "image": "impossiblequiz.webp",
         "openfunc": "abFlash"
     },
     "impossibleQuiz2": {
-        "id": "76f50382-ceeb-47cb-8765-b24f2f88867b",
+        "id": "c11da9f0-dcf6-4959-b494-69a7252d0983",
         "name": "Impossible Quiz 2",
         "image": "impossibleQuiz2.webp",
         "openfunc": "abFlash"
@@ -756,7 +756,7 @@ var games = {
         "openfunc": "abGame"
     },
     "playingWithFire3": {
-        "id": "be73da89-d561-4853-87e3-3516e413efa9",
+        "id": "547cdd6d-d78a-4e6c-b2e4-6d846adeeb22",
         "name": "Playing With Fire 3",
         "image": "playingWithFire3.jpg",
         "openfunc": "abFlash"
@@ -792,7 +792,7 @@ var games = {
         "openfunc": "abGame"
     },
     "raftWars": {
-        "id": "d7a186f6-e1e3-4638-a982-8de19213d7c8",
+        "id": "be73da89-d561-4853-87e3-3516e413efa9",
         "name": "Raft Wars",
         "image": "raftWars.webp",
         "openfunc": "abFlash"
@@ -804,7 +804,7 @@ var games = {
         "openfunc": "abGame"
     },
     "raftWars2": {
-        "id": "2232555f-3c1f-4cd5-b464-8df450177357",
+        "id": "d7a186f6-e1e3-4638-a982-8de19213d7c8",
         "name": "Raft Wars 2",
         "image": "raftWars2.webp",
         "openfunc": "abFlash"
@@ -894,7 +894,7 @@ var games = {
         "openfunc": "abGame"
     },
     "rockGarden": {
-        "id": "b7f6e36d-2bc8-437a-85fb-fe622c1b622b",
+        "id": "2232555f-3c1f-4cd5-b464-8df450177357",
         "name": "Rock Garden",
         "image": "rockGarden.jpg",
         "openfunc": "abFlash"
@@ -918,7 +918,7 @@ var games = {
         "openfunc": "abGame"
     },
     "run2": {
-        "id": "18b79f06-a8b2-4b64-83c4-0d89937b083a",
+        "id": "b7f6e36d-2bc8-437a-85fb-fe622c1b622b",
         "name": "Run 2",
         "image": "run2.webp",
         "openfunc": "abFlash"
@@ -1212,19 +1212,19 @@ var games = {
         "openfunc": "abGame"
     },
     "worldsHardestGame": {
-        "id": "4e1ce5a8-3283-4397-aac4-0f097ea39c9a",
+        "id": "443392fb-5c8a-41a8-8187-428f32661917",
         "name": "World's Hardest Game",
         "image": "hardestgame.webp",
         "openfunc": "abFlash"
     },
     "worldsHardestGame2": {
-        "id": "2c74b6ed-1b55-4f38-a3aa-c14c4d7f6111",
+        "id": "4e1ce5a8-3283-4397-aac4-0f097ea39c9a",
         "name": "World's Hardest Game 2",
         "image": "worldsHardestGame2.png",
         "openfunc": "abFlash"
     },
     "worldsHardestGame3": {
-        "id": "d5b66d2f-5eab-43d4-98a3-01f368053b9c",
+        "id": "2c74b6ed-1b55-4f38-a3aa-c14c4d7f6111",
         "name": "World's Hardest Game 3",
         "image": "worldsHardestGame3.webp",
         "openfunc": "abFlash"
