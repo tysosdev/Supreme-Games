@@ -142,8 +142,13 @@ searchbar.addEventListener("keypress", function (event) {
         let done = 0;
         for (const [useless, game] of Object.entries(games)) {
             if (game.name.toLowerCase().includes(input) && done == 0 && game.id.startsWith("/") == false) {
-                aboutBlank(game.id);
+                if(game.openfunc == "abFlash"){
+                    abFlash(game.id);
+                    done = 1;
+                }else{
+                    abGame(game.id);
                 done = 1;
+                }
             }
         }
     }
