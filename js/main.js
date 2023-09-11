@@ -76,10 +76,10 @@ function addGamesFromList(list, gameType) {
         //if it is on sccreen
         if (index < 6) {
             //add the game with all the info and no extra properties
-            addgame(gameType, gameInfo.id, gameInfo.name, gameInfo.image, "");
+            addgame(gameType, gameInfo.id, gameInfo.name, gameInfo.image, "", gameInfo.openfunc);
         } else {
             //add the game with all the info and lazy loading
-            addgame(gameType, gameInfo.id, gameInfo.name, gameInfo.image, 'loading="lazy"');
+            addgame(gameType, gameInfo.id, gameInfo.name, gameInfo.image, 'loading="lazy"', gameInfo.openfunc);
         }
     });
     /* old method(no index)
