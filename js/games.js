@@ -149,11 +149,17 @@ var games = {
         "image": "basketbros.webp",
         "openfunc": "abGame"
     },
-    "battlePanic": {
+    "/battlePanic": {
         "id": "battlePanic",
         "name": "Battle Panic",
         "image": "battlePanic.webp",
         "openfunc": "abGame"
+    },
+    "battleForGondor": {
+        "id": "be129404-4e7f-4392-b2cf-e4a36508f80f",
+        "name": "Battle For Gondor",
+        "image": "battleForGondor.webp",
+        "openfunc": "abFlash"
     },
     "bigTowerTinySquare": {
         "id": "bigTowerTinySquare",
@@ -191,10 +197,16 @@ var games = {
         "image": "bloonsTowerDefense4.webp",
         "openfunc": "abFlash"
     },
-    "bloonsTowerDefense5": {
+    "/bloonsTowerDefense5": {
         "id": "248ff449-1e17-4e9a-a6b6-103cbc161525",
         "name": "Bloons Tower Defense 5",
         "image": "bloonsTowerDefense5.avif",
+        "openfunc": "abFlash"
+    },
+    "bloxors": {
+        "id": "c85d7311-ed14-4001-b54c-b870ec24bd26",
+        "name": "Bloxors",
+        "image": "bloxors.jpg",
         "openfunc": "abFlash"
     },
     "blue": {
@@ -778,6 +790,12 @@ var games = {
         "name": "Poom",
         "image": "poom.webp",
         "openfunc": "abGame"
+    },
+    "portalFlash": {
+        "id": "4fc452ba-aae6-4a11-aec7-16aaef520dec",
+        "name": "Portal Flash",
+        "image": "portalFlash.webp",
+        "openfunc": "abFlash"
     },
     "powderGame": {
         "id": "powderGame",
