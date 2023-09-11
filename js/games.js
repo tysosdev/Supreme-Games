@@ -1212,19 +1212,19 @@ var games = {
         "openfunc": "abGame"
     },
     "worldsHardestGame": {
-        "id": "worldsHardestGame",
+        "id": "4e1ce5a8-3283-4397-aac4-0f097ea39c9a",
         "name": "World's Hardest Game",
         "image": "hardestgame.webp",
         "openfunc": "abFlash"
     },
     "worldsHardestGame2": {
-        "id": "worldsHardestGame",
+        "id": "2c74b6ed-1b55-4f38-a3aa-c14c4d7f6111",
         "name": "World's Hardest Game 2",
         "image": "worldsHardestGame2.png",
         "openfunc": "abFlash"
     },
     "worldsHardestGame3": {
-        "id": "worldsHardestGame",
+        "id": "d5b66d2f-5eab-43d4-98a3-01f368053b9c",
         "name": "World's Hardest Game 3",
         "image": "worldsHardestGame3.webp",
         "openfunc": "abFlash"
