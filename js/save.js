@@ -1,7 +1,7 @@
-function getMainSave() {
+async function getMainSave() {
   var mainSave = {};
   // List of items in localStorage that should not be saved
-  var localStorageDontSave = ['discord', 'tab', 'nebelung'];
+  var localStorageDontSave = ['discord'];
 
   // Convert localStorage to an array of key-value pairs and remove the items that should not be saved
   var localStorageSave = Object.entries(localStorage);
@@ -14,13 +14,15 @@ function getMainSave() {
 
   // Convert the localStorage array to a base64-encoded JSON string
   localStorageSave = btoa(JSON.stringify(localStorageSave));
+  //indexedDB stuff
   var indexedDBsave = new Array();
-    indexedDB.databases().then(dbs => {
+  await indexedDB.databases().then(dbs => {
     dbs.forEach(db => {
       // Save the database name and version
-      indexedDBsave.push({name: db.name, ver: db.version, data: getDbdata(db.name, db.version)});
+      var data = getDbdata(db.name, db.version);
+      indexedDBsave.push({name: db.name, ver: db.version, data: data});
     });
-    
+
   });
 
   // Convert the indexedDB array to a base64-encoded JSON string
@@ -45,8 +47,8 @@ function getMainSave() {
 }
 
 // Function to download the main save data as a file
-function downloadMainSave() {
-  var data = new Blob([getMainSave()]);
+async function downloadMainSave() {
+  var data = new Blob([await getMainSave()]);
   var dataURL = URL.createObjectURL(data);
 
   var fakeElement = document.createElement('a');
