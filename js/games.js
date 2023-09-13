@@ -551,7 +551,7 @@ var games = {
         "id": "bad18f6a-5773-4e3a-8f12-91574aa1b3a4",
         "name": "Gold Miner",
         "image": "goldMiner.webp",
-        "openfunc": "abGame"
+        "openfunc": "abFlash"
     },
     "/grindcraft": {
         "id": "/grindcraft",
@@ -593,31 +593,31 @@ var games = {
         "id": "d897a413-ced0-4319-9862-e738d64b5aee",
         "name": "Breaking The Bank",
         "image": "henryStickmanBreakingTheBank.webp",
-        "openfunc": "abGame"
+        "openfunc": "abFlash"
     },
     "henryStickmanEscapingThePrison": {
         "id": "2087b2c2-a392-4ceb-a07a-17e6cde7bdf9",
         "name": "Escaping The Prison",
         "image": "henryStickmanEscapingThePrison.webp",
-        "openfunc": "abGame"
+        "openfunc": "abFlash"
     },
     "henryStickmanFleeingTheCompex": {
         "id": "d7689e09-90b2-4026-943c-227313c2277a",
         "name": "Fleeing The Compex",
         "image": "henryStickmanFleeingTheCompex.webp",
-        "openfunc": "abGame"
+        "openfunc": "abFlash"
     },
     "henryStickmanInfiltratingTheAirship": {
         "id": "35a3118a-de81-49a3-b63d-40afd8c7d694",
         "name": "Infiltrating The Airship",
         "image": "henryStickmanInfiltratingTheAirship.webp",
-        "openfunc": "abGame"
+        "openfunc": "abFlash"
     },
     "henryStickmanStealingTheDiamond": {
         "id": "a38038fb-51d6-4118-9202-c40c0f132c82",
         "name": "Stealing The Diamond",
         "image": "henryStickmanStealingTheDiamond.webp",
-        "openfunc": "abGame"
+        "openfunc": "abFlash"
     },
     "hexgl": {
         "id": "hexgl",
@@ -671,19 +671,19 @@ var games = {
         "id": "23304124-ea3a-4b89-98d2-d1802fd49c9a",
         "name": "Learn To Fly",
         "image": "learnToFly.webp",
-        "openfunc": "abGame"
+        "openfunc": "abFlash"
     },
     "learnToFly2": {
         "id": "89b60ee6-d9ff-4fd0-b38a-d207d5c7c902",
         "name": "Learn To Fly 2",
         "image": "learnToFly2.webp",
-        "openfunc": "abGame"
+        "openfunc": "abFlash"
     },
     "learnToFly3": {
         "id": "0e1b0de8-8ab5-4a03-acfc-c8cf320e49df",
         "name": "Learn To Fly 3",
         "image": "learnToFly3.webp",
-        "openfunc": "abGame"
+        "openfunc": "abFlash"
     },
     "littleAlchemy": {
         "id": "littleAlchemy",
@@ -905,19 +905,19 @@ var games = {
         "id": "9c6323ca-7074-42a4-a881-bfebd269db36",
         "name": "Red Ball 4",
         "image": "redBall4.webp",
-        "openfunc": "abGame"
+        "openfunc": "abFlash"
     },
     "redBall4Vol2": {
         "id": "777efba8-38b1-440f-a092-8d0c4d230ed5",
         "name": "Red Ball 4 Volume 2",
         "image": "redBall4Vol2.webp",
-        "openfunc": "abGame"
+        "openfunc": "abFlash"
     },
     "redBall4Vol3": {
         "id": "f6516a02-194f-4116-9c7f-7ce100409f4d",
         "name": "Red Ball 4 Volume 3",
         "image": "redBall4Vol3.webp",
-        "openfunc": "abGame"
+        "openfunc": "abFlash"
     },
     "retroBowl": {
         "id": "retroBowl",
