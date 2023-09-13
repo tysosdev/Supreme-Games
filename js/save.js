@@ -14,13 +14,13 @@ function getMainSave() {
 
   // Convert the localStorage array to a base64-encoded JSON string
   localStorageSave = btoa(JSON.stringify(localStorageSave));
-  var indexedDBsave = [];
-  indexedDB.databases().then(dbs => {
+  var indexedDBsave = new Array();
+    indexedDB.databases().then(dbs => {
     dbs.forEach(db => {
       // Save the database name and version
       indexedDBsave.push({name: db.name, ver: db.version, data: getDbdata(db.name, db.version)});
-
     });
+    
   });
 
   // Convert the indexedDB array to a base64-encoded JSON string
