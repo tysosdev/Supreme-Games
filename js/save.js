@@ -13,7 +13,7 @@ async function getMainSave() {
   }
 
   // Convert the localStorage array to a base64-encoded JSON string
-  localStorageSave = btoa(JSON.stringify(localStorageSave));
+  localStorageSave = JSON.stringify(localStorageSave);
   //indexedDB stuff
   var indexedDBsave = new Array();
   await indexedDB.databases().then(dbs => {
@@ -26,17 +26,17 @@ async function getMainSave() {
   });
 
   // Convert the indexedDB array to a base64-encoded JSON string
-  indexedDBsave = btoa(JSON.stringify(indexedDBsave));
+  indexedDBsave = JSON.stringify(indexedDBsave);
 
   // Add the localStorage data to the mainSave object
   mainSave.localStorage = localStorageSave;
 
   // Add the indexedDB data to the mainSave object
   mainSave.indexedDB = indexedDBsave;
-
+  
   // Get the cookies data and add it to the mainSave object
   cookiesSave = document.cookie;
-  cookiesSave = btoa(cookiesSave);
+  cookiesSave = cookiesSave;
   mainSave.cookies = cookiesSave;
 
   // Convert the mainSave object to a base64-encoded JSON string
@@ -132,9 +132,9 @@ function getMainSaveFromUpload(data) {
     // Decrypt the uploaded data using AES decryption with the key 'save'
     // Parse the decrypted data as JSON
     var mainSave = JSON.parse(atob(data));
-    var mainLocalStorageSave = JSON.parse(atob(mainSave.localStorage));
-    var indexedDBsave = JSON.parse(atob(mainSave.indexedDB));
-    var cookiesSave = atob(mainSave.cookies);
+    var mainLocalStorageSave = JSON.parse(mainSave.localStorage);
+    var indexedDBsave = JSON.parse(mainSave.indexedDB);
+    var cookiesSave = mainSave.cookies;
 
     // Set the items in localStorage using the uploaded data
     for (let item of mainLocalStorageSave) {
