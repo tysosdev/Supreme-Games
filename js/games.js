@@ -680,10 +680,10 @@ var games = {
         "openfunc": "abFlash"
     },
     "learnToFly3": {
-        "id": "0e1b0de8-8ab5-4a03-acfc-c8cf320e49df",
+        "id": "learnToFly3",
         "name": "Learn To Fly 3",
         "image": "learnToFly3.webp",
-        "openfunc": "abFlash"
+        "openfunc": "abGame"
     },
     "littleAlchemy": {
         "id": "littleAlchemy",
