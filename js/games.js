@@ -61,6 +61,12 @@ var games = {
         "image": "alienhominid.webp",
         "openfunc": "abFlash"
     },
+    "ageOfWar": {
+        "id": "0263502f-5df3-4f42-a0b9-28744ed94a90",
+        "name": "Age of War",
+        "image": "ageOfWar.webp",
+        "openfunc": "abFlash"
+    },
     "amidstthesky": {
         "id": "amidstthesky",
         "name": "Amidst the Sky",
@@ -74,10 +80,10 @@ var games = {
         "openfunc": "abGame"
     },
     "animatorvsanimation": {
-        "id": "animatorvsanimation",
+        "id": "c5bfef40-582e-4b81-9070-0c406a32e0d1",
         "name": "Animator vs Animation",
         "image": "animatorvsanimation.webp",
-        "openfunc": "abGame"
+        "openfunc": "abFlash"
     },
     "asteroids": {
         "id": "asteroids",
@@ -91,17 +97,17 @@ var games = {
         "image": "astray.webp",
         "openfunc": "abGame"
     },
-    "awesomeCars": {
-        "id": "awesomeCars",
+    "/awesomeCars": {
+        "id": "/362ab9ff-8a38-4d4d-9d92-f8f2e5c9d2ae",
         "name": "Awesome Cars",
         "image": "awesomeCars.webp",
-        "openfunc": "abGame"
+        "openfunc": "abFlash"
     },
     "awesomePirates": {
-        "id": "awesomePirates",
+        "id": "63d9c576-4d36-432e-a67f-9b11b3ec98f7",
         "name": "Awesome Pirates",
         "image": "awesomePirates.webp",
-        "openfunc": "abGame"
+        "openfunc": "abFlassh"
     },
     "awesomePlanes": {
         "id": "f34d528a-b100-425f-a52e-3cccca84b3e8",
@@ -110,16 +116,16 @@ var games = {
         "openfunc": "abFlash"
     },
     "awesomeTanks": {
-        "id": "awesomeTanks",
+        "id": "c0f70621-f8f6-4bc7-9e41-981179250e11",
         "name": "Awesome Tanks",
         "image": "awesomeTanks.webp",
-        "openfunc": "abGame"
+        "openfunc": "abFlash"
     },
     "awesomeTanks2": {
-        "id": "awesomeTanks2",
+        "id": "f1e76802-edce-4204-a14b-29e728a5bb87",
         "name": "Awesome Tanks2",
         "image": "awesomeTanks2.webp",
-        "openfunc": "abGame"
+        "openfunc": "abFlash"
     },
     "baconMayDie": {
         "id": "baconMayDie",
@@ -158,10 +164,10 @@ var games = {
         "openfunc": "abGame"
     },
     "/battlePanic": {
-        "id": "battlePanic",
+        "id": "/6948323f-0df3-4aff-a897-c4be34788d6d",
         "name": "Battle Panic",
         "image": "battlePanic.webp",
-        "openfunc": "abGame"
+        "openfunc": "abFlash"
     },
     "battleForGondor": {
         "id": "be129404-4e7f-4392-b2cf-e4a36508f80f",
@@ -206,7 +212,7 @@ var games = {
         "openfunc": "abFlash"
     },
     "/bloonsTowerDefense5": {
-        "id": "248ff449-1e17-4e9a-a6b6-103cbc161525",
+        "id": "/248ff449-1e17-4e9a-a6b6-103cbc161525",
         "name": "Bloons Tower Defense 5",
         "image": "bloonsTowerDefense5.avif",
         "openfunc": "abFlash"
@@ -926,46 +932,46 @@ var games = {
         "openfunc": "abGame"
     },
     "riddleSchool": {
-        "id": "riddleSchool",
+        "id": "3c5d471f-4c19-459f-be5f-8ea25fd605c4",
         "name": "Riddle Shool",
         "image": "riddleschool.webp",
-        "openfunc": "abGame"
+        "openfunc": "abFlash"
     },
     "riddleSchool2": {
-        "id": "riddleSchool2",
+        "id": "46f2c0a6-31f4-411d-acc3-2e2934a9c780",
         "name": "Riddle School 2",
         "image": "riddleschool2.webp",
-        "openfunc": "abGame"
+        "openfunc": "abFlash"
     },
     "riddleSchool3": {
-        "id": "riddleSchool3",
+        "id": "4ce71588-9ccf-4091-be9f-f20ac3763e20",
         "name": "Riddle School 3",
         "image": "riddleschool3.webp",
-        "openfunc": "abGame"
+        "openfunc": "abFlash"
     },
     "riddleSchool4": {
-        "id": "riddleSchool4",
+        "id": "fa59feed-f6f3-4bb0-801d-ec6311e53166",
         "name": "Riddle School 4",
         "image": "riddleschool4.webp",
-        "openfunc": "abGame"
+        "openfunc": "abFlash"
     },
     "riddleSchool5": {
-        "id": "riddleSchool5",
+        "id": "riddleca2959af-5bb3-4f9d-82d0-469d0c7ba88fSchool5",
         "name": "Riddle School 5",
         "image": "riddleschool5.webp",
-        "openfunc": "abGame"
+        "openfunc": "abFlash"
     },
     "riddleTransfer": {
-        "id": "riddleTransfer",
+        "id": "6a706b4d-3bee-45be-93b7-e764015b3369",
         "name": "Riddle Transfer",
         "image": "riddletransfer.webp",
-        "openfunc": "abGame"
+        "openfunc": "abFlash"
     },
     "riddleTransfer2": {
-        "id": "riddleTransfer2",
+        "id": "d12116e9-55a8-4671-88cc-bfc5473ee66b",
         "name": "Riddle Transfer 2",
         "image": "riddletransfer2.webp",
-        "openfunc": "abGame"
+        "openfunc": "abFlash"
     },
     "rocketSoccer": {
         "id": "rocketSoccer",
@@ -1202,10 +1208,10 @@ var games = {
         "openfunc": "abGame"
     },
     "tossTheTurtle": {
-        "id": "tossTheTurtle",
+        "id": "72d6fe01-c6fc-46e8-8595-1d9a36eb0be0",
         "name": "Toss The Turtle",
         "image": "tossTheTurtle.webp",
-        "openfunc": "abGame"
+        "openfunc": "abFlash"
     },
     "typewriter": {
         "id": "typewriter",
