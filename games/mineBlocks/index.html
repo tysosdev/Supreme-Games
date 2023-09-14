@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' blob: data: mineblocks.com/1/scripts/getSkins mineblocks.com/1/skins/">
+    <meta name="referrer" content="no-referrer" />
 	<meta charset="utf-8">
-
+	
 	<title>Mine Blocks</title>
 	
 	<meta id="viewport" name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
@@ -31,9 +33,7 @@
         window.addEventListener("wheel", function(e){e.preventDefault();}, {passive: false} );
         
         var errorNum = 0;
-        window.onerror = function(message, source, lineno, colno, error) {
-           
-        };
+        window.onerror = function(message, source, lineno, colno, error) {};
 	</script>
 
 	<style>
@@ -45,6 +45,7 @@
 	</style>
 </head>
 <body>
+    <div id="ad_placeholder" style="width:0;height:0;display:none"></div>
 	<div id="content"></div>
 	<div id="warningPopupWrapper"><div id="warningPopup">
         <div style="padding-bottom:2px;font-weight:bold">Oh no! "Hardware Acceleration" is off.</div>
