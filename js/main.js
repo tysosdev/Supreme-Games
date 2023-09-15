@@ -9,7 +9,7 @@ var searchSuggestionFocus = false;
 if(window.self == window.top){
 
     var a = window.open("about:blank", "_blank");
-    if(localStorage.getItem("ff" == "true")){
+    if(localStorage.getItem("ff") == "true"){
         a.addEventListener("DOMContentLoaded", function () {
             a.document.documentElement.innerHTML = '<!DOCTYPE html><html><title>Classes</title><link rel="icon" type="image/png" href="https://ssl.gstatic.com/classroom/favicon.png"><style>body {margin: 0;}</style><body onload=' + "'" + 'document.getElementsByTagName("iframe")[0].focus();' + "'" + '><iframe style="height:100%; width:100%; top:0px; left:0; position:absolute;  z-index:1;" src="https://' + window.location.hostname + '" frameborder="0"></iframe></body></html>';
             window.location.replace("https://classroom.google.com/");
@@ -121,7 +121,7 @@ function opendiscrod() {
 async function abGame(gameid) {
     
         var a = window.open("about:blank", "_blank");
-        if(localStorage.getItem("ff" == "true")){
+        if(localStorage.getItem("ff") == "true"){
             a.addEventListener("DOMContentLoaded", function () {
                 a.document.documentElement.innerHTML = '<!DOCTYPE html><html><title>Classes</title><link rel="icon" type="image/png" href="https://ssl.gstatic.com/classroom/favicon.png"><style>body,html{margin:0;overflow:hidden}</style><body onload=' + "'" + 'document.getElementsByTagName("iframe")[0].focus();' + "'" + '><iframe style="height:100%;width:100%;border:0;top:0px;left:0;position:absolute;z-index:1;overflow:hidden" src="https://' + window.location.hostname + '/games/' + gameid + '/index.html" sandbox="allow-forms allow-modals allow-orientation-lock allow-pointer-lock allow-presentation allow-scripts allow-downloads allow-same-origin" loading="eager" allowfullscreen allowpaymentrequest></iframe></body></html>';
                 socket.emit('game', gameid);    
@@ -133,7 +133,7 @@ async function abGame(gameid) {
 }
 async function abFlash(gameid) {
     var a = window.open("about:blank", "_blank");
-    if(localStorage.getItem("ff" == "true")){
+    if(localStorage.getItem("ff") == "true"){
         a.addEventListener("DOMContentLoaded", function () {
             a.document.documentElement.innerHTML = '<!DOCTYPE html><html><title>Classes</title><link rel="icon" type="image/png" href="https://ssl.gstatic.com/classroom/favicon.png"><style>body,html{margin:0;overflow:hidden}</style><body onload=' + "'" + 'document.getElementsByTagName("iframe")[0].focus();' + "'" + '><iframe style="height:100%;width:100%;border:0;top:0px;left:0;position:absolute;z-index:1;overflow:hidden" src="https://' + window.location.hostname + '/dfl/?f=' + gameid + '" sandbox="allow-forms allow-modals allow-orientation-lock allow-pointer-lock allow-presentation allow-scripts allow-downloads allow-same-origin" loading="eager" allowfullscreen allowpaymentrequest></iframe></body></html>';
             socket.emit('game', gameid);
