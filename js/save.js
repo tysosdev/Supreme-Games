@@ -1,7 +1,7 @@
-function getMainSave() {
+async function getMainSave() {
   var mainSave = {};
   // List of items in localStorage that should not be saved
-  var localStorageDontSave = ['discord', 'tab', 'nebelung'];
+  var localStorageDontSave = ['discord'];
 
   // Convert localStorage to an array of key-value pairs and remove the items that should not be saved
   var localStorageSave = Object.entries(localStorage);
@@ -13,28 +13,30 @@ function getMainSave() {
   }
 
   // Convert the localStorage array to a base64-encoded JSON string
-  localStorageSave = btoa(JSON.stringify(localStorageSave));
-  var indexedDBsave = [];
-  indexedDB.databases().then(dbs => {
+  localStorageSave = JSON.stringify(localStorageSave);
+  //indexedDB stuff
+  var indexedDBsave = new Array();
+  await indexedDB.databases().then(dbs => {
     dbs.forEach(db => {
       // Save the database name and version
-      indexedDBsave.push({name: db.name, ver: db.version, data: getDbdata(db.name, db.version)});
-
+      var data = getDbdata(db.name, db.version);
+      indexedDBsave.push({name: db.name, ver: db.version, data: data});
     });
+
   });
 
   // Convert the indexedDB array to a base64-encoded JSON string
-  indexedDBsave = btoa(JSON.stringify(indexedDBsave));
+  indexedDBsave = JSON.stringify(indexedDBsave);
 
   // Add the localStorage data to the mainSave object
   mainSave.localStorage = localStorageSave;
 
   // Add the indexedDB data to the mainSave object
   mainSave.indexedDB = indexedDBsave;
-
+  
   // Get the cookies data and add it to the mainSave object
   cookiesSave = document.cookie;
-  cookiesSave = btoa(cookiesSave);
+  cookiesSave = cookiesSave;
   mainSave.cookies = cookiesSave;
 
   // Convert the mainSave object to a base64-encoded JSON string
@@ -45,8 +47,8 @@ function getMainSave() {
 }
 
 // Function to download the main save data as a file
-function downloadMainSave() {
-  var data = new Blob([getMainSave()]);
+async function downloadMainSave() {
+  var data = new Blob([await getMainSave()]);
   var dataURL = URL.createObjectURL(data);
 
   var fakeElement = document.createElement('a');
@@ -130,9 +132,9 @@ function getMainSaveFromUpload(data) {
     // Decrypt the uploaded data using AES decryption with the key 'save'
     // Parse the decrypted data as JSON
     var mainSave = JSON.parse(atob(data));
-    var mainLocalStorageSave = JSON.parse(atob(mainSave.localStorage));
-    var indexedDBsave = JSON.parse(atob(mainSave.indexedDB));
-    var cookiesSave = atob(mainSave.cookies);
+    var mainLocalStorageSave = JSON.parse(mainSave.localStorage);
+    var indexedDBsave = JSON.parse(mainSave.indexedDB);
+    var cookiesSave = mainSave.cookies;
 
     // Set the items in localStorage using the uploaded data
     for (let item of mainLocalStorageSave) {
