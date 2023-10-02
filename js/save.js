@@ -66,15 +66,20 @@ function setDbdata(dbName, dbVersion, dbdata) {
 
     // Iterate over the data containing object store names and data
     dbdata.forEach(({ objectStoreName, data }) => {
-      const objectStore = database.createObjectStore(objectStoreName, { keyPath: 'yourKeyPath' }); // Change 'yourKeyPath' to the actual key path for your data
-  
+      database.createObjectStore(objectStoreName);
+      const transaction = database.transaction([objectStoreName], "readwrite");
+      const objectStore = transaction.objectStore(objectStoreName);
       // Assuming 'data' is an array of objects you want to store
       data.forEach(item => {
-        objectStore.add(item); // Add each item to the object store
+console.log(item);
+console.log(item.contents);
+if(item.contents != undefined){
+        objectStore.add(item.contents); // Add each item to the object store
+}
       });
     });
 }
-}
+} 
 
 
 function getDbdata(dbName, dbVersion) {
@@ -99,7 +104,7 @@ function getDbdata(dbName, dbVersion) {
 
       getAllDataRequest.onsuccess = event => {
         const data = event.target.result;3
-        allData.push({ objectStoreName, data });
+        allData.push({objectstore:objectStoreName, data:data });
 
         // Check if we have retrieved data from all object stores
         if (allData.length === objectStoreNamesArray.length) {

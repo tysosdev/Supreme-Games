@@ -805,6 +805,37 @@ var games = {
         "image": "pacman3d.webp",
         "openfunc": "abGame"
     },
+    "pandemic": {
+        "id": "a89d20d0-3f18-46b7-a892-87523dcf08e1",
+        "name": "Pandemic",
+        "image": "pandemic.webp",
+        "openfunc": "abFlash"
+    },
+    "pandemic2": {
+        "id": "11473cc9-9fe6-45db-8584-feeb073b9930",
+        "name": "Pandemic 2",
+        "image": "pandemic2.jpg",
+        "openfunc": "abFlash"
+    },
+    "papasBakeria": {
+        "id": "60fb1546-c631-4fcc-abb6-af680c6f9607",
+        "name": "Papas Bakeria",
+        "image": "papasBakeria.webp",
+        "openfunc": "abFlash"
+    },
+    "papasBurgeria": {
+        "id": "19eecd99-1fe2-4f2e-8bc4-166333848af8",
+        "name": "Papas Burgeria",
+        "image": "papasBurgeria.webp",
+        "openfunc": "abFlash"
+    },
+    "papasCheeseria": {
+        "id": "641aa1d5-9c0a-47ba-8b5f-d4a8a58cb912",
+        "name": "Papas Cheeseria",
+        "image": "papasCheeseria.webp",
+        "openfunc": "abFlash"
+    },
+
     "paperio2": {
         "id": "paperio2",
         "name": "Paper.io 2",
