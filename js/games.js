@@ -835,7 +835,48 @@ var games = {
         "image": "papasCheeseria.webp",
         "openfunc": "abFlash"
     },
-
+    "papasCupcakeria": {
+        "id": "ad223e4a-f7e5-4247-a021-044026402034",
+        "name": "Papas Donuteria",
+        "image": "papasCupcakeria.webp",
+        "openfunc": "abFlash"
+    },
+    "papasDonuteria": {
+        "id": "8ca53897-ed19-4ada-b715-476fabe72642",
+        "name": "Papas Donuteria",
+        "image": "papasDonuteria.jpg",
+        "openfunc": "abFlash"
+    },
+    "papasFreezeria": {
+        "id": "3c2d9a23-5a29-4401-bf73-3975a6b0d62e",
+        "name": "Papas Freezeria",
+        "image": "papasFreezeria.jpg",
+        "openfunc": "abFlash"
+    },
+    "papasHotDoggeria": {
+        "id": "de67af7a-d0ef-44ab-b1e2-eefa727502fc",
+        "name": "Papas Hot Doggeria",
+        "image": "papasHotDoggeria.webp",
+        "openfunc": "abFlash"
+    },
+    "papasPancakeria": {
+        "id": "6623a8b4-2972-4bbf-aa9f-d7c5c14403bc",
+        "name": "Papas Pancakeria",
+        "image": "papasPancakeria.webp",
+        "openfunc": "abFlash"
+    },
+    "papasPastaria": {
+        "id": "0691b7b3-382b-40f1-8c00-66f430a5bead",
+        "name": "Papas Pastaria",
+        "image": "papasPastaria.avif",
+        "openfunc": "abFlash"
+    },
+    "papasPizzeria": {
+        "id": "5fb2d155-338e-409b-8ff3-49b18ec01ee9",
+        "name": "Papas Pizzeria",
+        "image": "papasPizzeria.webp",
+        "openfunc": "abFlash"
+    },
     "paperio2": {
         "id": "paperio2",
         "name": "Paper.io 2",
