@@ -874,7 +874,7 @@ var games = {
     "papasPizzeria": {
         "id": "5fb2d155-338e-409b-8ff3-49b18ec01ee9",
         "name": "Papas Pizzeria",
-        "image": "papasPizzeria.webp",
+        "image": "papasPizzeria.jpg",
         "openfunc": "abFlash"
     },
     "paperio2": {
