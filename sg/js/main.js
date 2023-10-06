@@ -134,7 +134,7 @@ async function abFlash(gameid) {
     }  
 }
 function addgame(sectionid, gameid, gamename, img, properties, func) {
-    document.getElementById(sectionid).innerHTML += '<div class="game" onclick="' + func + '(' + "'" + gameid + "'" + ')"><img class="gimg" alt="' + gamename + '" ' + properties + 'src="/images/' + img + '"><div class="gradient"></div><h class="text">' + gamename + '</h></div>'
+    document.getElementById(sectionid).innerHTML += '<div class="game" onclick="' + func + '(' + "'" + gameid + "'" + ')"><img class="gimg" alt="' + gamename + '" ' + properties + 'src="images/' + img + '"><div class="gradient"></div><h class="text">' + gamename + '</h></div>'
 }
 function cleargames(section) {
     document.getElementById(section).innerHTML = '';
