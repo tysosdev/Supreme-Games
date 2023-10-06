@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' blob:">
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>...</title>
+    <link rel="stylesheet" href="1.css">
+	<script src="2.js"></script> 
+	<script src="3.js"></script>	
+	<script src="4.js"></script>
+  </head>
+  <body>
+    <div id="unity-container" class="unity-desktop">
+      <canvas id="unity-canvas"></canvas>
+      <div id="unity-loading-bar">
+			<div id="unity-progress-bar-empty"> 
+			<div id="unity-progress-bar-full"></div>			         
+        </div>
+      </div>
+      <div id="unity-mobile-warning">
+        WebGL builds are not supported on mobile devices.
+      </div>
+    </div>
+    <script>
+	  window.devicePixelRatio = 1; // always!
+      var buildUrl = ".";
+      var loaderUrl = "5.js";
+      var config = {
+        dataUrl: "1.unityweb",
+        frameworkUrl: "6.js",
+        codeUrl: "2.unityweb",
+        streamingAssetsUrl: "StreamingAssets",
+        companyName: "XformGames",
+        productName: "Hydro Storm 2",
+        productVersion: "1.5",
+      };
+
+      var container = document.querySelector("#unity-container");
+      var canvas = document.querySelector("#unity-canvas");
+      var loadingBar = document.querySelector("#unity-loading-bar");
+      var progressBarFull = document.querySelector("#unity-progress-bar-full");
+      var mobileWarning = document.querySelector("#unity-mobile-warning");
+
+      if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+        container.className = "unity-mobile";
+        config.devicePixelRatio = 1; // I can't see to be able to get this to work when directly entering it above
+        mobileWarning.style.display = "block";
+        setTimeout(() => {
+          mobileWarning.style.display = "none";
+        }, 5000);
+      } 
+	  
+      loadingBar.style.display = "block";
+
+      var script = document.createElement("script");
+      script.src = loaderUrl;
+      script.onload = () => {
+        createUnityInstance(canvas, config, (progress) => {
+          var hackProgress = (progress < 0.9) ? progress : 1;
+		  progressBarFull.style.width = 100 * hackProgress + "%";
+		  if (hackProgress === 1) {
+			progressBarFull.style.display = 'none';
+			progressBarFull.offsetHeight;
+			progressBarFull.style.display = 'block';
+		  }
+        }).then((unityInstance) => {
+          loadingBar.style.display = "none";         
+        }).catch((message) => {
+          alert(message);
+        });
+      };
+      document.body.appendChild(script);
+    </script>
+  </body>
+</html>

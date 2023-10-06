@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' blob: wss://*.exitgames.com:*">
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>...</title>
+	
+    <link rel="stylesheet" href="1.css">
+	
+    <script src="1.js"></script>
+
+	<script>
+	function SubmitLeaderboardScore(newScore){}
+	function GetLeaderboardEntries(){}
+	function InitExternEval(){}
+	function PreloadRewarded(){
+    setTimeout(RewardedReady,1);
+	}
+	function ShowRewarded() 
+	{
+		console.log("ShowRewarded");
+		gameInstance.SendMessage('FreezeNovaAPI', 'AdMessage', 'onOpen');
+		setTimeout(GiveReward,1);
+	}
+	function GiveReward(){
+		gameInstance.SendMessage('FreezeNovaAPI', 'AdMessage', 'onClose');
+		gameInstance.SendMessage('FreezeNovaAPI', 'AdMessage', 'RewardedOnRewarded');
+		setTimeout(RewardedReady,1);
+	}
+	function RewardedReady(){
+		console.log("RewardedReady");
+		window.gameInstance.SendMessage('FreezeNovaAPI', 'RewardedReady');
+	}
+	function FitScreen(){
+    document.getElementById("gameContainer").style.width=window.innerWidth + "px";
+    document.getElementById("gameContainer").style.height=window.innerHeight + "px";
+  }
+	var gameInstance = UnityLoader.instantiate("gameContainer", "1.json", {onProgress: UnityProgress});
+	
+	</script>
+
+  </head>
+  <body onfocus="FitScreen();" onload="FitScreen();" onresize="FitScreen();" style="width:100%; height:100%">
+    <div class="webgl-content">
+      <div id="gameContainer" style="width: auto; height: auto"></div>
+    </div>
+  </body>
+</html>
