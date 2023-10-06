@@ -1,0 +1,40 @@
+<style>
+    html,
+    body {
+        margin: 0px;
+        height: 100%;
+        width: 100%;
+    }
+
+    #fullscren,
+    iframe {
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        bottom: 0px;
+        left: 0px;
+        height: 100%;
+        width: 100%;
+        margin: 0px;
+        border: none;
+    }
+
+    #fullscren {
+        background-image: url(/images/loading.webp);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-color: #e4f0f0;
+    }
+</style>
+<fullscren id="fullscren">
+
+</fullscren>
+<script>
+    async function stuff() {
+
+        const URLtoProx = window.location.origin + "/games/raftWarsMultiplayer/RWMFiles/index.html";
+        var proxURL = "https://uuvv." + document.domain + "/?"
+        document.getElementById("fullscren").innerHTML = "<iframe src='" + proxURL + URLtoProx + "'></iframe>"
+    }
+    stuff();
+</script>

@@ -1,3 +1,5 @@
+To get to the games type gmes
+there is no text box or anything just press the keys
 # Supreme Games family of sites
 The Supreme game site(once its done(it'll never be done)
 many more emulators coming soon

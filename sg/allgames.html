@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-F3JMM93NSK"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-F3JMM93NSK');
+  </script>
+  <link rel="icon" type="image/png" href="/icon.webp">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <meta name="description" content="The Supreme unblocked gmes site">
+<meta name="keywords" content="unblocked, supreme, gmes, gxmes, flash, vex, online, html, html5, supremegmes, supremegxmes">
+  <title>My Drive - Google Drive</title>
+  <link href="./style.css" rel="stylesheet" type="text/css" />
+  <script async src="./socket.io.js"></script>
+</head>
+
+<body>
+  <popup id="discord">
+    <div class="notifcont">
+      <div class="notif">
+        Please join our discord for other links and updates.
+        <a onclick="opendiscrod()">https://discord.gg/xYSgcdDXrJ</a>
+        <button class="left button" onclick="closediscrod('no')">Close</button>
+        <button class="right button" onclick="closediscrod('yes')">Dont show again</button>
+      </div>
+    </div>
+  </popup>
+  <top><a class="ltext" style="text-decoration-line: none;font-size: 45px;" href="/">Supreme Games</a><a class="rtext"
+      href="/allgames.html">All games</a>
+      <button class="topbutton" onclick="downloadMainSave()">Download Saves</button>
+      <label class="topbutton">
+         <input id="uploader" type="file" accept=".save" style="display: none;"/>
+         Upload Saves
+         <div class="uploadResult"></div>
+     </label> 
+      <input id="searchbar" autocomplete="off" oninput="liveSearch()" type="text" placeholder="Search Supreme Games">
+
+    </top>
+  <div id="searchSuggestions"></div>
+  <div id="blob"></div>
+
+  <div class="gamecont">
+    <p class="title" style="top:40px;">All Games</p>
+
+    <div class="stackedgames gameholder" id="allgames" style="top:65px;">
+
+    </div>
+  </div>
+</body>
+<script async src="./js/blob.js"></script>
+<script async src="./js/arrows.js"></script>
+<script src="./js/main.js"></script>
+<script async src="./js/games.js"></script>
+    <script async src="./js/save.js"></script>
+</html>
