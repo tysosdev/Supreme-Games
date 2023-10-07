@@ -107,7 +107,7 @@ var games = {
         "id": "63d9c576-4d36-432e-a67f-9b11b3ec98f7",
         "name": "Awesome Pirates",
         "image": "awesomePirates.webp",
-        "openfunc": "abFlassh"
+        "openfunc": "abFlash"
     },
     "awesomePlanes": {
         "id": "f34d528a-b100-425f-a52e-3cccca84b3e8",
