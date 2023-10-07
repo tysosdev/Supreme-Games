@@ -186,13 +186,10 @@ function liveSearch() {
 }
 searchbar.addEventListener("blur", function (event) {
     setTimeout(() => {
-        if (searchSuggestionFocus != true) {
+        if (document.activeElement.id  != "searchSuggestions") {
             searchSuggestions.style.display = "none";
         }
     }, 100)
-});
-searchSuggestions.addEventListener("focus", function (event) {
-    searchSuggestionFocus = true;
 });
 searchbar.addEventListener("focus", function (event) {
     if (searchSuggestions.innerHTML != "") {
@@ -200,5 +197,5 @@ searchbar.addEventListener("focus", function (event) {
     }
 });
 searchSuggestions.addEventListener("blur", function (event) {
-    searchSuggestionFocus = false;
+    searchSuggestions.style.display = "none";
 });
