@@ -185,11 +185,9 @@ function liveSearch() {
 
 }
 searchbar.addEventListener("blur", function (event) {
-    setTimeout(() => {
         if (document.activeElement.id  != "searchSuggestions") {
             searchSuggestions.style.display = "none";
         }
-    }, 100)
 });
 searchbar.addEventListener("focus", function (event) {
     if (searchSuggestions.innerHTML != "") {
