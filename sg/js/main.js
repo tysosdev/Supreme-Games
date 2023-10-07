@@ -185,9 +185,11 @@ function liveSearch() {
 
 }
 searchbar.addEventListener("blur", function (event) {
+    setTimeout(() => {
         if (document.activeElement.id  != "searchSuggestions") {
             searchSuggestions.style.display = "none";
         }
+    }, 100)
 });
 searchbar.addEventListener("focus", function (event) {
     if (searchSuggestions.innerHTML != "") {
@@ -195,5 +197,7 @@ searchbar.addEventListener("focus", function (event) {
     }
 });
 searchSuggestions.addEventListener("blur", function (event) {
-    searchSuggestions.style.display = "none";
+        if (document.activeElement.id  != "searchSuggestions") {
+            searchSuggestions.style.display = "none";
+        }
 });
