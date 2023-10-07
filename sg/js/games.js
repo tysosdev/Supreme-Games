@@ -32,10 +32,10 @@ var games = {
         "openfunc": "abFlash"
     },
     "3dtanks": {
-        "id": "3dtanks",
+        "id": "bb176516-f1d5-493f-b0d9-bcf362fa6ea5",
         "name": "3d Tanks",
         "image": "3dtanks.webp",
-        "openfunc": "abGame"
+        "openfunc": "abFlash"
     },
     "achievementUnlocked": {
         "id": "52094fd7-fa43-49cc-8451-3d4e35d65217",
@@ -236,10 +236,10 @@ var games = {
         "openfunc": "abFlash"
     },
     "boxHead": {
-        "id": "boxHead",
+        "id": "d539babd-65e9-456e-9286-f7549d09409a",
         "name": "boxHead",
         "image": "boxHead.webp",
-        "openfunc": "abGame"
+        "openfunc": "abFlash"
     },
     "bubbleTanks": {
         "id": "bubbld3eede09-0eb8-42ee-bece-a5a6bd7c5118eTanks",
@@ -392,10 +392,10 @@ var games = {
         "openfunc": "abGame"
     },
     "dbzdevolution": {
-        "id": "dbzdevolution",
+        "id": "8499fd03-193a-4222-9caf-793467a10acf",
         "name": "Dragon Ball Devolution",
         "image": "dbzdevolution.webp",
-        "openfunc": "abGame"
+        "openfunc": "abFlash"
     },
     "/deflyIo": {
         "id": "/deflyIo",
@@ -1184,16 +1184,16 @@ var games = {
         "openfunc": "abGame"
     },
     "sonny": {
-        "id": "sonny",
+        "id": "f3d71336-a166-435d-abde-df37a6f86df6",
         "name": "Sonny",
         "image": "sonny.webp",
-        "openfunc": "abGame"
+        "openfunc": "abFlash"
     },
     "sonny2": {
-        "id": "sonny2",
+        "id": "a893d1ea-3a65-47cf-8472-c3706a22062b",
         "name": "Sonny 2",
         "image": "sonny2.webp",
-        "openfunc": "abGame"
+        "openfunc": "abFlash"
     },
     "spaceCadetPinball": {
         "id": "spaceCadetPinball",
@@ -1214,10 +1214,10 @@ var games = {
         "openfunc": "abGame"
     },
     "ssf": {
-        "id": "ssf",
+        "id": "737358a0-b330-477f-a67e-f86c5d82c581",
         "name": "Super Smash Flash",
         "image": "ssf.webp",
-        "openfunc": "abGame"
+        "openfunc": "abFlash"
     },
     "starfox1": {
         "id": "starfox1",
@@ -1232,10 +1232,10 @@ var games = {
         "openfunc": "abGame"
     },
     "stickRPG": {
-        "id": "stickRPG",
+        "id": "2b0cf44c-7997-4c66-82a8-b99804668288",
         "name": "Stick RPG",
         "image": "stickRPG.png",
-        "openfunc": "abGame"
+        "openfunc": "abFlash"
     },
     "subwaySurfers": {
         "id": "subwaySurfers",
