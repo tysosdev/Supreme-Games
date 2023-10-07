@@ -194,6 +194,11 @@ searchbar.addEventListener("blur", function (event) {
 searchSuggestions.addEventListener("focus", function (event) {
     searchSuggestionFocus = true;
 });
+searchbar.addEventListener("focus", function (event) {
+    if (searchSuggestions.innerHTML != "") {
+        searchSuggestions.style.display = "block";
+    }
+});
 searchSuggestions.addEventListener("blur", function (event) {
     searchSuggestionFocus = false;
 });
