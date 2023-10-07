@@ -247,6 +247,12 @@ var games = {
         "image": "bubbleTanks.webp",
         "openfunc": "abFlash"
     },
+    "burninRubber5XS": {
+        "id": "burninRubber5XS",
+        "name": "Burnin Rubber 5XS",
+        "image": "burninRubber5XS.avif",
+        "openfunc": "abGame"
+    },
     "/burnoutDrift3": {
         "id": "/burnoutDrift3",
         "name": "Burnout Drift 3",
@@ -331,10 +337,22 @@ var games = {
         "image": "clickerHeroes.webp",
         "openfunc": "abFlash"
     },
+    "cobrazIo": {
+        "id": "cobrazIo",
+        "name": "Cobraz.io",
+        "image": "cobrazIo.jpg",
+        "openfunc": "abGame"
+    },
     "cookieclicker": {
         "id": "cookieclicker",
         "name": "Cookie Clicker",
         "image": "cookieclicker.webp",
+        "openfunc": "abGame"
+    },
+    "criticalStrike": {
+        "id": "criticalStrike",
+        "name": "Critical Strike",
+        "image": "criticalStrike.jpeg",
         "openfunc": "abGame"
     },
     "cubefield": {
@@ -641,6 +659,12 @@ var games = {
         "id": "htmledit",
         "name": "HTML editor",
         "image": "htmledit.webp",
+        "openfunc": "abGame"
+    },
+    "hydroStorm2": {
+        "id": "hydroStorm2",
+        "name": "Hydro Storm 2",
+        "image": "hydroStorm2.webp",
         "openfunc": "abGame"
     },
     "impossibleQuiz": {
