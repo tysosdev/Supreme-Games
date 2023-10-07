@@ -352,7 +352,7 @@ var games = {
     "criticalStrike": {
         "id": "criticalStrike",
         "name": "Critical Strike",
-        "image": "criticalStrike.jpeg",
+        "image": "criticalStrike.jpg",
         "openfunc": "abGame"
     },
     "cubefield": {
