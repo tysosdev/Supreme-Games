@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <head>
     <style>
         input,
@@ -247,7 +248,8 @@
             shelter: 0,
             shelter2: 0,
             shed: 0,
-            shed2: 0
+            shed2: 0,
+            stash: 0
         };
         var ask = {
             variables: "",
@@ -261,6 +263,7 @@
             Ammount: 1
         };
         var hunger = 0;
+        var mauled = 0;
         var action = 0;
         var turn = 1;
         var whatCraft = "";
@@ -623,8 +626,10 @@
         //use fan
 
         function fan() {
-            event("you use the fan -" + Math.round(heat / 2) + " heat");
-            heat = Math.round(heat / 2);
+            if (heat > 10){
+                event("you use the fan -" + Math.round(heat / 2) + " heat");
+                heat = Math.round(heat / 2);
+            }
         }
         //use med kit
 
@@ -717,10 +722,10 @@
                     newButton("eat cooked Meat, hunger - 5", "eatCooked();");
                 }
                 if (item.fishingRod == 1 || item.fishingRod == 2 || food.fish != 0 || food.cookedFish != 0) {
-                    newButton("eat fish, hunger - 2", "eatFish('raw');");
+                    newButton("eat fish, hunger - 2", "eatFish(`raw`);");
                 }
                 if (item.fishingRod == 1 || item.fishingRod == 2 || food.fish != 0 || food.cookedFish != 0) {
-                    newButton("eat cooked fish, hunger - 4", "eatFish('cooked');");
+                    newButton("eat cooked fish, hunger - 4", "eatFish(`cooked`);");
                 }
             } else {
                 event("you are not hungry");
@@ -729,7 +734,7 @@
                 if (hungerClicked == 5) {
                     //cheat if you click hunger 5 times when ur full
                     canDie = 0;
-                    // ^ stops you from diing
+                    // ^ stops you from dying
                     food.berries = 1000000000000;
                     food.rawMeat = 1000000000000;
                     food.cookedMeat = 1000000000000;
@@ -801,9 +806,31 @@
         }
 
         function cool() {
-            heat = heat - 5;
-            event("you go outside and cool down, -5 heat");
-            endOfTurn();
+            if (heat>20) {
+                if (season=="Summer") {
+                    heat = heat - 7;
+                    event("You go outside and cool down, -5 heat");
+                    endOfTurn();
+                }
+                if (season == "Fall") {
+                    heat = heat -4;
+                    event("You go outside and cool down, -5 heat");
+                    endOfTurn();
+                }
+                if (season == "Winter") {
+                    heat = heat - 3;
+                    event("You go outside and cool down, -5 heat. Why you cool down in Winter lmao.");
+                    endOfTurn();
+                }
+                if (season == "Spring") {
+                    heat = heat - 5;
+                    event("You go outside and cool down, -5 heat");
+                    endOfTurn();
+                }
+            } else {
+                event("You go outside but you're already cool enough.");
+                menu();
+            }
         }
         //craft menu
 
@@ -921,7 +948,6 @@
             reset();
         }
         //trade	
-
         function trading() {
             clearButtons();
             x = "<div><button class='button' onclick='menu();'>back</button></div><div><input id='getNum' onchange='updateCost();' type='number' placeholder='get this much'><select onchange='updateCost();' id='get'><option>Sticks</option><option>Stone</option><option>Wood</option></select></div><div><label id='giveNum'>give 0</label><select onchange='updateCost();' id='give'><option>Sticks</option><option>Stone</option><option>Wood</option></select></div><div><button class='button' onclick='doTrade();'>Confirm Trade</button></div>";
@@ -935,20 +961,23 @@
             //storyline events
             //items break
             if (axetime < 0) {
-                item.axe == 0
-                event("your axe broke.");
+                item.axe = 0
+                event("Your axe broke.");
+                axetime = 1;
             }
             if (knifetime < 0) {
-                item.knife == 0
-                event("your knife broke.");
+                item.knife = 0
+                event("Your knife broke.");
+                knifetime = 1;
             }
             if (fishtime < 0) {
-                item.fishingRod == 0
-                event("your fishing Rod broke.");
+                item.fishingRod = 0
+                event("Your fishing Rod broke.");
+                fishtime = 1;
             }
             if (picktime < 0) {
-                item.pickaxe == 0
-                event("your pickaxe broke.");
+                item.pickaxe = 0
+                event("Your pickaxe broke.");
             }
             //next season
             if (turn > nextSeason) {
@@ -959,11 +988,15 @@
                 } else if (season == "Summer") {
                     season = "Fall";
                     event("The season is fall, it is slightly cold your heat will go down by 1 each turn, berries are all over the place and meat is not too hard to find.")
+                    newButton("Make a stash in the ground for Winter to hold food", "stash();")
                 } else if (season == "Fall") {
                     season = "Winter";
-                    event("The season is Winter, it is very cold your heat will go down by 2 each turn, berries are nonixistant and meat is hard to find, you cant tell how many fish there are since the pond is frosen over.")
+                    event("The season is Winter, it is very cold your heat will go down by 2 each turn, berries are nonixistant and meat is hard to find, you can't tell how many fish there are since the pond is frozen over.");
+
                 } else {
                     season = "Spring";
+                    //hide stash option
+                    //add ice fishing option
                     event("The season is sprint, it is slightly cold your heat will go down by 1 each turn, berries are not ripe yet and meat isnt too hard to find, although the fish are still recovering from winter, so they are scarce.")
                 }
                 popupText("The season is now " + season + ".");
@@ -981,16 +1014,34 @@
             //if youve had if for long enough you might lose some
             if (meatTime > 3) {
                 if (food.rawmeat > 0) {
-                if (random(1, 3) != 1) {
-                    event("some of your raw meat went bad -1 raw meat");
-                    food.rawMeat -= 1;
+                if (season == "Winter") {
+                    if (random(1, 4) == 1) {
+                        event("some of your raw meat went bad -1 raw meat");
+                        food.rawMeat -= 1;
+                    }
+                } else {
+                    if (random(1, 3) != 1) {
+                        event("some of your raw meat went bad -1 raw meat");
+                        food.rawMeat -= 1;
+                    }
                 }
             }
             }
             if (cmeatTime > 7) {
-                if (random(1, 3) != 1) {
-                    event("some of your cooked meat went bad -1 cooked meat");
-                    food.cookedMeat -= 1;
+                if (food.cookedMeat > 0) {
+                    if (season == "Winter") {
+                    if (random(1, 4) == 1) {
+                        event("some of your raw meat went bad -1 cooked meat");
+                        food.cookedMeat -= 1;
+                        cmeatTime = 5;
+                    }
+                } else {
+                    if (random(1, 3) != 1) {
+                        event("some of your cooked meat went bad -1 cooked meat");
+                        food.cookedMeat -= 1;
+                        cmeatTime = 5;
+                        }
+                    }
                 }
             }
             //crafter suicide
@@ -1101,6 +1152,9 @@
             if (season == "Winter") {
                 heat -= 1;
             }
+            if (season == "Spring") {
+                heat += 1;
+            }
             //fire runing out
             if (fireTurn + 3 < turn && item.fire == 1) {
                 popupText("your fire is about to run out of wood and die \nwood: " + resource.wood + "");
@@ -1152,7 +1206,7 @@
                 showPopup();
             }
             //resource limits 
-            if (building.shed != 1 && building.shed2 != 1) {
+            if (building.shed != 1 && building.shed2 != 1 && stash != 1) {
                 if (resource.wood > 4) {
                     resource.wood = 4;
                     event("you had more wood than you could store so you had to leave some behind.");
@@ -1226,9 +1280,83 @@
                     resource.fur = 10;
                     event("you had more fur than you could store so you had to leave some behind.");
                 }
+            } else if (building.shed2 == 1) {
+                if (resource.wood > 10) {
+                    resource.wood = 10;
+                    event("you had more wood than you could store so you had to leave some behind.");
+                }
+                if (resource.stone > 8) {
+                    resource.stone = 8;
+                    event("you had more stone than you could store so you had to leave some behind.");
+                }
+                if (resource.sticks > 20) {
+                    resource.sticks = 20;
+                    event("you had more sticks than you could store so you had to leave some behind.");
+                }
+                if (food.berries > 25) {
+                    food.berries = 25;
+                    event("you had more berries than you could store so you had to leave some behind.");
+                }
+                if (food.cookedMeat > 7) {
+                    food.cookedMeat = 7;
+                    event("you had more cooked meat than you could store so you had to leave some behind.");
+                }
+                if (food.rawMeat > 7) {
+                    food.rawMeat = 7;
+                    event("you had more raw meat than you could store so you had to leave some behind.");
+                }
+                if (food.fish > 10) {
+                    food.fish = 10;
+                    event("you had more fish than you could store so you had to leave some behind.");
+                }
+                if (food.cookedFish > 10) {
+                    food.cookedFish = 10;
+                    event("you had more cooked fish than you could store so you had to leave some behind.");
+                }
+                if (resource.fur > 12) {
+                    resource.fur = 12;
+                    event("you had more fur than you could store so you had to leave some behind.");
+                }
+            } else if (building.stash == 1) {
+                if (resource.wood > 7) {
+                    resource.wood = 7;
+                    event("you had more wood than you could store so you had to leave some behind.");
+                }
+                if (resource.stone > 5) {
+                    resource.stone = 5;
+                    event("you had more stone than you could store so you had to leave some behind.");
+                }
+                if (resource.sticks > 15) {
+                    resource.sticks = 15;
+                    event("you had more sticks than you could store so you had to leave some behind.");
+                }
+                if (food.berries > 999999999999999999999) {
+                    food.berries = 999999999999999999999;
+                    event("you had more berries than you could store so you had to leave some behind.");
+                }
+                if (food.cookedMeat > 999999999999999999999) {
+                    food.cookedMeat = 999999999999999999999;
+                    event("you had more cooked meat than you could store so you had to leave some behind.");
+                }
+                if (food.rawMeat > 999999999999999999999) {
+                    food.rawMeat = 999999999999999999999;
+                    event("you had more raw meat than you could store so you had to leave some behind.");
+                }
+                if (food.fish > 999999999999999999999) {
+                    food.fish = 999999999999999999999;
+                    event("you had more fish than you could store so you had to leave some behind.");
+                }
+                if (food.cookedFish > 999999999999999999999) {
+                    food.cookedFish = 999999999999999999999;
+                    event("you had more cooked fish than you could store so you had to leave some behind.");
+                }
+                if (resource.fur > 10) {
+                    resource.fur = 10;
+                    event("you had more fur than you could store so you had to leave some behind.");
+                }
             }
             //die PS you did but it was an easy fix
-            if (hunger > 9 || heat < 1 || heat > 39) {
+            if (hunger > 9 || heat < 1 || heat > 39 || mauled == 1) {
                 if (canDie == 1) {
                     if (hunger > 9) {
                         event("you are so hungry, you havent eaten in days you fell the world fading away. You are dead");
@@ -1237,21 +1365,26 @@
                         showPopup();
                     } else {
                         if (heat == 0) {
-                            event("your so cold you cant move, you died");
-                            popupText("you died of hunger");
+                            event("You're so cold you cant move, you died");
+                            popupText("You died of being too cold");
                             newPopupButton("new game", "hidePopup(); reset(); menu();");
                             showPopup();
-                        } else {
+                    } else if (heat > 39){
                             event("you die from being too hot. lol its not that hard to get colder");
-                            popupText("you died of hunger");
+                            popupText("You died of being too hot");
                             newPopupButton("new game", "hidePopup(); reset(); menu();");
                             showPopup();
-                        }
+                    } else {
+                        event("You won the 1 in 1000 lottery and were mauled to death by a wolf.");
+                        popupText("You were mauled to death by a wolf.");
+                        newPopupButton("new game", "hidePopup(); reset(); menu();");
+                        showPopup();
                     }
+                }
                 } else {
                     event("You wouldve died but ur a dev lol noob");
                 }
-            }
+            
             //next turn
             turn += 1;
             menu();
@@ -1269,7 +1402,7 @@
                     event("you did not have enough wood so the fire goes out");
                 }
             } else if (save == 3) {
-                if (resource.wood > 2) {
+                if (resource.wood >= 3) {
                     fireTurn = turn;
                     resource.wood = resource.wood - 2;
                     item.fire = 1;
@@ -1338,7 +1471,8 @@
                 shelter: 0,
                 shelter2: 0,
                 shed: 0,
-                shed2: 0
+                shed2: 0,
+                stash: 0
             };
             ask = {
                 do: "",
@@ -1356,6 +1490,7 @@
                 Ammount: 1
             };
             hunger = 0;
+            mauled = 0;
             action = 0;
             turn = 1;
             whatCraft = "";
@@ -1379,6 +1514,7 @@
             axetime = 0;
             season="Summer"
             event("your plane just crashed in the jungle and you have to survive. You are the only survivor that you can see, they will notice and send a rescue crew but you dont know how long it will take");
+            menu();
         }
 
         function event(thing) {
@@ -1426,6 +1562,7 @@
                             event("you search for rocks, you find a few. +1 stone");
                             resource.stone += 1;
                         }
+                    }
                     } else if (type == "sticks") {
                         if (random(1, 3) == 1) {
                             event("you search through the forest for sticks, luckilly you managed to find a bunch. +2 sticks");
@@ -1439,9 +1576,13 @@
                     } else if (type == "meat") {
                         if (random(1, 3) == 1) {
                             x = Math.round(Math.random() * (4 - 3 + 1) + 3);
+                            if (random(1, 1000) != 420) {
                             event("As you hunt a wolf attacks you, you manage to kill it. +2 raw meat +" + x + " fur");
                             resource.fur += x;
                             food.rawMeat += 2;
+                            } else {
+                                mauled = 1;
+                            }
                         } else if (random(1, 3) == 1) {
                             event("You look for animals to kill for food but hours pass and you dont find any. +0 raw meat");
                         } else {
@@ -1463,6 +1604,7 @@
                     }
                     //summer
                 } else if (season == "Summer") {
+                    if (building.stash != 1){
                     if (type == "berries") {
                         if (random(1, 3) == 1) {
                             event("you search through the forest for berries, luckilly you managed to find a bunch. +2 berries");
@@ -1507,6 +1649,7 @@
                             food.rawMeat += 1;
                             resource.fur += x;
                         }
+
                     } else if (type == "wood") {
                         if (random(1, 3) == 1) {
                             event("You chop down a small tree, luckily the wood was in perfect condtiton. +2 wood");
@@ -1521,6 +1664,7 @@
                     //fall
                 } else if (season == "Fall") {
                     if (type == "berries") {
+                        if (building.stash != 1) {
                         if (random(1, 3) == 1) {
                             event("You find a berry bush full of berries +4 berries");
                             food.berries += 4;
@@ -1531,6 +1675,9 @@
                             event("you search through the forest for you find a small berry plant. +2 berries");
                             food.berries += 2;
                         }
+                    } else {
+                    event("The scent emantating from you after resorting to make a stash makes any berries you find wilt +0 berries")
+                }
                     } else if (type == "stone") {
                         if (random(1, 3) == 1) {
                             event("you search for rocks, luckilly you managed to find a bunch. +2 stone");
@@ -1552,6 +1699,7 @@
                             resource.sticks += 1;
                         }
                     } else if (type == "meat") {
+                        if (building.stash != 1) {
                         if (random(1, 3) == 1) {
                             x = Math.round(Math.random() * (4 - 3 + 1) + 3);
                             event("As you hunt a wolf attacks you, you manage to kill it. +2 raw meat +" + x + " fur");
@@ -1564,7 +1712,10 @@
                             event("You find a rabbit and kill it. +1 raw meat and +" + x + " fur");
                             food.rawMeat += 1;
                             resource.fur += x;
-                        }
+                        } 
+                    } else {
+                        event("Animals drop dead at the stench of the hole when you get close to them. You find their bodies are to rotten to consume +0 berries")
+                    }
                     } else if (type == "wood") {
                         if (random(1, 3) == 1) {
                             event("You chop down a small tree, luckily the wood was in perfect condtiton. +2 wood");
@@ -1579,13 +1730,17 @@
                     //winter
                 } else {
                     if (type == "berries") {
+                        if (building.stash != 1) {
                         if (random(1, 3) == 1) {
                             event("You cant find any berries.");
                         } else if (random(1, 3) == 1) {
-                            event("you find a berry bush but it is dead and alll of its berries are gone.");
+                            event("You find a berry bush but it is dead and all of its berries are gone.");
                         } else {
-                            event("you search through the forest you find a frozen berry bush, it has one berry but it is rotten");
+                            event("You search through the forest you find a frozen berry bush, it has one berry but it is rotten");
                         }
+                    } else {
+                        event("Berries wilt and rot in the prescence of the stench of that hole +0 berries")
+                    } 
                     } else if (type == "stone") {
                         if (random(1, 3) == 1) {
                             event("you search for rocks, luckilly you managed to find a bunch. +2 stone");
@@ -1598,7 +1753,7 @@
                         }
                     } else if (type == "sticks") {
                         if (random(1, 3) == 1) {
-                            event("you search through the forest for sticks, luckilly you managed to find a bunch. +2 sticks");
+                            event("you search through the forest for sticks, luckily you managed to find a bunch. +2 sticks");
                             resource.sticks += 2;
                         } else if (random(1, 3) == 1) {
                             event("you search through the forest for sticks, but you found none. +0 sticks");
@@ -1607,6 +1762,7 @@
                             resource.sticks += 1;
                         }
                     } else if (type == "meat") {
+                        if (building.stash != 1) {
                         if (random(1, 3) == 1) {
                             x = Math.round(Math.random() * (3 - 2 + 1) + 2);
                             event("you find a deer and kill it. +2 raw meat +" + x + " fur");
@@ -1617,6 +1773,9 @@
                         } else {
                             event("You find a rabbit but becuse of the snow you cant get it. +0 raw meat");
                         }
+                    } else {
+                        event("The stench from the hole instantly kills and decays animals and you can tell they are inedible. +0 +meat")
+                    }
                     } else if (type == "wood") {
                         if (random(1, 3) == 1) {
                             event("You chop down a small tree, luckily the wood was in perfect condtiton. +2 wood");
@@ -1702,7 +1861,7 @@
                         event("you eat raw fish -2 hunger");
                         areyoupoisoned = Math.floor(Math.random() * (18 - 3 + 1) + 3);
                         if (areyoupoisoned == 3) {
-                            event("you got food poisining from the fish, for the next 3 turns you will get one more hunger per turn");
+                            event("you got food poisoning from the fish, for the next 3 turns you will get one more hunger per turn");
                         }
                         hunger -= 2;
                     } else {
@@ -2144,7 +2303,10 @@
                 }
             }
         }
-
+        function stash() {
+            building.stash = 1;
+            //remove button
+        }
         function buildBShed() {
             if (resource.wood > 6 && resource.stone > 4 && resource.sticks > 1) {
                 if (building.shed2 == 0) {
@@ -2168,7 +2330,7 @@
         }
 
         function strangerIgnore() {
-            hidePopip();
+            hidePopup();
             event("you send the stranger off without any resorces");
             nextStranger = turn + Math.floor(Math.random() * (30 - 20 + 1) + 20);
             if (1 == Math.floor(Math.random() * (1 - 2 + 1) + 2)) {
@@ -2228,6 +2390,6 @@
 
         function addToDropdown(text, id) {
             document.getElementById(id).innerHTML += "<option>" + text + "</option>";
-        }
+        }}
     </script>
 </body>
