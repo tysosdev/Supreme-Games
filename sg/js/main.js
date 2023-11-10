@@ -9,21 +9,21 @@ var searchSuggestionFocus = false;
 if(window.self == window.top){
 
     var a = window.open("about:blank", "_blank");
-    if(a != null){
     if(navigator.userAgent.includes('Firefox')){
         a.addEventListener("DOMContentLoaded", function () {
             a.document.documentElement.innerHTML = '<!DOCTYPE html><html><title>Classes</title><link rel="icon" type="image/png" href="https://ssl.gstatic.com/classroom/favicon.png"><style>body {margin: 0;}</style><body onload=' + "'" + 'document.getElementsByTagName("iframe")[0].focus();' + "'" + '><iframe style="height:100%; width:100%; top:0px; left:0; position:absolute;  z-index:1;" src="https://' + window.location.hostname + '" frameborder="0"></iframe></body></html>';
             window.location.replace("https://classroom.google.com/");
         });
     }else{
+    if(a != null){
         a.document.documentElement.innerHTML = '<!DOCTYPE html><html><title>Classes</title><link rel="icon" type="image/png" href="https://ssl.gstatic.com/classroom/favicon.png"><style>body {margin: 0;}</style><body onload=' + "'" + 'document.getElementsByTagName("iframe")[0].focus();' + "'" + '><iframe style="height:100%; width:100%; top:0px; left:0; position:absolute;  z-index:1;" src="https://' + window.location.hostname + '" frameborder="0"></iframe></body></html>';
         window.location.replace("https://classroom.google.com/");
     }
 }
 }
- //show links popup
- if (localStorage.getItem("links") != "stop") {
-    document.getElementById("links").style.display = "block";
+ //show discord popup
+ if (localStorage.getItem("discord") != "stop") {
+    document.getElementById("discord").style.display = "block";
 }
 async function run(loadedgames) {
     games = loadedgames;
@@ -99,17 +99,17 @@ function addGamesFromJson(Json, gameType) {
         }
     }
 }
-function closepopup(save) {
-    document.getElementById("links").style.display = "none";
+function closediscrod(save) {
+    document.getElementById("discord").style.display = "none";
     if (save == "yes") {
-        localStorage.setItem("links", "stop");
+        localStorage.setItem("discord", "stop");
     }
 }
 function opendiscrod() {
     window.location.replace("https://discord.gg/xYSgcdDXrJ")
 }
 async function abGame(gameid) {
-
+    
         var a = window.open("about:blank", "_blank");
         if(navigator.userAgent.includes('Firefox')){
             a.addEventListener("DOMContentLoaded", function () {
