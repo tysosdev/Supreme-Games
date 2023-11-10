@@ -1,5 +1,3 @@
-//saves are currently broken
-/*
 async function getMainSave() {
   var mainSave = {};
   // List of items in localStorage that should not be saved
@@ -194,4 +192,4 @@ function uploadMainSave() {
     reader.readAsText(file);
   });
 }
-uploadMainSave();*/
+uploadMainSave();
