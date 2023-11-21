@@ -27,7 +27,7 @@ if(window.self == window.top){
 }
 async function run(loadedgames) {
     games = loadedgames;
-    //loadPopGames();
+    loadPopGames();
     start();
 }
 function start() {
