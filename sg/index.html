@@ -2,97 +2,91 @@
 <html lang="en">
 
 <head>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-F3JMM93NSK"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-F3JMM93NSK"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {dataLayer.push(arguments);}
+        gtag('js', new Date());
 
-    gtag('config', 'G-F3JMM93NSK');
-  </script>
-  <link rel="icon" type="image/png" href="icon.webp">
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <meta name="description" content="The Supreme unblocked gmes site">
-<meta name="keywords" content="unblocked, supreme, gmes, gxmes, flash, vex, online, html, html5, supremegmes, supremegxmes">
-  <title>My Drive - Google Drive</title>
-  <link href="style.css" rel="stylesheet" type="text/css" />
-  <script async src="socket.io.js"></script>
+        gtag('config', 'G-F3JMM93NSK');
+    </script>
+    <link rel="icon" type="image/png" href="icon.webp">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="The Supreme unblocked gmes site">
+    <meta name="keywords"
+        content="unblocked, supreme, gmes, gxmes, flash, vex, online, html, html5, supremegmes, supremegxmes">
+    <title>My Drive - Google Drive</title>
+    <link href="style.css" rel="stylesheet" type="text/css">
+    <script async src="socket.io.js"></script>
 </head>
 
 <body>
-  <popup id="discord">
-    <div class="notifcont">
-      <div class="notif">
-        Please join our discord for other links and updates.
-        <a onclick="opendiscrod()">https://discord.gg/xYSgcdDXrJ</a>
-        <button class="left button" onclick="closediscrod('no')">Close</button>
-        <button class="right button" onclick="closediscrod('yes')">Dont show again</button>
-      </div>
+    <div class="popup" id="popup">
+        <div class="notifcont">
+            Please help spread the site so we can continue to improve it! You dont need to worry about it geting
+            blocked.<br>
+            Also join our discord for links <a style="text-decoration:underline"
+                onclick="opendiscrod()">https://discord.gg/xYSgcdDXrJ</a>
+            <div style="margin-top: 20px;">
+                <button class="left button" onclick="closepopup('no')">Close</button>
+                <button class="right button" onclick="closepopup('yes')">Dont show again</button>
+            </div>
+        </div>
     </div>
-  </popup>
-  <top>
-    <a class="ltext" style="text-decoration-line: none;font-size: 45px;" href="/">Supreme Games</a>
-    <a class="rtext" href="allgames.html">All games</a>
- <!--   <button class="topbutton" onclick="downloadMainSave()">Download Saves</button>
- <label class="topbutton">
-    <input id="uploader" type="file" accept=".save" style="display: none;"/>
-    Upload Saves
-    <div class="uploadResult"></div>
-</label> -->
-    <input id="searchbar" autocomplete="off" oninput="liveSearch()" type="text" placeholder="Search Supreme Games">
-  </top>
-  <div id="searchSuggestions" tabindex="-1"></div>
+    <div class="top"><a class="ltext" style="text-decoration-line: none;font-size: 45px;" href="/">Supreme Games</a><a
+            class="rtext" href="/allgames.html">All games</a>
+        <a class="rtext" style="text-decoration:underline" onclick="opendiscrod()">Discord</a>
+        <input id="searchbar" autocomplete="off" oninput="liveSearch()" type="text" placeholder="Search Supreme Games">
+    </div>
+    <div id="searchSuggestions" tabindex="-1"></div>
 
-  <div id="blob"></div>
-  <div class="gamecont">
-    <p class="title" style="top:40px;">Popular Games</p>
-    <div class="scroll" onclick="scroller(-639, 'popgames');" style="top:90px; left:0px;">
-      <div class="larrow arrow"></div>
-    </div>
-    <div class="scroll" onclick="scroller(639, 'popgames');" style="top:90px; right:0px;">
-      <div class="rarrow arrow"></div>
-    </div>
-    <div class="rowgames gameholder" id="popgames" style="top: 78px;">
-    </div>
-    <p class="title" style="top:255px;">Recomended Games</p>
-    <div class="scroll" onclick="scroller(-639, 'recgames');" style="top:308px; left:0px;">
-      <div class="larrow arrow"></div>
-    </div>
-    <div class="scroll" onclick="scroller(639, 'recgames');" style="top:308px; right:0px;">
-      <div class="rarrow arrow"></div>
-    </div>
-    <div class="rowgames gameholder" id="recgames" style="top:298px;">
-    </div>
-    <p class="title" style="top:475px;">New Games</p>
-    <div class="scroll" onclick="scroller(-639, 'newgames');" style="top:528px; left:0px;">
-      <div class="larrow arrow"></div>
-    </div>
-    <div class="scroll" onclick="scroller(639, 'newgames');" style="top:528px; right:0px;">
-      <div class="rarrow arrow"></div>
-    </div>
-    <div class="rowgames gameholder" id="newgames" style="top:518px;">
-    </div>
-    <p class="title" style="top:695px;">Popular this week</p>
-    <div class="scroll" onclick="scroller(-639, 'popwgames');" style="top:748px; left:0px;">
-      <div class="larrow arrow"></div>
-    </div>
-    <div class="scroll" onclick="scroller(639, 'popwgames');" style="top:748px; right:0px;">
-      <div class="rarrow arrow"></div>
-    </div>
-    <div class="rowgames gameholder" id="popwgames" style="top:738px;">
+    <div id="blob"></div>
+    <div class="gamecont">
+        <p class="title">Popular Games</p>
+        <div class="rowgames gameholder" id="popgames">
+            <div class="scroll" onclick="scroller(-639, 'popgames');" style="left:0px;">
+                <div class="larrow arrow"></div>
+            </div>
+            <div class="scroll" onclick="scroller(639, 'popgames');" style="right:0px;">
+                <div class="rarrow arrow"></div>
+            </div>
+        </div>
+        <p class="title">Recomended Games</p>
+        <div class="rowgames gameholder" id="recgames">
+            <div class="scroll" onclick="scroller(-639, 'recgames');" style="left:0px;">
+                <div class="larrow arrow"></div>
+            </div>
+            <div class="scroll" onclick="scroller(639, 'recgames');" style="right:0px;">
+                <div class="rarrow arrow"></div>
+            </div>
+        </div>
+        <p class="title">New Games</p>
+        <div class="rowgames gameholder" id="newgames">
+            <div class="scroll" onclick="scroller(-639, 'newgames');" style="left:0px;">
+                <div class="larrow arrow"></div>
+            </div>
+            <div class="scroll" onclick="scroller(639, 'newgames');" style="right:0px;">
+                <div class="rarrow arrow"></div>
+            </div>
+        </div>
+        <p class="title">Popular this week</p>
+
+        <div class="rowgames gameholder" id="popwgames">
+            <div class="scroll" onclick="scroller(-639, 'popwgames');" style="left:0px;">
+                <div class="larrow arrow"></div>
+            </div>
+            <div class="scroll" onclick="scroller(639, 'popwgames');" style="right:0px;">
+                <div class="rarrow arrow"></div>
+            </div>
+        </div>
 
     </div>
-
-  </div>
-  <script async src="js/blob.js"></script>
-  <script async src="js/arrows.js"></script>
-  <script src="js/main.js"></script>
-  <script async src="js/games.js"></script>
-      <script async src="js/save.js"></script>
-
-
+    <script async src="js/blob.js"></script>
+    <script async src="js/arrows.js"></script>
+    <script src="js/main.js"></script>
+    <script async src="js/games.js"></script>
 </body>
 
-  </html>
+</html>

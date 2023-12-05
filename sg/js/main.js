@@ -1,7 +1,3 @@
-var popGames = ["miniMetro", "Diggy", "catNinja", "gba", "motox3m", "raftWars2Html5", "getawayShootout", "henryStickmanBreakingTheBank"];
-var popwGames = ["funnyShooter2", "bigTowerTinySquare", "bigIceTowerTinySquare", "gba", "motox3mSpookyLand", "raftWars", "impossibleQuiz", "henryStickmanBreakingTheBank"];
-var recGames = ["superhot", "catNinja", "tableTanks", "learnToFly3", "achievementUnlocked2", "motox3m", "raftWarsHtml5", "impossibleQuiz2", "eaglercraft"];
-var newGames = ["hydroStorm2", "burninRubber5XS", "cobrazIo", "criticalStrike", "papasPizzeria", "papasPancakeria", "papasPastaria", "papasHotDoggeria", "papasFreezeria", "papasDonuteria", "papasCupcakeria", "papasCheeseria", "papasBurgeria", "papasBakeria", "pandemic2", "pandemic", "ageOfWar", "fancyPantsAdventure2", "effingWorms2", "duckLife", "duckLife2", "duckLife3", "duckLife4", "superhot", "getawayShootout", "defendTheTank", "portalFlash", "battleForGondor", "bloxors", "worldsEasiestGame", "worldsHardestGame2", "worldsHardestGame3", "worldsHardestGame4", "gunMayhem", "gunMayhem2", "effingWormsXmas", "rockGarden", "emuJS", "stickRPG", "motherLoad", "clickerHeroes", "baconMayDie", "basketBallStars", "funnyShooter2", "polywar2", "raftWars2Html5", "raftWarsHtml5","pixelCombat2", "miniMetro", "bigIceTowerTinySquare", "bigTowerTinySquare"];
 var games;
 var api = "https://api." + location.hostname + ":3000";
 var socket;
@@ -21,16 +17,16 @@ if(window.self == window.top){
     }
 }
 }
- //show discord popup
- if (localStorage.getItem("discord") != "stop") {
-    document.getElementById("discord").style.display = "block";
+ //show  popup
+ if (localStorage.getItem("popup") != "stop") {
+    document.getElementById("popup").style.display = "block";
 }
 async function run(loadedgames) {
     games = loadedgames;
     loadPopGames();
     start();
 }
-function start() {
+async function start() {
     //check if you are on all games
     if (window.location.pathname.includes("allgames")) {
         addGamesFromJson(games, "allgames");
@@ -64,7 +60,7 @@ async function loadPopGames() {
     }
 
 }
-function addGamesFromList(list, gameType) {
+async function addGamesFromList(list, gameType) {
     //repeats for each item on the list with gameid being the item
     list.forEach(function (gameId, index) {
         //set gameinfo to gameid of the data
@@ -88,7 +84,7 @@ function addGamesFromList(list, gameType) {
     }
     */
 }
-function addGamesFromJson(Json, gameType) {
+async function addGamesFromJson(Json, gameType) {
     //repeats for each item on the list with gameid being the item
     for (const [gameId] of Object.entries(Json)) {
         //set gameinfo to gameid of the data
@@ -99,13 +95,13 @@ function addGamesFromJson(Json, gameType) {
         }
     }
 }
-function closediscrod(save) {
-    document.getElementById("discord").style.display = "none";
+async function closepopup(save) {
+    document.getElementById("popup").style.display = "none";
     if (save == "yes") {
-        localStorage.setItem("discord", "stop");
+        localStorage.setItem("popup", "stop");
     }
 }
-function opendiscrod() {
+async function opendiscrod() {
     window.location.replace("https://discord.gg/xYSgcdDXrJ")
 }
 async function abGame(gameid) {
@@ -133,8 +129,8 @@ async function abFlash(gameid) {
     socket.emit('game', gameid);  
     }  
 }
-function addgame(sectionid, gameid, gamename, img, properties, func) {
-    document.getElementById(sectionid).innerHTML += '<div class="game" onclick="' + func + '(' + "'" + gameid + "'" + ')"><img class="gimg" alt="' + gamename + '" ' + properties + 'src="images/' + img + '"><div class="gradient"></div><h class="text">' + gamename + '</h></div>'
+async function addgame(sectionid, gameid, gamename, img, properties, func) {
+    document.getElementById(sectionid).insertAdjacentHTML("beforeend", '<div class="game" onclick="' + func + '(' + "'" + gameid + "'" + ')"><img class="gimg" alt="' + gamename + '" ' + properties + 'src="images/' + img + '"><div class="gradient"></div><h class="text">' + gamename + '</h></div>');
 }
 function cleargames(section) {
     document.getElementById(section).innerHTML = '';
@@ -168,9 +164,9 @@ function liveSearch() {
             if (game.name.toLowerCase().includes(input) && game.id.startsWith("/") == false) {
                 //add sugjestions
                 if (searchSuggestions.innerHTML == "") {
-                    searchSuggestions.innerHTML += '<div onclick="' + game.openfunc + '(' + "'" + game.id + "'" + ')" style="    background-color: rgba(255, 255, 255, 0.05);background-image:url(' + "'images/" + game.image + "'" + ');" id="searchSuggestion">' + game.name + '</div>'
+                    searchSuggestions.insertAdjacentHTML("beforeend", '<div onclick="' + game.openfunc + '(' + "'" + game.id + "'" + ')" style="    background-color: rgba(255, 255, 255, 0.05);background-image:url(' + "'images/" + game.image + "'" + ');" id="searchSuggestion">' + game.name + '</div>');
                 } else {
-                    searchSuggestions.innerHTML += '<div onclick="' + game.openfunc + '(' + "'" + game.id + "'" + ')" style="background-image:url(' + "'images/" + game.image + "'" + ');" id="searchSuggestion">' + game.name + '</div>'
+                    searchSuggestions.insertAdjacentHTML("beforeend", '<div onclick="' + game.openfunc + '(' + "'" + game.id + "'" + ')" style="background-image:url(' + "'images/" + game.image + "'" + ');" id="searchSuggestion">' + game.name + '</div>');
                 }
             }
         }
