@@ -384,7 +384,7 @@ var games = {
         "openfunc": "abGame"
     },
     "dkc2": {
-        "id": "dck2",
+        "id": "dkc2",
         "name": "Donkey Kong Country 2",
         "image": "dkc2.webp",
         "openfunc": "abGame"
