@@ -1,5 +1,5 @@
 var games;
-var api = "https://api." + location.hostname + ":3000";
+var api = "https://supremegmes-api.onrender.com:3000";
 var socket;
 var searchSuggestionFocus = false;
 if(window.self == window.top){
@@ -105,7 +105,6 @@ async function opendiscrod() {
     window.location.replace("https://discord.gg/xYSgcdDXrJ")
 }
 async function abGame(gameid) {
-    
         var a = window.open("about:blank", "_blank");
         if(navigator.userAgent.includes('Firefox')){
             a.addEventListener("DOMContentLoaded", function () {
