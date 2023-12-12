@@ -1,5 +1,5 @@
 var games;
-var api = "https://supremegmes-api.onrender.com:3000";
+var api = "https://supremegmes-api.onrender.com";
 var socket;
 var searchSuggestionFocus = false;
 if(window.self == window.top){
