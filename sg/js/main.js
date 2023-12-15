@@ -32,10 +32,10 @@ async function start() {
         addGamesFromJson(games, "allgames");
     } else {
         //add all the games from the stored lists(these wil be overwrited when the data from the server is reseved)
-        addGamesFromList(recGames, "recgames");
-        addGamesFromList(newGames, "newgames");
-        addGamesFromList(popwGames, "popwgames");
-        addGamesFromList(popGames, "popgames");
+        addGamesFromListById(recGames, "recgames");
+        addGamesFromListById(newGames, "newgames");
+        addGamesFromListById(popwGames, "popwgames");
+        addGamesFromListById(popGames, "popgames");
     }
 }
 async function loadPopGames() {
@@ -62,9 +62,9 @@ async function loadPopGames() {
 }
 async function addGamesFromList(list, gameType) {
     //repeats for each item on the list with gameid being the item
-    list.forEach(function (gameId, index) {
+    list.forEach(function (gameName, index) {
         //set gameinfo to gameid of the data
-        let gameInfo = games[gameId];
+        let gameInfo = games[gameName];
         //if it is on sccreen
         if (index < 6) {
             //add the game with all the info and no extra properties
@@ -74,26 +74,33 @@ async function addGamesFromList(list, gameType) {
             addgame(gameType, gameInfo.id, gameInfo.name, gameInfo.image, 'loading="lazy"', gameInfo.openfunc);
         }
     });
-    /* old method(no index)
+}
+async function addGamesFromListById(list, gameType) {
     //repeats for each item on the list with gameid being the item
-    for (const gameId of list) {
+    list.forEach(function (gameId, index) {
+        //get game name
+        let gamename = Object.entries(games).find(([useless, game]) => game.id == gameId)[0];
         //set gameinfo to gameid of the data
-        let gameInfo = games[gameId];
-        //add the game with all the info
-        addgame(gameType, gameInfo.id, gameInfo.name, gameInfo.image);
-    }
-    */
+        let gameInfo = games[gamename];
+        //if it is on sccreen
+        if (index < 6) {
+            //add the game with all the info and no extra properties
+            addgame(gameType, gameInfo.id, gameInfo.name, gameInfo.image, "", gameInfo.openfunc);
+        } else {
+            //add the game with all the info and lazy loading
+            addgame(gameType, gameInfo.id, gameInfo.name, gameInfo.image, 'loading="lazy"', gameInfo.openfunc);
+        }
+    });
 }
 async function addGamesFromJson(Json, gameType) {
-    //repeats for each item on the list with gameid being the item
-    for (const [gameId] of Object.entries(Json)) {
-        //set gameinfo to gameid of the data
-        let gameInfo = games[gameId];
-        //add the game with all the info
-        if (gameInfo.id.startsWith("/") == false) {
-            addgame(gameType, gameInfo.id, gameInfo.name, gameInfo.image, "", gameInfo.openfunc);
-        }
-    }
+    Object.entries(Json).forEach(function ([gameId], index) {
+//set gameinfo to gameid of the data
+let gameInfo = games[gameId];
+//add the game with all the info
+if (gameInfo.id.startsWith("/") == false) {
+    addgame(gameType, gameInfo.id, gameInfo.name, gameInfo.image, "", gameInfo.openfunc);
+}
+    });
 }
 async function closepopup(save) {
     document.getElementById("popup").style.display = "none";
