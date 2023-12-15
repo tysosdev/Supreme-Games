@@ -32,10 +32,10 @@ async function start() {
         addGamesFromJson(games, "allgames");
     } else {
         //add all the games from the stored lists(these wil be overwrited when the data from the server is reseved)
-        addGamesFromListById(recGames, "recgames");
-        addGamesFromListById(newGames, "newgames");
-        addGamesFromListById(popwGames, "popwgames");
-        addGamesFromListById(popGames, "popgames");
+        addGamesFromList(recGames, "recgames");
+        addGamesFromList(newGames, "newgames");
+        addGamesFromList(popwGames, "popwgames");
+        addGamesFromList(popGames, "popgames");
     }
 }
 async function loadPopGames() {
@@ -49,13 +49,13 @@ async function loadPopGames() {
             console.log(games);
             console.log(popGames);
             cleargames("popgames");
-            addGamesFromList(popGames, "popgames");
+            addGamesFromListById(popGames, "popgames");
         });
         socket.on('popwgames', (games) => {
             popwGames = games;
             console.log(games);
             cleargames("popwgames");
-            addGamesFromList(popwGames, "popwgames");
+            addGamesFromListById(popwGames, "popwgames");
         });
     }
 
