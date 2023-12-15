@@ -42,18 +42,17 @@ async function loadPopGames() {
     if (window.location.pathname.includes("allgames") != true) {
         //attempt to connect to the server
         socket = io(api);
-        socket.emit('get');
         //when we hear back write the new data
         socket.on('popgames', (games) => {
             popGames = games;
-            console.log(games);
-            console.log(popGames);
+            //console.log(games);
+            //console.log(popGames);
             cleargames("popgames");
             addGamesFromListById(popGames, "popgames");
         });
         socket.on('popwgames', (games) => {
             popwGames = games;
-            console.log(games);
+            //console.log(games);
             cleargames("popwgames");
             addGamesFromListById(popwGames, "popwgames");
         });
