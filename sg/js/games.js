@@ -1,13 +1,13 @@
 var popGames = ["miniMetro", "Diggy", "catNinja", "gba", "motox3m", "raftWars2Html5", "getawayShootout", "henryStickmanBreakingTheBank"];
 var popwGames = ["funnyShooter2", "bigTowerTinySquare", "bigIceTowerTinySquare", "gba", "motox3mSpookyLand", "raftWars", "impossibleQuiz", "henryStickmanBreakingTheBank"];
 var recGames = ["superhot", "catNinja", "tableTanks", "learnToFly3", "achievementUnlocked2", "motox3m", "raftWarsHtml5", "impossibleQuiz2", "eaglercraft"];
-var newGames = ["vex8", "hydroStorm2", "burninRubber5XS", "cobrazIo", "criticalStrike", "papasPizzeria", "papasPancakeria", "papasPastaria", "papasHotDoggeria", "papasFreezeria", "papasDonuteria", "papasCupcakeria", "papasCheeseria", "papasBurgeria", "papasBakeria", "pandemic2", "pandemic", "ageOfWar", "fancyPantsAdventure2", "effingWorms2", "duckLife", "duckLife2", "duckLife3", "duckLife4", "superhot", "getawayShootout", "defendTheTank", "portalFlash", "battleForGondor", "bloxors", "worldsEasiestGame", "worldsHardestGame2", "worldsHardestGame3", "worldsHardestGame4", "gunMayhem", "gunMayhem2", "effingWormsXmas", "rockGarden", "emuJS", "stickRPG", "motherLoad", "clickerHeroes", "baconMayDie", "basketBallStars", "funnyShooter2", "polywar2", "raftWars2Html5", "raftWarsHtml5","pixelCombat2", "miniMetro", "bigIceTowerTinySquare", "bigTowerTinySquare"];
+var newGames = ["snowRider3d", "jellyTruck", "vex8", "hydroStorm2", "burninRubber5XS", "cobrazIo", "criticalStrike", "papasPizzeria", "papasPancakeria", "papasPastaria", "papasHotDoggeria", "papasFreezeria", "papasDonuteria", "papasCupcakeria", "papasCheeseria", "papasBurgeria", "papasBakeria", "pandemic2", "pandemic", "ageOfWar", "fancyPantsAdventure2", "effingWorms2", "duckLife", "duckLife2", "duckLife3", "duckLife4", "superhot", "getawayShootout", "defendTheTank", "portalFlash", "battleForGondor", "bloxors", "worldsEasiestGame", "worldsHardestGame2", "worldsHardestGame3", "worldsHardestGame4", "gunMayhem", "gunMayhem2", "effingWormsXmas", "rockGarden", "emuJS", "stickRPG", "motherLoad", "clickerHeroes", "baconMayDie", "basketBallStars", "funnyShooter2", "polywar2", "raftWars2Html5", "raftWarsHtml5","pixelCombat2", "miniMetro", "bigIceTowerTinySquare", "bigTowerTinySquare"];
 /*
-    "getawayShootout": { //internal name, used with popgames and server for popular games(no server anymore)
-        "id": "getawayShootout", //id passed to the openfunc, for abflash it is the swf id, for abgame its the folder name in games
+    "getawayShootout": { //internal name
+        "id": "getawayShootout", //id passed to the openfunc and used for identification on the server, for abflash it is the swf id, for abgame its the folder name in games
         "name": "Getaway Shootout", //name shown to users
         "image": "getawayShootout.jpg", //image shown to users in /images
-        "openfunc": "abGame" //open function, currently only abgame(for games in /games) and abflash(for dfl)
+        "openfunc": "abGame" //open function, currently only abgame(for games in /games) and abflash(for dfl games in /dfl/1)
     },
 */
 var games = {
@@ -695,6 +695,12 @@ var games = {
         "image": "jackSmith.webp",
         "openfunc": "abFlash"
     },
+    "jellyTruck": {
+        "id": "jellyTruck",
+        "name": "Jelly Truck",
+        "image": "jellyTruck.jpg",
+        "openfunc": "abGame"
+    },
     "KDL": {
         "id": "KDL",
         "name": "Kirby's Dream Land",
@@ -1137,6 +1143,12 @@ var games = {
         "id": "slope",
         "name": "Slope",
         "image": "slope.webp",
+        "openfunc": "abGame"
+    },
+    "snowRider3d": {
+        "id": "snowRider3d",
+        "name": "Snow Rider 3d",
+        "image": "snowRider3d.png",
         "openfunc": "abGame"
     },
     "mk64": {

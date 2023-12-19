@@ -40,15 +40,19 @@ async function start() {
 }
 async function loadPopGames() {
     if (window.location.pathname.includes("allgames") != true) {
+        console.log("connecting time is:" + Date.now());
         //attempt to connect to the server
         socket = io(api);
         //when we hear back write the new data
+        console.log("ready:" + Date.now());
         socket.on('popgames', (games) => {
+            console.log("loaded:" + Date.now());
             popGames = games;
             //console.log(games);
             //console.log(popGames);
             cleargames("popgames");
             addGamesFromListById(popGames, "popgames");
+            console.log("done:" + Date.now());
         });
         socket.on('popwgames', (games) => {
             popwGames = games;
