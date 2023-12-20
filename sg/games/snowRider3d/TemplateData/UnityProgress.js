@@ -33,12 +33,12 @@ function UnityProgress(gameInstance, progress) {
 
     if(progress>= 0.9 && progress<1)
     {
-        gameInstance.textProgress.innerHTML = '100% - Running, Wait..';
+        gameInstance.textProgress.innerHTML = '100% - Running, Wait..' +' <img src="' + rootPath + '/gears.gif" class="spinner" />';
         gameInstance.progress.style.display = 'none';
     }
     else
     {
-        gameInstance.textProgress.innerHTML = 'Loading - ' + Math.floor(progress * 100) + '%';
+        gameInstance.textProgress.innerHTML = 'Loading - ' + Math.floor(progress * 100) + '%' + ' <img src="' + rootPath + '/gears.gif" class="spinner" />';
     }
 
     /*
@@ -63,7 +63,7 @@ window.Game = (function() {
 
     Game.prototype.registerEvents = function() {
         var _this = this;
-
+        
         window.addEventListener("keydown", function(e) {
             // space and arrow keys
             if ([8, 37, 38, 39, 40].indexOf(e.keyCode) > -1) {
@@ -74,7 +74,7 @@ window.Game = (function() {
         document.onmousedown = function() {
             window.focus();
         };
-
+        
         document.addEventListener('DOMContentLoaded', function() {
             _this.resize();
         }, false);
