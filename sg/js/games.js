@@ -1146,7 +1146,7 @@ var games = {
         "openfunc": "abGame"
     },
     "/snowRider3d": {
-        "id": "snowRider3d",
+        "id": "/snowRider3d",
         "name": "Snow Rider 3d",
         "image": "snowRider3d.png",
         "openfunc": "abGame"
