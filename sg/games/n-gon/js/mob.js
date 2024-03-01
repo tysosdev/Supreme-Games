@@ -12,10 +12,12 @@ const mobs = {
             }
         }
     },
-    draw() {
+    draw() { },
+    drawDefault() {
         ctx.lineWidth = 2;
         let i = mob.length;
         while (i--) {
+            // if (Matter.Query.ray(map, mob[i].position, m.pos).length === 0) { //check if there is a ray between the mob and the player
             ctx.beginPath();
             const vertices = mob[i].vertices;
             ctx.moveTo(vertices[0].x, vertices[0].y);
@@ -25,6 +27,7 @@ const mobs = {
             ctx.strokeStyle = mob[i].stroke;
             ctx.fill();
             ctx.stroke();
+            // }
         }
     },
     healthBar() {
@@ -60,7 +63,7 @@ const mobs = {
 
         function applySlow(whom) {
             if (!whom.shield && !whom.isShielded && whom.alive) {
-                if (tech.isIceMaxHealthLoss && whom.health > 0.65 && whom.damageReduction > 0) whom.health = 0.66
+                if (tech.isIceMaxHealthLoss && whom.health > 0.66 && whom.damageReduction > 0) whom.health = 0.66
                 if (tech.isIceKill && whom.health < 0.34 && whom.damageReduction > 0 && whom.alive) {
                     // whom.death();
                     whom.damage(Infinity);
@@ -188,7 +191,7 @@ const mobs = {
             who.status.push({
                 effect() {
                     if ((simulation.cycle - this.startCycle) % 30 === 0) {
-                        let dmg = m.dmgScale * this.dmg * tech.radioactiveDamage
+                        let dmg = m.dmgScale * tech.radioactiveDamage * this.dmg
                         who.damage(dmg);
                         if (who.damageReduction) {
                             simulation.drawList.push({ //add dmg to draw queue
@@ -201,7 +204,7 @@ const mobs = {
                         }
                     }
                 },
-                endEffect() {},
+                endEffect() { },
                 dmg: tickDamage,
                 type: "dot",
                 endCycle: simulation.cycle + cycles,
@@ -239,7 +242,7 @@ const mobs = {
     deathCount: 0,
     mobSpawnWithHealth: 1,
     setMobSpawnHealth() {
-        mobs.mobSpawnWithHealth = 0.88 ** (tech.mobSpawnWithHealth) //+ (m.fieldMode === 0 || m.fieldMode === 7) * m.coupling
+        mobs.mobSpawnWithHealth = 0.88 ** (tech.mobSpawnWithHealth)
     },
     //**********************************************************************************************
     //**********************************************************************************************
@@ -337,7 +340,7 @@ const mobs = {
             },
             alwaysSeePlayer() {
                 if (!m.isCloak) {
-                    this.seePlayer.recall = true;
+                    this.seePlayer.recall = 1;
                     this.seePlayer.position.x = player.position.x;
                     this.seePlayer.position.y = player.position.y;
                 }
@@ -408,10 +411,7 @@ const mobs = {
             isLookingAtPlayer(threshold) {
                 const diff = Vector.normalise(Vector.sub(player.position, this.position));
                 //make a vector for the mob's direction of length 1
-                const dir = {
-                    x: Math.cos(this.angle),
-                    y: Math.sin(this.angle)
-                };
+                const dir = { x: Math.cos(this.angle), y: Math.sin(this.angle) };
                 //the dot product of diff and dir will return how much over lap between the vectors
                 const dot = Vector.dot(dir, diff);
                 // console.log(Math.cos(dot)*180/Math.PI)
@@ -505,89 +505,48 @@ const mobs = {
                     ctx.fill();
                 }
             },
-            laser() {
-                const vertexCollision = function(v1, v1End, domain) {
-                    for (let i = 0; i < domain.length; ++i) {
-                        let vertices = domain[i].vertices;
-                        const len = vertices.length - 1;
-                        for (let j = 0; j < len; j++) {
-                            results = simulation.checkLineIntersection(v1, v1End, vertices[j], vertices[j + 1]);
-                            if (results.onLine1 && results.onLine2) {
-                                const dx = v1.x - results.x;
-                                const dy = v1.y - results.y;
-                                const dist2 = dx * dx + dy * dy;
-                                if (dist2 < best.dist2 && (!domain[i].mob || domain[i].alive)) {
-                                    best = {
-                                        x: results.x,
-                                        y: results.y,
-                                        dist2: dist2,
-                                        who: domain[i],
-                                        v1: vertices[j],
-                                        v2: vertices[j + 1]
-                                    };
-                                }
-                            }
-                        }
-                        results = simulation.checkLineIntersection(v1, v1End, vertices[0], vertices[len]);
-                        if (results.onLine1 && results.onLine2) {
-                            const dx = v1.x - results.x;
-                            const dy = v1.y - results.y;
-                            const dist2 = dx * dx + dy * dy;
-                            if (dist2 < best.dist2) {
-                                best = {
-                                    x: results.x,
-                                    y: results.y,
-                                    dist2: dist2,
-                                    who: domain[i],
-                                    v1: vertices[0],
-                                    v2: vertices[len]
-                                };
-                            }
-                        }
-                    }
-                };
-                if (this.seePlayer.recall && !this.isSlowed) {
-                    const seeRange = 2500;
-                    best = {
-                        x: null,
-                        y: null,
-                        dist2: Infinity,
-                        who: null,
-                        v1: null,
-                        v2: null
-                    };
-                    const look = {
-                        x: this.position.x + seeRange * Math.cos(this.angle),
-                        y: this.position.y + seeRange * Math.sin(this.angle)
-                    };
-                    vertexCollision(this.position, look, map);
-                    vertexCollision(this.position, look, body);
-                    if (!m.isCloak) vertexCollision(this.position, look, [player]);
-                    // hitting player
-                    if (best.who === player) {
-                        if (m.immuneCycle < m.cycle) {
-                            const dmg = 0.0014 * simulation.dmgScale;
-                            m.damage(dmg);
-                            ctx.fillStyle = "#f00"; //draw damage
-                            ctx.beginPath();
-                            ctx.arc(best.x, best.y, dmg * 10000, 0, 2 * Math.PI);
-                            ctx.fill();
-                        }
-                    }
-                    //draw beam
-                    if (best.dist2 === Infinity) {
-                        best = look;
-                    }
-                    ctx.beginPath();
-                    ctx.moveTo(this.position.x, this.position.y);
-                    ctx.lineTo(best.x, best.y);
-                    ctx.strokeStyle = "#f00"; // Purple path
-                    ctx.lineWidth = 1;
-                    ctx.setLineDash([50 + 120 * Math.random(), 50 * Math.random()]);
-                    ctx.stroke(); // Draw it
-                    ctx.setLineDash([]);
-                }
-            },
+            // laser() {
+            //     if (this.seePlayer.recall && !this.isSlowed) {
+            //         const seeRange = 2500;
+            //         best = {
+            //             x: null,
+            //             y: null,
+            //             dist2: Infinity,
+            //             who: null,
+            //             v1: null,
+            //             v2: null
+            //         };
+            //         const look = {
+            //             x: this.position.x + seeRange * Math.cos(this.angle),
+            //             y: this.position.y + seeRange * Math.sin(this.angle)
+            //         };
+            //         best = vertexCollision(this.position, look, m.isCloak ? [map, body] : [map, body, [player]]);
+
+            //         // hitting player
+            //         if (best.who === player) {
+            //             if (m.immuneCycle < m.cycle) {
+            //                 const dmg = 0.0014 * simulation.dmgScale;
+            //                 m.damage(dmg);
+            //                 ctx.fillStyle = "#f00"; //draw damage
+            //                 ctx.beginPath();
+            //                 ctx.arc(best.x, best.y, dmg * 10000, 0, 2 * Math.PI);
+            //                 ctx.fill();
+            //             }
+            //         }
+            //         //draw beam
+            //         if (best.dist2 === Infinity) {
+            //             best = look;
+            //         }
+            //         ctx.beginPath();
+            //         ctx.moveTo(this.position.x, this.position.y);
+            //         ctx.lineTo(best.x, best.y);
+            //         ctx.strokeStyle = "#f00"; // Purple path
+            //         ctx.lineWidth = 1;
+            //         ctx.setLineDash([50 + 120 * Math.random(), 50 * Math.random()]);
+            //         ctx.stroke(); // Draw it
+            //         ctx.setLineDash([]);
+            //     }
+            // },
             wing(a, radius = 250, ellipticity = 0.4, dmg = 0.0006) {
                 const minorRadius = radius * ellipticity
                 const perp = { x: Math.cos(a), y: Math.sin(a) } //
@@ -658,47 +617,6 @@ const mobs = {
                     ctx.fillStyle = "rgba(0,0,0,0.07)";
                     ctx.fill();
                     //spring to random place on map
-                    const vertexCollision = function(v1, v1End, domain) {
-                        for (let i = 0; i < domain.length; ++i) {
-                            let vertices = domain[i].vertices;
-                            const len = vertices.length - 1;
-                            for (let j = 0; j < len; j++) {
-                                results = simulation.checkLineIntersection(v1, v1End, vertices[j], vertices[j + 1]);
-                                if (results.onLine1 && results.onLine2) {
-                                    const dx = v1.x - results.x;
-                                    const dy = v1.y - results.y;
-                                    const dist2 = dx * dx + dy * dy;
-                                    if (dist2 < best.dist2 && (!domain[i].mob || domain[i].alive)) {
-                                        best = {
-                                            x: results.x,
-                                            y: results.y,
-                                            dist2: dist2,
-                                            who: domain[i],
-                                            v1: vertices[j],
-                                            v2: vertices[j + 1]
-                                        };
-                                    }
-                                }
-                            }
-                            results = simulation.checkLineIntersection(v1, v1End, vertices[0], vertices[len]);
-                            if (results.onLine1 && results.onLine2) {
-                                const dx = v1.x - results.x;
-                                const dy = v1.y - results.y;
-                                const dist2 = dx * dx + dy * dy;
-                                if (dist2 < best.dist2) {
-                                    best = {
-                                        x: results.x,
-                                        y: results.y,
-                                        dist2: dist2,
-                                        who: domain[i],
-                                        v1: vertices[0],
-                                        v2: vertices[len]
-                                    };
-                                }
-                            }
-                        }
-                    };
-                    //move to a random location
                     if (!(simulation.cycle % (this.seePlayerFreq * 4))) {
                         best = {
                             x: null,
@@ -713,8 +631,7 @@ const mobs = {
                             x: this.position.x + seeRange * Math.cos(this.angle),
                             y: this.position.y + seeRange * Math.sin(this.angle)
                         };
-                        vertexCollision(this.position, look, map);
-                        vertexCollision(this.position, look, body);
+                        best = vertexCollision(this.position, look, [map, body]);
                         if (best.dist2 != Infinity) {
                             if (Math.random() > 0.5) {
                                 this.springTarget.x = best.x;
@@ -756,7 +673,7 @@ const mobs = {
             },
             curl(range = 1000, mag = -10) {
                 //cause all mobs, and bodies to rotate in a circle
-                applyCurl = function(center, array, isAntiGravity = true) {
+                applyCurl = function (center, array, isAntiGravity = true) {
                     for (let i = 0; i < array.length; ++i) {
                         if (!array[i].isNotHoldable) {
                             const sub = Vector.sub(center, array[i].position)
@@ -773,8 +690,8 @@ const mobs = {
                                     })
                                 } else {
                                     Matter.Body.setVelocity(array[i], {
-                                        x: array[i].velocity.x * 0.94 + curlVector.x * 0.06,
-                                        y: array[i].velocity.y * 0.94 + curlVector.y * 0.06
+                                        x: array[i].velocity.x * 0.95 + curlVector.x * 0.06,
+                                        y: array[i].velocity.y * 0.95 + curlVector.y * 0.06
                                     })
                                 }
                                 if (isAntiGravity) array[i].force.y -= 0.8 * simulation.g * array[i].mass
@@ -924,7 +841,7 @@ const mobs = {
                 //be sure to declare searchTarget in mob spawn
                 //accelerate towards the searchTarget
                 if (!this.seePlayer.recall) {
-                    const newTarget = function(that) {
+                    const newTarget = function (that) {
                         if (Math.random() < 0.0007) {
                             that.searchTarget = player.position; //chance to target player
                         } else {
@@ -1133,16 +1050,69 @@ const mobs = {
                 if ((!this.isShielded || isBypassShield) && this.alive) {
                     if (dmg !== Infinity) {
                         dmg *= tech.damageFromTech()
+                        if (this.isDropPowerUp) {
+                            if (this.health === 1) {
+                                if (tech.isMobFullHealthCloak) {
+                                    dmg *= 2.11
+                                    simulation.ephemera.push({
+                                        name: "damage outline",
+                                        count: 7, //cycles before it self removes
+                                        vertices: this.vertices,
+                                        do() {
+                                            this.count--
+                                            if (this.count < 0) simulation.removeEphemera(this.name)
+                                            //draw body
+                                            ctx.beginPath();
+                                            const vertices = this.vertices;
+                                            ctx.moveTo(vertices[0].x, vertices[0].y);
+                                            for (let j = 1, len = vertices.length; j < len; ++j) {
+                                                ctx.lineTo(vertices[j].x, vertices[j].y);
+                                            }
+                                            ctx.lineTo(vertices[0].x, vertices[0].y);
+                                            ctx.fillStyle = `rgba(255,0,100,0.15)` //"rgba(150,150,225,0.5)";
+                                            ctx.fill()
+                                            ctx.lineWidth = 3 //60 * (0.25 - this.damageReductionGoal)
+                                            ctx.strokeStyle = `#f08` //"rgba(150,150,225,0.5)";
+                                            ctx.stroke();
+                                        },
+                                    })
+                                }
+                            } else if (tech.isMobLowHealth && this.health < 0.25) {
+                                dmg *= 3.22
+
+                                simulation.ephemera.push({
+                                    name: "damage outline",
+                                    count: 2, //cycles before it self removes
+                                    vertices: this.vertices,
+                                    do() {
+                                        this.count--
+                                        if (this.count < 0) simulation.removeEphemera(this.name)
+                                        //draw body
+                                        ctx.beginPath();
+                                        const vertices = this.vertices;
+                                        ctx.moveTo(vertices[0].x, vertices[0].y);
+                                        for (let j = 1, len = vertices.length; j < len; ++j) {
+                                            ctx.lineTo(vertices[j].x, vertices[j].y);
+                                        }
+                                        ctx.lineTo(vertices[0].x, vertices[0].y);
+                                        ctx.fillStyle = `rgba(255,50,100,0.2)` //"rgba(150,150,225,0.5)";
+                                        ctx.fill()
+                                        ctx.lineWidth = 3 //60 * (0.25 - this.damageReductionGoal)
+                                        ctx.strokeStyle = `#f38` //"rgba(150,150,225,0.5)";
+                                        ctx.stroke();
+                                    },
+                                })
+                            }
+                        }
+
                         //mobs specific damage changes
                         if (tech.isFarAwayDmg) dmg *= 1 + Math.sqrt(Math.max(500, Math.min(3000, this.distanceToPlayer())) - 500) * 0.0067 //up to 33% dmg at max range of 3000
                         dmg *= this.damageReduction
                         //energy and heal drain should be calculated after damage boosts
                         if (tech.energySiphon && dmg !== Infinity && this.isDropPowerUp && m.immuneCycle < m.cycle) m.energy += Math.min(this.health, dmg) * tech.energySiphon
-                        if (tech.healthDrain && dmg !== Infinity && this.isDropPowerUp && Math.random() < tech.healthDrain * Math.min(this.health, dmg)) {
-                            powerUps.spawn(m.pos.x + 20 * (Math.random() - 0.5), m.pos.y + 20 * (Math.random() - 0.5), "heal");
-                        }
                         dmg /= Math.sqrt(this.mass)
                     }
+
                     this.health -= dmg
                     //this.fill = this.color + this.health + ')';
                     this.onDamage(dmg); //custom damage effects
@@ -1187,12 +1157,17 @@ const mobs = {
             leaveBody: true,
             isDropPowerUp: true,
             death() {
-                if (tech.collidePowerUps && Math.random() < tech.collidePowerUps && this.isDropPowerUp) powerUps.randomize(this.position) //needs to run before onDeath spawns power ups
+                if (tech.collidePowerUps && this.isDropPowerUp) powerUps.randomize(this.position) //needs to run before onDeath spawns power ups
                 this.onDeath(this); //custom death effects
                 this.removeConsBB();
                 this.alive = false; //triggers mob removal in mob[i].replace(i)
 
                 if (this.isDropPowerUp) {
+                    // if (true) {
+                    //     //killing a mob heals for the last damage you took
+
+
+                    // }
                     if (this.isSoonZombie) { //spawn zombie on death
                         this.leaveBody = false;
                         let count = 5 //delay spawn cycles
@@ -1222,21 +1197,36 @@ const mobs = {
                             });
                         }
                     }
+                    if (tech.healSpawn && Math.random() < tech.healSpawn) {
+                        powerUps.spawn(this.position.x + 20 * (Math.random() - 0.5), this.position.y + 20 * (Math.random() - 0.5), "heal");
+                        simulation.drawList.push({
+                            x: this.position.x,
+                            y: this.position.y,
+                            radius: 50,
+                            color: "#0eb",
+                            time: 12
+                        });
+                        simulation.drawList.push({
+                            x: this.position.x,
+                            y: this.position.y,
+                            radius: 100,
+                            color: "#0eb",
+                            time: 6
+                        });
+                        simulation.drawList.push({
+                            x: this.position.x,
+                            y: this.position.y,
+                            radius: 200,
+                            color: "#0eb",
+                            time: 3
+                        });
+                    }
 
                     if (tech.deathSkipTime && !m.isBodiesAsleep) {
                         requestAnimationFrame(() => {
                             simulation.timePlayerSkip((this.isBoss ? 45 : 25) * tech.deathSkipTime)
                             simulation.loop(); //ending with a wipe and normal loop fixes some very minor graphical issues where things are draw in the wrong locations
                         }); //wrapping in animation frame prevents errors, probably
-
-                        // if (tech.isFlipFlopOn) {
-                        //     m.rewind(this.isBoss ? 45 : 25)
-                        // } else {
-                        //     requestAnimationFrame(() => {
-                        //         simulation.timePlayerSkip(this.isBoss ? 45 : 25)
-                        //         simulation.loop(); //ending with a wipe and normal loop fixes some very minor graphical issues where things are draw in the wrong locations
-                        //     }); //wrapping in animation frame prevents errors, probably
-                        // }
                     }
                     if (tech.isEnergyLoss) m.energy *= 0.8;
                     powerUps.spawnRandomPowerUp(this.position.x, this.position.y);
@@ -1265,25 +1255,17 @@ const mobs = {
                     }
                     if (tech.isBotSpawnerReset) {
                         for (let i = 0, len = bullet.length; i < len; i++) {
-                            if (bullet[i].botType && bullet[i].endCycle !== Infinity) bullet[i].endCycle = simulation.cycle + 780 //13 seconds
+                            if (bullet[i].botType && bullet[i].endCycle !== Infinity) bullet[i].endCycle = simulation.cycle + 900 //15 seconds
                         }
                     }
                     if (Math.random() < tech.botSpawner) {
                         b.randomBot(this.position, false)
-                        bullet[bullet.length - 1].endCycle = simulation.cycle + 780 //13 seconds
+                        bullet[bullet.length - 1].endCycle = simulation.cycle + 900 //15 seconds
                         this.leaveBody = false; // no body since it turned into the bot
                     }
                     if (tech.isAddRemoveMaxHealth) {
-                        if (this.isBoss && this.isDropPowerUp) {
-                            powerUps.spawn(this.position.x + 20, this.position.y, "tech", false)
-                            powerUps.spawn(this.position.x - 20, this.position.y, "ammo", false)
-                            powerUps.spawn(this.position.x, this.position.y + 20, "research", false)
-                            powerUps.spawn(this.position.x, this.position.y - 20, "heal", false)
-                            powerUps.spawn(this.position.x - 40, this.position.y, "ammo", false)
-                            powerUps.spawn(this.position.x, this.position.y + 40, "research", false)
-                            powerUps.spawn(this.position.x, this.position.y - 40, "heal", false)
-                        } else {
-                            const amount = 0.005
+                        if (!this.isBoss) {
+                            const amount = 0.0025
                             if (tech.isEnergyHealth) {
                                 if (m.maxEnergy > amount) {
                                     tech.healMaxEnergyBonus -= amount
@@ -1294,12 +1276,34 @@ const mobs = {
                                 m.setMaxHealth();
                             }
                         }
+
+                        // if (this.isBoss && this.isDropPowerUp) {
+                        //     powerUps.spawn(this.position.x + 20, this.position.y, "tech", false)
+                        //     powerUps.spawn(this.position.x - 20, this.position.y, "research", false)
+                        //     powerUps.spawn(this.position.x - 40, this.position.y, "research", false)
+                        //     powerUps.spawn(this.position.x + 40, this.position.y, "research", false)
+                        //     powerUps.spawn(this.position.x, this.position.y + 20, "research", false)
+                        //     powerUps.spawn(this.position.x, this.position.y - 20, "heal", false)
+                        //     powerUps.spawn(this.position.x, this.position.y + 40, "heal", false)
+                        //     powerUps.spawn(this.position.x, this.position.y - 40, "heal", false)
+                        // } else {
+                        //     const amount = 0.005
+                        //     if (tech.isEnergyHealth) {
+                        //         if (m.maxEnergy > amount) {
+                        //             tech.healMaxEnergyBonus -= amount
+                        //             m.setMaxEnergy();
+                        //         }
+                        //     } else if (m.maxHealth > amount) {
+                        //         tech.extraMaxHealth -= amount //decrease max health
+                        //         m.setMaxHealth();
+                        //     }
+                        // }
                     }
                     if (tech.cloakDuplication && !this.isBoss) {
-                        tech.cloakDuplication -= 0.02
-                        powerUps.setDupChance(); //needed after adjusting duplication chance
+                        tech.cloakDuplication -= 0.01
+                        powerUps.setPowerUpMode(); //needed after adjusting duplication chance
                     }
-                } else if (tech.isShieldAmmo && this.shield && !this.isExtraShield) {
+                } else if (tech.isShieldAmmo && this.shield && !this.isExtraShield && this.isDropPowerUp) {
                     let type = tech.isEnergyNoAmmo ? "heal" : "ammo"
                     if (Math.random() < 0.4) {
                         type = "heal"
@@ -1350,7 +1354,7 @@ const mobs = {
                 for (let i = 0, len = consBB.length; i < len; ++i) {
                     if (consBB[i].bodyA === this) {
                         if (consBB[i].bodyB.shield) { //&& !this.shield
-                            consBB[i].bodyB.do = function() { this.death() }
+                            consBB[i].bodyB.do = function () { this.death() }
                         }
                         consBB[i].bodyA = consBB[i].bodyB;
                         consBB.splice(i, 1);
@@ -1358,7 +1362,7 @@ const mobs = {
                         break;
                     } else if (consBB[i].bodyB === this) {
                         if (consBB[i].bodyA.shield) {
-                            consBB[i].bodyA.do = function() { this.death() }
+                            consBB[i].bodyA.do = function () { this.death() }
                         }
                         consBB[i].bodyB = consBB[i].bodyA;
                         consBB.splice(i, 1);
@@ -1406,16 +1410,13 @@ const mobs = {
                         Matter.Body.setAngularVelocity(body[len2], this.angularVelocity);
                         body[len2].collisionFilter.category = cat.body;
                         body[len2].collisionFilter.mask = cat.player | cat.map | cat.body | cat.bullet | cat.mob | cat.mobBullet;
-                        // if (body[len].mass > 10 || 45 + 10 * Math.random() < body.length) {
-                        //   body[len].collisionFilter.mask = cat.player | cat.bullet | cat.mob | cat.mobBullet;
-                        // }
                         body[len2].classType = "body";
                         Composite.add(engine.world, body[len2]); //add to world
 
                         //large mobs shrink so they don't block paths
                         if (body[len].mass + body[len2].mass > 16) {
                             const massLimit = 8 + 6 * Math.random()
-                            const shrink = function(that1, that2) {
+                            const shrink = function (that1, that2) {
                                 if (that1.mass + that2.mass > massLimit) {
                                     const scale = 0.95;
                                     Matter.Body.scale(that1, scale, scale);
@@ -1438,7 +1439,7 @@ const mobs = {
                         //large mobs shrink so they don't block paths
                         if (body[len].mass > 9) {
                             const massLimit = 7 + 4 * Math.random()
-                            const shrink = function(that) {
+                            const shrink = function (that) {
                                 if (that.mass > massLimit) {
                                     const scale = 0.95;
                                     Matter.Body.scale(that, scale, scale);
