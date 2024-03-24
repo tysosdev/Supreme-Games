@@ -132,6 +132,18 @@ async function abGame(gameid) {
         socket.emit('game', gameid);    window.location.host
         }
 }
+async function abProx(gameid) {
+    var a = window.open("about:blank", "_blank");
+    if(navigator.userAgent.includes('Firefox')){
+        a.addEventListener("DOMContentLoaded", function () {
+            a.document.documentElement.innerHTML = '<!DOCTYPE html><html><title>Classes</title><link rel="icon" type="image/png" href="https://ssl.gstatic.com/classroom/favicon.png"><style>body,html{margin:0;overflow:hidden}</style><body onload=' + "'" + 'document.getElementsByTagName("iframe")[0].focus();' + "'" + '><iframe style="height:100%;width:100%;border:0;top:0px;left:0;position:absolute;z-index:1;overflow:hidden" src="' + window.location.href.substring(0, window.location.href.lastIndexOf('/')) + '/games/' + gameid + '/index.html" sandbox="allow-forms allow-modals allow-orientation-lock allow-pointer-lock allow-presentation allow-scripts allow-downloads allow-same-origin" loading="eager" allowfullscreen allowpaymentrequest></iframe></body></html>';
+            socket.emit('game', gameid);    
+        });
+    }else{
+    a.document.documentElement.innerHTML = '<!DOCTYPE html><html><title>Classes</title><link rel="icon" type="image/png" href="https://ssl.gstatic.com/classroom/favicon.png"><style>body,html{margin:0;overflow:hidden}</style><body onload=' + "'" + 'document.getElementsByTagName("iframe")[0].focus();' + "'" + '><iframe style="height:100%;width:100%;border:0;top:0px;left:0;position:absolute;z-index:1;overflow:hidden" src="' + window.location.href.substring(0, window.location.href.lastIndexOf('/')) + '/games/' + gameid + '/index.html" sandbox="allow-forms allow-modals allow-orientation-lock allow-pointer-lock allow-presentation allow-scripts allow-downloads allow-same-origin" loading="eager" allowfullscreen allowpaymentrequest></iframe></body></html>';
+    socket.emit('game', gameid);    window.location.host
+    }
+}
 async function abFlash(gameid) {
     var a = window.open("about:blank", "_blank");
     if(navigator.userAgent.includes('Firefox')){
