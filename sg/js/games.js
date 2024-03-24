@@ -1,7 +1,7 @@
 var popGames = ["miniMetro", "Diggy", "catNinja", "gba", "motox3m", "raftWars2Html5", "getawayShootout", "henryStickmanBreakingTheBank"];
-var popwGames = ["funnyShooter2", "bigTowerTinySquare", "bigIceTowerTinySquare", "gba", "motox3mSpookyLand", "raftWars", "impossibleQuiz", "henryStickmanBreakingTheBank"];
-var recGames = ["superhot", "catNinja", "tableTanks", "learnToFly3", "achievementUnlocked2", "motox3m", "raftWarsHtml5", "impossibleQuiz2", "eaglercraft"];
-var newGames = ["jellyTruck", "vex8", "hydroStorm2", "burninRubber5XS", "cobrazIo", "criticalStrike", "papasPizzeria", "papasPancakeria", "papasPastaria", "papasHotDoggeria", "papasFreezeria", "papasDonuteria", "papasCupcakeria", "papasCheeseria", "papasBurgeria", "papasBakeria", "pandemic2", "pandemic", "ageOfWar", "fancyPantsAdventure2", "effingWorms2", "duckLife", "duckLife2", "duckLife3", "duckLife4", "superhot", "getawayShootout", "defendTheTank", "portalFlash", "battleForGondor", "bloxors", "worldsEasiestGame", "worldsHardestGame2", "worldsHardestGame3", "worldsHardestGame4", "gunMayhem", "gunMayhem2", "effingWormsXmas", "rockGarden", "emuJS", "stickRPG", "motherLoad", "clickerHeroes", "baconMayDie", "basketBallStars", "funnyShooter2", "polywar2", "raftWars2Html5", "raftWarsHtml5","pixelCombat2", "miniMetro", "bigIceTowerTinySquare", "bigTowerTinySquare"];
+var popwGames = ["funnyShooter2", "bigTowerTinySquare", "bigIceTowerTinySquare", "gba", "motox3mSpookyLand", "raftWars", "impossibleQuiz", "henryStickmanBreakingTheBank", "papasPizzeria"];
+var recGames = ["superhot", "catNinja", "tableTanks", "learnToFly3", "territorialIo", "motox3m", "raftWarsMultiplayer", "impossibleQuiz2", "eaglercraft"];
+var newGames = ["proxy", "zombsRoyale", "shellShockers", "basketbros", "jellyTruck", "vex8", "hydroStorm2", "burninRubber5XS", "cobrazIo", "criticalStrike", "papasPizzeria", "papasPancakeria", "papasPastaria", "papasHotDoggeria", "papasFreezeria", "papasDonuteria", "papasCupcakeria", "papasCheeseria", "papasBurgeria", "papasBakeria", "pandemic2", "pandemic", "ageOfWar", "fancyPantsAdventure2", "effingWorms2", "duckLife", "duckLife2", "duckLife3", "duckLife4", "superhot", "getawayShootout", "defendTheTank", "portalFlash", "battleForGondor", "bloxors", "worldsEasiestGame", "worldsHardestGame2", "worldsHardestGame3", "worldsHardestGame4", "gunMayhem", "gunMayhem2", "effingWormsXmas", "rockGarden", "emuJS", "stickRPG", "motherLoad", "clickerHeroes", "baconMayDie", "basketBallStars", "funnyShooter2", "polywar2", "raftWars2Html5", "raftWarsHtml5","pixelCombat2", "miniMetro", "bigIceTowerTinySquare", "bigTowerTinySquare"];
 /*
     "getawayShootout": { //internal name
         "id": "getawayShootout", //id passed to the openfunc and used for identification on the server, for abflash it is the swf id, for abgame its the folder name in games
@@ -69,6 +69,12 @@ var games = {
         "id": "0263502f-5df3-4f42-a0b9-28744ed94a90",
         "name": "Age of War",
         "image": "ageOfWar.webp",
+        "openfunc": "abFlash"
+    },
+    "ageOfWar2": {
+        "id": "aaf98ecd-3677-4abf-99b1-25779acd0bfb",
+        "name": "Age of War",
+        "image": "ageOfWar2.webp",
         "openfunc": "abFlash"
     },
     "amidstthesky": {
@@ -161,14 +167,14 @@ var games = {
         "image": "basketBallStars.avif",
         "openfunc": "abGame"
     },
-    "/basketbros": {
-        "id": "/basketbros",
+    "basketbros": {
+        "id": "basketbros",
         "name": "Basket Bros",
         "image": "basketbros.webp",
         "openfunc": "abGame"
     },
-    "/battlePanic": {
-        "id": "/6948323f-0df3-4aff-a897-c4be34788d6d",
+    "battlePanic": {
+        "id": "6948323f-0df3-4aff-a897-c4be34788d6d",
         "name": "Battle Panic",
         "image": "battlePanic.webp",
         "openfunc": "abFlash"
@@ -210,7 +216,7 @@ var games = {
         "openfunc": "abFlash"
     },
     "bloonsTowerDefense4": {
-        "id": "7b016d7e-7590-4f58-9a7f-8882d68a7a70",
+        "id": "9fe6b0f4-6739-4313-9ea2-fb5bb16033e7",
         "name": "Bloons Tower Defense 4",
         "image": "bloonsTowerDefense4.webp",
         "openfunc": "abFlash"
@@ -263,8 +269,8 @@ var games = {
         "image": "burnout-drift-3.webp",
         "openfunc": "abGame"
     },
-    "burritoBison": {
-        "id": "burritoBison",
+    "/burritoBison": {
+        "id": "/burritoBison",
         "name": "Burrito Bison",
         "image": "burritoBison.webp",
         "openfunc": "abGame"
@@ -401,11 +407,11 @@ var games = {
         "image": "dbzdevolution.webp",
         "openfunc": "abFlash"
     },
-    "/deflyIo": {
-        "id": "/deflyIo",
+    "deflyIo": {
+        "id": "deflyIo",
         "name": "Defly io",
         "image": "deflyIo.webp",
-        "openfunc": "abGame"
+        "openfunc": "abProx"
     },
     "Diggy": {
         "id": "b9a60903-1fdf-40fc-a45c-4ae5827c14e5",
@@ -714,13 +720,13 @@ var games = {
         "openfunc": "abFlash"
     },
     "learnToFly2": {
-        "id": "89b60ee6-d9ff-4fd0-b38a-d207d5c7c902",
+        "id": "8427e552-f0ec-4050-a279-fa02629b73b8",
         "name": "Learn To Fly 2",
         "image": "learnToFly2.webp",
         "openfunc": "abFlash"
     },
     "learnToFly3": {
-        "id": "0e1b0de8-8ab5-4a03-acfc-c8cf320e49df",
+        "id": "89b60ee6-d9ff-4fd0-b38a-d207d5c7c902",
         "name": "Learn To Fly 3",
         "image": "learnToFly3.webp",
         "openfunc": "abFlash"
@@ -971,11 +977,11 @@ var games = {
         "image": "powdergame.webp",
         "openfunc": "abGame"
     },
-    "/proxy": {
-        "id": "/proxy",
+    "proxy": {
+        "id": "proxy",
         "name": "proxy",
         "image": "proxy.webp",
-        "openfunc": "abGame"
+        "openfunc": "abProx"
     },
     "punchout": {
         "id": "punchout",
@@ -1007,11 +1013,11 @@ var games = {
         "image": "raftWars2Html5.jpg",
         "openfunc": "abGame"
     },
-    "/raftWarsMultiplayer": {
-        "id": "/raftWarsMultiplayer",
+    "raftWarsMultiplayer": {
+        "id": "raftWarsMultiplayer",
         "name": "Raft Wars Multiplayer",
         "image": "raftWarsMultiplayer.webp",
-        "openfunc": "abGame"
+        "openfunc": "abProx"
     },
     "redBall4": {
         "id": "9c6323ca-7074-42a4-a881-bfebd269db36",
@@ -1133,11 +1139,11 @@ var games = {
         "image": "shapez.webp",
         "openfunc": "abGame"
     },
-    "/shellShockers": {
-        "id": "/shellShockers",
+    "shellShockers": {
+        "id": "shellShockers",
         "name": "Shell Shockers",
         "image": "shellShockers.webp",
-        "openfunc": "abGame"
+        "openfunc": "abProx"
     },
     "slope": {
         "id": "slope",
@@ -1283,11 +1289,11 @@ var games = {
         "image": "templerun2.webp",
         "openfunc": "abGame"
     },
-    "/territorialIo": {
-        "id": "/territorialIo",
+    "territorialIo": {
+        "id": "territorialIo",
         "name": "Territorial io",
         "image": "territorialIo.webp",
-        "openfunc": "abGame"
+        "openfunc": "abProx"
     },
     "tetris": {
         "id": "tetris",
@@ -1415,11 +1421,11 @@ var games = {
         "image": "wordle.webp",
         "openfunc": "abGame"
     },
-    "/zombsRoyale": {
-        "id": "/zombsRoyale",
+    "zombsRoyale": {
+        "id": "zombsRoyale",
         "name": "Zombs Royale",
         "image": "zombsRoyale.webp",
-        "openfunc": "abGame"
+        "openfunc": "abProx"
     },
     "worldsEasiestGame": {
         "id": "76f50382-ceeb-47cb-8765-b24f2f88867b",
