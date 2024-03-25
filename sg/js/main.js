@@ -69,7 +69,7 @@ async function addGamesFromList(list, gameType) {
         //set gameinfo to gameid of the data
         let gameInfo = games[gameName];
         //if it uses prox then make sure your on medsci
-        if(gameInfo.openfunc != "abProx" || window.location.hostname == 'sg.medscience.cl'){
+        if(gameInfo.openfunc != "abProx" /*|| window.location.hostname == 'sg.medscience.cl'*/){
         //if it is on sccreen
         if (index < 6) {
             //add the game with all the info and no extra properties
@@ -88,7 +88,7 @@ async function addGamesFromListById(list, gameType) {
         let gamename = Object.entries(games).find(([useless, game]) => game.id == gameId)[0];
         //set gameinfo to gameid of the data
         let gameInfo = games[gamename];
-        if(gameInfo.openfunc != "abProx" || window.location.hostname == 'sg.medscience.cl'){
+        if(gameInfo.openfunc != "abProx" /*|| window.location.hostname == 'sg.medscience.cl'*/){
 
         //if it is on sccreen
         if (index < 6) {
