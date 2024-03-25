@@ -117,7 +117,7 @@ async function closepopup(save) {
         localStorage.setItem("popup", "stop");
     }
 }
-async function opendiscrod() {
+async function opendiscord() {
     window.location.replace("https://discord.gg/xYSgcdDXrJ")
 }
 async function abGame(gameid) {
