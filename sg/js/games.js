@@ -533,6 +533,12 @@ var games = {
         "image": "flappybird.webp",
         "openfunc": "abGame"
     },
+    "animations": {
+	"id": "animations"
+	"name": "Flash Animations"
+	"image": "animations.svg"
+	"openfunc": "abGame"
+    },
     "fluidSimulation": {
         "id": "fluidSimulation",
         "name": "Fluid Simulation",
