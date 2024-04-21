@@ -534,9 +534,9 @@ var games = {
         "openfunc": "abGame"
     },
     "animations": {
-	"id": "animations"
-	"name": "Flash Animations"
-	"image": "animations.svg"
+	"id": "animations",
+	"name": "Flash Animations",
+	"image": "animations.svg",
 	"openfunc": "abGame"
     },
     "fluidSimulation": {
