@@ -3,14 +3,52 @@
 
 <head>
   <style>
-    img {
-      width: 19.75%;
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f8f8f8;
     }
+
+    h1, h2 {
+      text-align: center;
+      margin-top: 20px;
+    }
+
     h1 {
-      text-align: center;
+      color: #333;
+      font-size: 36px;
+      text-transform: uppercase;
     }
+
     h2 {
-      text-align: center;
+      color: #666;
+      font-size: 24px;
+    }
+
+    .book-container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+
+    .book-container a {
+      margin: 10px;
+      text-decoration: none;
+      color: #333;
+      transition: transform 0.3s ease;
+    }
+
+    .book-container a:hover {
+      transform: scale(1.05);
+    }
+
+    .book-container img {
+      width: 200px;
+      height: auto;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
   </style>
 </head>
@@ -18,11 +56,15 @@
 <body>
   <h1>Classic Books</h1>
   <h2>Best read at 70% zoom. Click the books to read.</h2>
-  <a href="pages/hamlet.html"><img src="imgs/hamlet.jpg"></a>
-  <a href="pages/macbeth.html"><img src="imgs/macbeth.jpg"></a>
-    <a href="pages/JuliusCaesar.html"><img src="imgs/juliuscaesar.jpg"></a>
-  <a href="pages/antonycleopatra.html"><img src="imgs/antonycleopatra.jpg"></a>
-  <a href="pages/romeojuliet.html"><img src="imgs/romeojuliet.jpg"></a>
+  <div class="book-container">
+    <a href="pages/hamlet.html"><img src="imgs/hamlet.jpg" alt="Hamlet"></a>
+    <a href="pages/macbeth.html"><img src="imgs/macbeth.jpg" alt="Macbeth"></a>
+    <a href="pages/JuliusCaesar.html"><img src="imgs/juliuscaesar.jpg" alt="Julius Caesar"></a>
+    <a href="pages/antonycleopatra.html"><img src="imgs/antonycleopatra.jpg" alt="Antony and Cleopatra"></a>
+    <a href="pages/romeojuliet.html"><img src="imgs/romeojuliet.jpg" alt="Romeo and Juliet"></a>
+  </div>
 </body>
+
 <script src="./main.js"></script>
+
 </html>
